@@ -85,6 +85,7 @@ class UserController extends Controller
         $grid = new Grid(new $userModel());
 
         $grid->id('ID')->sortable();
+        $grid->avatar(trans('admin.avatar'))->image(config('app.url'), 50, 50);
         $grid->username(trans('admin.username'));
         $grid->name(trans('admin.name'));
         $grid->roles(trans('admin.roles'))->pluck('name')->label();
@@ -120,6 +121,7 @@ class UserController extends Controller
         $show = new Show($userModel::findOrFail($id));
 
         $show->id('ID');
+        $show->avatar(trans('admin.avatar'))->image(config('app.url'), 50, 50);
         $show->username(trans('admin.username'));
         $show->name(trans('admin.name'));
         $show->roles(trans('admin.roles'))->as(function ($roles) {

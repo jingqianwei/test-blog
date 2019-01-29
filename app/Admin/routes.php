@@ -12,6 +12,6 @@ Route::group([
 
     $router->get('/', 'HomeController@index');
 
-    // 管理员
+    // 重写管理员功能
     $router->resource('auth/users', 'UserController');
 });
