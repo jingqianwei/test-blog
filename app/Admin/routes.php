@@ -13,5 +13,5 @@ Route::group([
     $router->get('/', 'HomeController@index');
 
     // 管理员
-    $router->resource('auth/users', 'UsersController');
+    $router->resource('auth/users', 'UserController');
 });
