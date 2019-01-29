@@ -2,33 +2,46 @@
 
 namespace App\Admin\Controllers;
 
+use App\Models\AdminUser;
 use Encore\Admin\Controllers\AuthController as BaseAuthController;
-use Encore\Admin\Controllers\Dashboard;
-use Encore\Admin\Layout\Column;
 use Encore\Admin\Layout\Content;
-use Encore\Admin\Layout\Row;
+use Encore\Admin\Grid;
 
 class AuthController extends BaseAuthController
 {
+    /**
+     * Index interface.
+     *
+     * @param Content $content
+     * @return Content
+     */
     public function index(Content $content)
     {
         return $content
-            ->header('Dashboard')
-            ->description('Description...')
-            ->row(Dashboard::title())
-            ->row(function (Row $row) {
+            ->header('Index')
+            ->description('description')
+            ->body($this->grid());
+    }
 
-                $row->column(4, function (Column $column) {
-                    $column->append(Dashboard::environment());
-                });
+    /**
+     * Make a grid builder.
+     *
+     * @return Grid
+     */
+    protected function grid()
+    {
+        $grid = new Grid(new AdminUser);
 
-                $row->column(4, function (Column $column) {
-                    $column->append(Dashboard::extensions());
-                });
+        $grid->id('Id');
+        $grid->image('Image');
+        $grid->name('Name');
+        $grid->email('Email');
+        $grid->email_verified_at('Email verified at');
+        $grid->password('Password');
+        $grid->remember_token('Remember token');
+        $grid->created_at('Created at');
+        $grid->updated_at('Updated at');
 
-                $row->column(4, function (Column $column) {
-                    $column->append(Dashboard::dependencies());
-                });
-            });
+        return $grid;
     }
 }
