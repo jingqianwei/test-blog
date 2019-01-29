@@ -89,6 +89,7 @@ class UserController extends Controller
         $grid->username(trans('admin.username'));
         $grid->name(trans('admin.name'));
         $grid->roles(trans('admin.roles'))->pluck('name')->label();
+        $grid->status(trans('admin.status'))->switch();
         $grid->created_at(trans('admin.created_at'));
         $grid->updated_at(trans('admin.updated_at'));
 
@@ -130,6 +131,7 @@ class UserController extends Controller
         $show->permissions(trans('admin.permissions'))->as(function ($permission) {
             return $permission->pluck('name');
         })->label();
+        $show->status(trans('admin.status'));
         $show->created_at(trans('admin.created_at'));
         $show->updated_at(trans('admin.updated_at'));
 
@@ -146,6 +148,12 @@ class UserController extends Controller
         $userModel = config('admin.database.users_model');
         $permissionModel = config('admin.database.permissions_model');
         $roleModel = config('admin.database.roles_model');
+
+        // 开关
+        $states = [
+            'on'  => ['value' => 1, 'text' => '打开', 'color' => 'success'],
+            'off' => ['value' => 0, 'text' => '关闭', 'color' => 'danger'],
+        ];
 
         $form = new Form(new $userModel());
 
@@ -165,6 +173,8 @@ class UserController extends Controller
         $form->multipleSelect('roles', trans('admin.roles'))->options($roleModel::all()->pluck('name', 'id'));
         $form->multipleSelect('permissions', trans('admin.permissions'))->options($permissionModel::all()->pluck('name', 'id'));
 
+        // 开关
+        $form->switch('status', trans('admin.status'))->states($states);
         $form->display('created_at', trans('admin.created_at'));
         $form->display('updated_at', trans('admin.updated_at'));
 
