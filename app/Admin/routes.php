@@ -13,5 +13,8 @@ Route::group([
     $router->get('/', 'HomeController@index');
 
     // 重写管理员功能
-    $router->resource('auth/users', 'UserController');
+    $router->resource('auth/users', 'AdminUserController');
+
+    // 用户管理
+    $router->resource('users', 'UserController');
 });

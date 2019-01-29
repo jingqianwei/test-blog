@@ -2,11 +2,12 @@
 
 namespace App\Admin\Controllers;
 
+use App\Models\User;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\HasResourceActions;
-use Encore\Admin\Layout\Content;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
+use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
 
 class UserController extends Controller
@@ -22,40 +23,38 @@ class UserController extends Controller
     public function index(Content $content)
     {
         return $content
-            ->header(trans('admin.administrator'))
-            ->description(trans('admin.list'))
-            ->body($this->grid()->render());
+            ->header('用户列表')
+            ->description('description')
+            ->body($this->grid());
     }
 
     /**
      * Show interface.
      *
-     * @param mixed   $id
+     * @param mixed $id
      * @param Content $content
-     *
      * @return Content
      */
     public function show($id, Content $content)
     {
         return $content
-            ->header(trans('admin.administrator'))
-            ->description(trans('admin.detail'))
+            ->header('用户详情')
+            ->description('description')
             ->body($this->detail($id));
     }
 
     /**
      * Edit interface.
      *
-     * @param $id
-     *
+     * @param mixed $id
      * @param Content $content
      * @return Content
      */
     public function edit($id, Content $content)
     {
         return $content
-            ->header(trans('admin.administrator'))
-            ->description(trans('admin.edit'))
+            ->header('Edit')
+            ->description('description')
             ->body($this->form()->edit($id));
     }
 
@@ -68,8 +67,8 @@ class UserController extends Controller
     public function create(Content $content)
     {
         return $content
-            ->header(trans('admin.administrator'))
-            ->description(trans('admin.create'))
+            ->header('Create')
+            ->description('description')
             ->body($this->form());
     }
 
@@ -80,30 +79,19 @@ class UserController extends Controller
      */
     protected function grid()
     {
-        $userModel = config('admin.database.users_model');
+        $grid = new Grid(new User);
 
-        $grid = new Grid(new $userModel());
-
-        $grid->id('ID')->sortable();
-        $grid->avatar(trans('admin.avatar'))->image(config('app.url'), 50, 50);
-        $grid->username(trans('admin.username'));
-        $grid->name(trans('admin.name'));
-        $grid->roles(trans('admin.roles'))->pluck('name')->label();
-        $grid->status(trans('admin.status'))->switch();
-        $grid->created_at(trans('admin.created_at'));
-        $grid->updated_at(trans('admin.updated_at'));
-
-        $grid->actions(function (Grid\Displayers\Actions $actions) {
-            if ($actions->getKey() == 1) {
-                $actions->disableDelete();
-            }
-        });
-
-        $grid->tools(function (Grid\Tools $tools) {
-            $tools->batch(function (Grid\Tools\BatchActions $actions) {
-                $actions->disableDelete();
-            });
-        });
+        $grid->id('Id');
+        $grid->avatar('头像')->image(config('app.url'), 50, 50);;
+        $grid->name('姓名');
+        $grid->phone('电话');
+        $grid->email('邮箱');
+        $grid->email_verified_at('邮箱验证时间');
+        $grid->password('密码');
+        $grid->remember_token('记住密码的token值');
+        $grid->created_at('注册时间');
+        $grid->last_actived_at('最后活跃时间');
+        $grid->updated_at('更新时间');
 
         return $grid;
     }
@@ -112,28 +100,26 @@ class UserController extends Controller
      * Make a show builder.
      *
      * @param mixed $id
-     *
      * @return Show
      */
     protected function detail($id)
     {
-        $userModel = config('admin.database.users_model');
+        $show = new Show(User::findOrFail($id));
 
-        $show = new Show($userModel::findOrFail($id));
-
-        $show->id('ID');
-        $show->avatar(trans('admin.avatar'))->image(config('app.url'), 50, 50);
-        $show->username(trans('admin.username'));
-        $show->name(trans('admin.name'));
-        $show->roles(trans('admin.roles'))->as(function ($roles) {
-            return $roles->pluck('name');
-        })->label();
-        $show->permissions(trans('admin.permissions'))->as(function ($permission) {
-            return $permission->pluck('name');
-        })->label();
-        $show->status(trans('admin.status'));
-        $show->created_at(trans('admin.created_at'));
-        $show->updated_at(trans('admin.updated_at'));
+        $show->id('Id');
+        $show->avatar('头像')->image(config('app.url'), 50, 50);
+        $show->name('姓名');
+        $show->phone('电话');
+        $show->email('邮箱');
+        $show->email_verified_at('邮箱验证时间');
+        $show->weixin_openid('微信 openid');
+        $show->weixin_unionid('微信 unionid');
+        $show->password('密码');
+        $show->remember_token('记住密码的token值');
+        $show->created_at('注册时间');
+        $show->updated_at('更新时间');
+        $show->introduction('简介');
+        $show->last_actived_at('最后活跃时间');
 
         return $show;
     }
@@ -143,46 +129,27 @@ class UserController extends Controller
      *
      * @return Form
      */
-    public function form()
+    protected function form()
     {
-        $userModel = config('admin.database.users_model');
-        $permissionModel = config('admin.database.permissions_model');
-        $roleModel = config('admin.database.roles_model');
+        $form = new Form(new User);
 
-        // 开关
-        $states = [
-            'on'  => ['value' => 1, 'text' => '打开', 'color' => 'success'],
-            'off' => ['value' => 0, 'text' => '关闭', 'color' => 'danger'],
-        ];
-
-        $form = new Form(new $userModel());
-
-        $form->display('id', 'ID');
-
-        $form->text('username', trans('admin.username'))->rules('required');
-        $form->text('name', trans('admin.name'))->rules('required');
-        $form->image('avatar', trans('admin.avatar'));
-        $form->password('password', trans('admin.password'))->rules('required|confirmed');
-        $form->password('password_confirmation', trans('admin.password_confirmation'))->rules('required')
-            ->default(function ($form) {
-                return $form->model()->password;
-            });
-
-        $form->ignore(['password_confirmation']);
-
-        $form->multipleSelect('roles', trans('admin.roles'))->options($roleModel::all()->pluck('name', 'id'));
-        $form->multipleSelect('permissions', trans('admin.permissions'))->options($permissionModel::all()->pluck('name', 'id'));
-
-        // 开关
-        $form->switch('status', trans('admin.status'))->states($states);
-        $form->display('created_at', trans('admin.created_at'));
-        $form->display('updated_at', trans('admin.updated_at'));
+        $form->text('name', '姓名')->rules('required|between:3,25');
+        $form->mobile('phone', '电话');
+        $form->email('email', '邮箱')->rules(function ($form) {
+            return 'required|unique:users,email,' . $form->model()->id;
+        });
+        $form->datetime('email_verified_at', '邮箱验证时间')->default(date('Y-m-d H:i:s'));
+        $form->password('password', '密码')->placeholder('输入重置密码');
+        $form->image('avatar', '头像')->move('/uploads/images/avatars/');
+        $form->text('introduction', '简介');
 
         $form->saving(function (Form $form) {
-            if ($form->password && $form->model()->password != $form->password) {
+            if ($form->password) {
                 $form->password = bcrypt($form->password);
             }
         });
+
+        $form->text('remember_token', '记住密码的token值');
 
         return $form;
     }
