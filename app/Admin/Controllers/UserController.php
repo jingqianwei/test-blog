@@ -2,12 +2,11 @@
 
 namespace App\Admin\Controllers;
 
-use App\Models\User;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\HasResourceActions;
+use Encore\Admin\Layout\Content;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
-use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
 
 class UserController extends Controller
@@ -23,38 +22,40 @@ class UserController extends Controller
     public function index(Content $content)
     {
         return $content
-            ->header('Index')
-            ->description('description')
-            ->body($this->grid());
+            ->header(trans('admin.administrator'))
+            ->description(trans('admin.list'))
+            ->body($this->grid()->render());
     }
 
     /**
      * Show interface.
      *
-     * @param mixed $id
+     * @param mixed   $id
      * @param Content $content
+     *
      * @return Content
      */
     public function show($id, Content $content)
     {
         return $content
-            ->header('Detail')
-            ->description('description')
+            ->header(trans('admin.administrator'))
+            ->description(trans('admin.detail'))
             ->body($this->detail($id));
     }
 
     /**
      * Edit interface.
      *
-     * @param mixed $id
+     * @param $id
+     *
      * @param Content $content
      * @return Content
      */
     public function edit($id, Content $content)
     {
         return $content
-            ->header('Edit')
-            ->description('description')
+            ->header(trans('admin.administrator'))
+            ->description(trans('admin.edit'))
             ->body($this->form()->edit($id));
     }
 
@@ -67,8 +68,8 @@ class UserController extends Controller
     public function create(Content $content)
     {
         return $content
-            ->header('Create')
-            ->description('description')
+            ->header(trans('admin.administrator'))
+            ->description(trans('admin.create'))
             ->body($this->form());
     }
 
@@ -79,17 +80,28 @@ class UserController extends Controller
      */
     protected function grid()
     {
-        $grid = new Grid(new User);
+        $userModel = config('admin.database.users_model');
 
-        $grid->id('Id');
-        $grid->image('Image');
-        $grid->name('Name');
-        $grid->email('Email');
-        $grid->email_verified_at('Email verified at');
-        $grid->password('Password');
-        $grid->remember_token('Remember token');
-        $grid->created_at('Created at');
-        $grid->updated_at('Updated at');
+        $grid = new Grid(new $userModel());
+
+        $grid->id('ID')->sortable();
+        $grid->username(trans('admin.username'));
+        $grid->name(trans('admin.name'));
+        $grid->roles(trans('admin.roles'))->pluck('name')->label();
+        $grid->created_at(trans('admin.created_at'));
+        $grid->updated_at(trans('admin.updated_at'));
+
+        $grid->actions(function (Grid\Displayers\Actions $actions) {
+            if ($actions->getKey() == 1) {
+                $actions->disableDelete();
+            }
+        });
+
+        $grid->tools(function (Grid\Tools $tools) {
+            $tools->batch(function (Grid\Tools\BatchActions $actions) {
+                $actions->disableDelete();
+            });
+        });
 
         return $grid;
     }
@@ -98,21 +110,26 @@ class UserController extends Controller
      * Make a show builder.
      *
      * @param mixed $id
+     *
      * @return Show
      */
     protected function detail($id)
     {
-        $show = new Show(User::findOrFail($id));
+        $userModel = config('admin.database.users_model');
 
-        $show->id('Id');
-        $show->image('Image');
-        $show->name('Name');
-        $show->email('Email');
-        $show->email_verified_at('Email verified at');
-        $show->password('Password');
-        $show->remember_token('Remember token');
-        $show->created_at('Created at');
-        $show->updated_at('Updated at');
+        $show = new Show($userModel::findOrFail($id));
+
+        $show->id('ID');
+        $show->username(trans('admin.username'));
+        $show->name(trans('admin.name'));
+        $show->roles(trans('admin.roles'))->as(function ($roles) {
+            return $roles->pluck('name');
+        })->label();
+        $show->permissions(trans('admin.permissions'))->as(function ($permission) {
+            return $permission->pluck('name');
+        })->label();
+        $show->created_at(trans('admin.created_at'));
+        $show->updated_at(trans('admin.updated_at'));
 
         return $show;
     }
@@ -122,16 +139,38 @@ class UserController extends Controller
      *
      * @return Form
      */
-    protected function form()
+    public function form()
     {
-        $form = new Form(new User);
+        $userModel = config('admin.database.users_model');
+        $permissionModel = config('admin.database.permissions_model');
+        $roleModel = config('admin.database.roles_model');
 
-        $form->image('image', 'Image');
-        $form->text('name', 'Name');
-        $form->email('email', 'Email');
-        $form->datetime('email_verified_at', 'Email verified at')->default(date('Y-m-d H:i:s'));
-        $form->password('password', 'Password');
-        $form->text('remember_token', 'Remember token');
+        $form = new Form(new $userModel());
+
+        $form->display('id', 'ID');
+
+        $form->text('username', trans('admin.username'))->rules('required');
+        $form->text('name', trans('admin.name'))->rules('required');
+        $form->image('avatar', trans('admin.avatar'));
+        $form->password('password', trans('admin.password'))->rules('required|confirmed');
+        $form->password('password_confirmation', trans('admin.password_confirmation'))->rules('required')
+            ->default(function ($form) {
+                return $form->model()->password;
+            });
+
+        $form->ignore(['password_confirmation']);
+
+        $form->multipleSelect('roles', trans('admin.roles'))->options($roleModel::all()->pluck('name', 'id'));
+        $form->multipleSelect('permissions', trans('admin.permissions'))->options($permissionModel::all()->pluck('name', 'id'));
+
+        $form->display('created_at', trans('admin.created_at'));
+        $form->display('updated_at', trans('admin.updated_at'));
+
+        $form->saving(function (Form $form) {
+            if ($form->password && $form->model()->password != $form->password) {
+                $form->password = bcrypt($form->password);
+            }
+        });
 
         return $form;
     }
