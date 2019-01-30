@@ -88,9 +88,10 @@ class UserController extends Controller
         $grid->email('邮箱');
         $grid->email_verified_at('邮箱验证时间');
         $grid->password('密码');
+        $grid->introduction('简介');
         $grid->remember_token('记住密码的token值');
-        $grid->created_at('注册时间');
         $grid->last_actived_at('最后活跃时间');
+        $grid->created_at('注册时间');
         $grid->updated_at('更新时间');
 
         return $grid;
@@ -112,14 +113,12 @@ class UserController extends Controller
         $show->phone('电话');
         $show->email('邮箱');
         $show->email_verified_at('邮箱验证时间');
-        $show->weixin_openid('微信 openid');
-        $show->weixin_unionid('微信 unionid');
         $show->password('密码');
+        $show->introduction('简介');
         $show->remember_token('记住密码的token值');
+        $show->last_actived_at('最后活跃时间');
         $show->created_at('注册时间');
         $show->updated_at('更新时间');
-        $show->introduction('简介');
-        $show->last_actived_at('最后活跃时间');
 
         return $show;
     }
