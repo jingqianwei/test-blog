@@ -40,6 +40,7 @@ class User extends Authenticatable
     {
         $disk = config('admin.upload.disk');
 
+        // 解决头像显示不正常的问题
         if ($avatar && array_key_exists($disk, config('filesystems.disks'))) {
             return Storage::disk(config('admin.upload.disk'))->url($avatar);
         }
