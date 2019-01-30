@@ -136,7 +136,7 @@ class UserController extends Controller
         });
         $form->datetime('email_verified_at', '邮箱验证时间')->default(date('Y-m-d H:i:s'));
         $form->password('password', '密码')->placeholder('输入重置密码');
-        $form->image('avatar', '头像')->move('/uploads/images/avatars')->uniqueName();
+        $form->image('avatar', '头像')->move('public/uploads/images/avatars')->uniqueName();
         $form->text('introduction', '简介');
         $form->datetime('last_actived_at', '最后活跃时间')->default(date('Y-m-d H:i:s'));
         $form->saving(function (Form $form) {
