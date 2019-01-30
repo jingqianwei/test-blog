@@ -87,9 +87,7 @@ class UserController extends Controller
         $grid->phone('电话');
         $grid->email('邮箱');
         $grid->email_verified_at('邮箱验证时间');
-        $grid->password('密码');
         $grid->introduction('简介');
-        $grid->remember_token('记住密码的token值');
         $grid->last_actived_at('最后活跃时间');
         $grid->created_at('注册时间');
         $grid->updated_at('更新时间');
@@ -115,7 +113,6 @@ class UserController extends Controller
         $show->email_verified_at('邮箱验证时间');
         $show->password('密码');
         $show->introduction('简介');
-        $show->remember_token('记住密码的token值');
         $show->last_actived_at('最后活跃时间');
         $show->created_at('注册时间');
         $show->updated_at('更新时间');
@@ -141,14 +138,12 @@ class UserController extends Controller
         $form->password('password', '密码')->placeholder('输入重置密码');
         $form->image('avatar', '头像')->move('/uploads/images/avatars/');
         $form->text('introduction', '简介');
-
+        $form->datetime('last_actived_at', '最后活跃时间')->default(date('Y-m-d H:i:s'));
         $form->saving(function (Form $form) {
             if ($form->password) {
                 $form->password = bcrypt($form->password);
             }
         });
-
-        $form->text('remember_token', '记住密码的token值');
 
         return $form;
     }
