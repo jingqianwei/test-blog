@@ -25,7 +25,7 @@ class UserController extends Controller
         return $content
             ->header('用户列表')
             ->description('description')
-            ->body($this->grid());
+            ->body($this->grid()->render());
     }
 
     /**
