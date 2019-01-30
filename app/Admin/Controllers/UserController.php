@@ -92,6 +92,18 @@ class UserController extends Controller
         $grid->created_at('注册时间');
         $grid->updated_at('更新时间');
 
+        $grid->actions(function (Grid\Displayers\Actions $actions) {
+            if ($actions->getKey() == 1) {
+                $actions->disableDelete();
+            }
+        });
+
+        $grid->tools(function (Grid\Tools $tools) {
+            $tools->batch(function (Grid\Tools\BatchActions $actions) {
+                $actions->disableDelete();
+            });
+        });
+
         return $grid;
     }
 
