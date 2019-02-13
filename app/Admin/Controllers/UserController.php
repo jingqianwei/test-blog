@@ -53,7 +53,7 @@ class UserController extends Controller
     public function edit($id, Content $content)
     {
         return $content
-            ->header('Edit')
+            ->header('修改用户')
             ->description('description')
             ->body($this->form()->edit($id));
     }
@@ -67,7 +67,7 @@ class UserController extends Controller
     public function create(Content $content)
     {
         return $content
-            ->header('Create')
+            ->header('创建用户')
             ->description('description')
             ->body($this->form());
     }
