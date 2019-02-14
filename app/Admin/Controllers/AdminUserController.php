@@ -158,6 +158,7 @@ class AdminUserController extends Controller
         $form = new Form(new $userModel());
 
         $form->display('id', 'ID');
+        $form->largefile('ColumnName', trans('admin.large_file'));
 
         $form->text('username', trans('admin.username'))->rules('required');
         $form->text('name', trans('admin.name'))->rules('required');

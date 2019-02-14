@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'large_file'            => '大文件',
     'status'                => '状态',
     'online'                => '在线',
     'login'                 => '登录',
