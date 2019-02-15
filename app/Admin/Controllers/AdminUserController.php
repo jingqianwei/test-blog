@@ -85,7 +85,7 @@ class AdminUserController extends Controller
         $grid = new Grid(new $userModel());
 
         $grid->id('ID')->sortable();
-        $grid->avatar(trans('admin.avatar'))->image(config('app.url'), 50, 50);
+        $grid->avatar(trans('admin.avatar'))->lightbox(['width' => 50, 'height' => 50]);;
         $grid->username(trans('admin.username'));
         $grid->name(trans('admin.name'));
         $grid->roles(trans('admin.roles'))->pluck('name')->label();
