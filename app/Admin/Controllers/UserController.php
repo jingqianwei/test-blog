@@ -82,7 +82,7 @@ class UserController extends Controller
         $grid = new Grid(new User);
 
         $grid->id('Id');
-        $grid->avatar('头像')->image(config('app.url'), 50, 50);;
+        $grid->avatar('头像')->lightbox(['width' => 50, 'height' => 50]);
         $grid->name('姓名');
         $grid->phone('电话');
         $grid->email('邮箱');
