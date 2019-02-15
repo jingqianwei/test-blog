@@ -341,7 +341,7 @@ var AetherUpload = {
         zh: {
             status_upload_begin: "开始上传",
             error_unsupported_browser: "错误：上传组件不被此浏览器支持",
-            status_hashing: "正在哈希",
+            status_hashing: "正在解析",
             status_instant_completion_success: "上传成功（秒传）",
             status_uploading: "正在上传",
             status_upload_success: "上传成功",
