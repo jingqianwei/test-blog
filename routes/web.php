@@ -10,6 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Http\Resources\UserResource;
+use App\Models\User;
 
 Route::get('/', function () {
     return view('welcome');
@@ -17,3 +19,10 @@ Route::get('/', function () {
 
 //日志查看页面
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+
+// 测试API数据格式处理
+Route::get('test-api', function () {
+    return UserResource::collection(User::paginate());
+    //return UserResource::collection(User::all());
+    //return new UserResource(User::all());
+});
