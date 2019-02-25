@@ -2,14 +2,14 @@
 
 namespace App\Models;
 
+use App\Traits\UuidTrait;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, UuidTrait;
 
     /**
      * The attributes that are mass assignable.
