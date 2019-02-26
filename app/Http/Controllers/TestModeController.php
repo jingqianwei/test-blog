@@ -13,6 +13,11 @@ use App\Services\Factory;
 use App\Services\VwCarAbstractFactory;
 use App\Services\VwCarFactory;
 
+/**
+ * 设计模式的使用
+ * Class TestModeController
+ * @package App\Http\Controllers
+ */
 class TestModeController extends Controller
 {
     public function test()
