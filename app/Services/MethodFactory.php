@@ -8,8 +8,15 @@
 
 namespace App\Services;
 
-
+/**
+ * 总工厂
+ * Class MethodFactory
+ * @package App\Services
+ */
 abstract class MethodFactory
 {
+    /**
+     * @return mixed
+     */
     abstract public function produce();
 }

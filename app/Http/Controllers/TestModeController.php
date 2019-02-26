@@ -10,13 +10,14 @@ namespace App\Http\Controllers;
 
 
 use App\Services\Factory;
+use App\Services\VwCarAbstractFactory;
 use App\Services\VwCarFactory;
 
 class TestModeController extends Controller
 {
     public function test()
     {
-        // 工厂模式
+        //工厂模式
         $factory = new Factory();
         $vw = $factory->produce(1); //生产大众车
         dd($vw); //输出 object(VwCar)#3 (0) { }
@@ -25,5 +26,12 @@ class TestModeController extends Controller
         $factory = new VwCarFactory(); //实例化大众车工场
         $vw = $factory->produce(); //生产大众车
         dd($vw); //输出 object(VwCar)#3 (0) { }
+
+        //抽象工厂模式
+        $factory = new VwCarAbstractFactory(); //实例化大众车工厂
+        $VwLowEndCar = $factory->produceLowEndCar(); //生产大众低端车
+        $VwHeightEndCar = $factory->produceHeightEndCar(); // 生产大众高端车
+        dd($VwHeightEndCar); //输出 object(VwHeightEndCar)#3 (0) { }
+        dd($VwLowEndCar); //输出 object(VwLowEndCar)#3 (0) { }
     }
 }

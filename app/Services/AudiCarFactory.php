@@ -8,10 +8,16 @@
 
 namespace App\Services;
 
-
+/**
+ * 子工厂
+ * Class AudiCarFactory
+ * @package App\Services
+ */
 class AudiCarFactory extends MethodFactory
 {
-
+    /**
+     * @return AudiCar
+     */
     public function produce()
     {
         return new AudiCar();

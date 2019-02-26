@@ -9,6 +9,7 @@
 namespace App\Services;
 
 /**
+ * 参考网址：https://learnku.com/articles/24372
  * 工厂模式
  * Class Factory
  * @package App\Services
@@ -20,6 +21,10 @@ class Factory
     const AUDI = 2;
     const PORSCHE = 3; // <----增加了一个常量
 
+    /**
+     * @param $type
+     * @return AudiCar|PorscheCar|VwCar
+     */
     public function produce($type)
     {
         switch ($type) {

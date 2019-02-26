@@ -3,17 +3,17 @@
  * Created by PhpStorm.
  * User: chinwe.jing
  * Date: 2019/2/26
- * Time: 10:32
+ * Time: 13:41
  */
 
 namespace App\Services;
 
 /**
- * 车
- * Class AudiCar
+ * 大众高端车
+ * Class VwHeightEndCar
  * @package App\Services
  */
-class AudiCar
+class VwHeightEndCar implements HeightEndCar
 {
 
 }

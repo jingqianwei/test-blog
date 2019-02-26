@@ -15,5 +15,21 @@ namespace App\Services;
  */
 abstract class AbstractFactory
 {
+    /**
+     * @return mixed
+     */
     abstract public function produceLowEndCar();
+
+    /**
+     * @return mixed
+     */
+    abstract public function produceHeightEndCar();
+
+    /**
+     * @return string
+     */
+    public function getWidth()
+    {
+        return '获取车的长度';
+    }
 }
