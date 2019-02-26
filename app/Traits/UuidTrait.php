@@ -4,7 +4,8 @@ namespace App\Traits;
 
 use Ramsey\Uuid\Uuid;
 
-trait UuidTrait{
+trait UuidTrait
+{
 
     /**
      * 在模型创建时，生成 UUID v4 。

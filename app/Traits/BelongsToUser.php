@@ -8,7 +8,12 @@ namespace App\Traits;
  * Trait BelongsToUser
  * @package App\Traits
  */
-trait  BelongsToUser{
+trait  BelongsToUser
+{
+    /**
+     * 关联user模型
+     * @return mixed
+     */
     public function user(){
         return $this->belongsTo(\App\Models\User::class, 'user_id');
     }
