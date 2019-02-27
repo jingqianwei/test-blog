@@ -13,6 +13,12 @@ use App\Exceptions\ResponseNotJsonException;
 use App\Exceptions\ResponseNotXMLException;
 use SimpleXMLElement;
 
+/**
+ * 一个类只做一件事
+ * Class ApiDataArrayFactory
+ * @link 参考网址：https://learnku.com/articles/22936
+ * @package App\Curl
+ */
 class ApiDataArrayFactory
 {
     /**
