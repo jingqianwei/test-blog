@@ -9,6 +9,8 @@
 namespace App\Http\Controllers;
 
 
+use App\Curl\Curl;
+use App\Curl\JsonHttpCurlDriver;
 use App\Services\Factory;
 use App\Services\VwCarAbstractFactory;
 use App\Services\VwCarFactory;
@@ -20,6 +22,18 @@ use App\Services\VwCarFactory;
  */
 class TestModeController extends Controller
 {
+    protected $curl;
+
+    public function __construct()
+    {
+        $this->curl = new Curl(new JsonHttpCurlDriver()); //假设返回的是 json 数据
+    }
+
+    public function getProductList()
+    {
+        return $this->curl->get('http://atest.woaap.com:11038/get/send/sms/code', ['mobile'=> '15999645710']);
+    }
+
     public function test()
     {
         //工厂模式

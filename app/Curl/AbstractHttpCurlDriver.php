@@ -15,7 +15,7 @@ abstract class AbstractHttpCurlDriver implements CurlInterfaceDriver
     protected $client;
     protected $response;
 
-    public function __construct(Client $client)
+    public function __construct(Client $client = null)
     {
         if (is_null($client)) {
             $client = new Client();
