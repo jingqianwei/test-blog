@@ -15,6 +15,11 @@ use SimpleXMLElement;
 
 class ApiDataArrayFactory
 {
+    /**
+     * @param CurlInterfaceDriver $curl
+     * @return array|mixed
+     * @throws ResponseNotJsonException|ResponseNotXMLException
+     */
     public static function make(CurlInterfaceDriver $curl)
     {
         if ($curl instanceof JsonHttpCurlDriver) {
@@ -22,11 +27,7 @@ class ApiDataArrayFactory
         }
 
         if ($curl instanceof XMLHttpCurlDriver) {
-            try {
-                return static::xml2Array($curl->getResponse());
-            } catch (\Exception $e) {
-                throw new $e;
-            }
+            return static::xml2Array($curl->getResponse());
         }
     }
 

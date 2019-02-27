@@ -15,13 +15,16 @@
         "dianwoung/large-file-upload": "^0.0.2",
         "encore/laravel-admin": "^1.6",
         "fideloper/proxy": "^4.0",
+        "guzzle/http": "^3.9",
         "intervention/image": "^2.4",
         "laravel-admin-ext/grid-lightbox": "^1.0",
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0",
         "predis/predis": "^1.1",
         "ramsey/uuid": "^3.8",
-        "rap2hpoutre/laravel-log-viewer": "^1.0"
+        "rap2hpoutre/laravel-log-viewer": "^1.0",
+        "ext-xml": "*",
+        "ext-simplexml": "*"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
