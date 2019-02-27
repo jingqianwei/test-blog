@@ -57,7 +57,7 @@ class ApiDataArrayFactory
     private static function xml2Array($xml)
     {
         if (!static::isXml($xml)) {
-            throw new ResponseNotXMLException('传的值不是xml', 201);
+            throw new ResponseNotXMLException('传的值类型不是xml', 201);
         }
 
         $xml = new SimpleXMLElement($xml);
