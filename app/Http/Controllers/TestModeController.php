@@ -31,6 +31,7 @@ class TestModeController extends Controller
 
     public function getProductList()
     {
+        // 封装curl类的测试
         return $this->curl->get('http://atest.woaap.com:11038/get/send/sms/code', ['mobile'=> '15999645710']);
     }
 
