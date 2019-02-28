@@ -27,5 +27,5 @@ Route::get('test-api', function () {
     //return new UserResource(User::all());
 });
 
-// 测试API数据格式处理
+// 测试curl封装处理
 Route::get('test-curl', 'TestModeController@getProductList');
