@@ -24,9 +24,9 @@ class TestModeController extends Controller
 {
     protected $curl;
 
-    public function __construct()
+    public function __construct(JsonHttpCurlDriver $json)
     {
-        $this->curl = new Curl(new JsonHttpCurlDriver()); //假设返回的是 json 数据
+        $this->curl = new Curl($json); //假设返回的是 json 数据
     }
 
     public function getProductList()
