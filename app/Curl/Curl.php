@@ -29,7 +29,7 @@ class Curl
     //在对象中调用一个不可访问方法时，__call() 会被调用
     public function __call($name, $arguments)
     {
-        $this->curlDriver->$name(...$arguments);
+        $this->curlDriver->{$name}(...$arguments);
 
         try {
             return ApiDataArrayFactory::make($this->curlDriver);
