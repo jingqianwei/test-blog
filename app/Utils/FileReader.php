@@ -6,6 +6,8 @@
  * Time: 10:24
  */
 
+namespace App\Utils;
+
 class FileReader
 {
     private $csv_file;
