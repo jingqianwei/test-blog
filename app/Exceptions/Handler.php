@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Mail;
 
 class Handler extends ExceptionHandler
 {
@@ -27,17 +28,48 @@ class Handler extends ExceptionHandler
     ];
 
     /**
+     * 报告或记录异常
      * Report or log an exception.
+     *此处是发送异常给 Sentry、Bugsnag 等外部服务的好位置。
      *
-     * @param  \Exception  $exception
+     * @param  \Exception $exception
      * @return void
+     * @throws Exception
      */
     public function report(Exception $exception)
     {
+        if(empty(env('APP_DEBUG')) && $exception->getMessage() && $exception->getCode() != -1) {
+            try {
+                $raw = '';
+                if ('cli' !== PHP_SAPI) {
+                    ob_start();
+                    dump(\Request::server());
+                    $raw = ob_get_contents();
+                    ob_end_clean();
+                }
+
+                Mail::raw('', function ($m) use ($exception, $raw) {
+                    $exceptionHandler = new \Symfony\Component\Debug\ExceptionHandler();
+                    $content = $exceptionHandler->getHtml($exception);
+                    $m->setBody($content . $raw, 'text/html');
+
+                    if (config('app.name')) {
+                        $errName = config('app.name') . '_' . config('app.env');
+                    } else {
+                        $errName = config('app.env');
+                    }
+                    $m->subject('System Error--->' . $errName);
+                    $m->to('chinwe.jing@etocrm.com');
+                });
+            } catch (Exception $exception) {
+
+            }
+        }
         parent::report($exception);
     }
 
     /**
+     * 将异常l转换为 HTTP 响应。
      * Render an exception into an HTTP response.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -46,6 +78,12 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        return parent::render($request, $exception);
+        if (config('app.debug')) { //本地开发环境，输出错误
+            return parent::render($request, $exception);
+        }
+
+        if ($exception instanceof CustomException) {
+            return $exception->render($request, $exception);
+        }
     }
 }
