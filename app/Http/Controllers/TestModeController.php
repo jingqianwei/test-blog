@@ -11,6 +11,8 @@ namespace App\Http\Controllers;
 
 use App\Curl\Curl;
 use App\Curl\JsonHttpCurlDriver;
+use App\Mail\OrderShipped;
+use App\Models\Order;
 use App\Services\Factory;
 use App\Services\VwCarAbstractFactory;
 use App\Services\VwCarFactory;
@@ -53,5 +55,11 @@ class TestModeController extends Controller
         $VwHeightEndCar = $factory->produceHeightEndCar(); // 生产大众高端车
         dd($VwHeightEndCar); //输出 object(VwHeightEndCar)#3 (0) { }
         dd($VwLowEndCar); //输出 object(VwLowEndCar)#3 (0) { }
+
+        // 测试发送邮件
+        $order = Order::findOrFail(1); // 查询出订单集合
+        \Mail::to('jqw@qq.com')
+            ->cc('chinwe@etocrm.com') // 接收者
+            ->send(new OrderShipped($order));
     }
 }
