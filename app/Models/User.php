@@ -30,6 +30,7 @@ class User extends Authenticatable
     ];
 
     /**
+     * 用户头像访问器
      * Get avatar attribute.
      *
      * @param string $avatar
@@ -49,6 +50,7 @@ class User extends Authenticatable
     }
 
     /**
+     * 用户头像修改器
      * Set avatar attribute.
      *
      * @param string $path
