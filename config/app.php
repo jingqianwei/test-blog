@@ -175,7 +175,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        // 新增的服务
+        // 新增的服务提供器
         App\Providers\RickServiceProvider::class,
 
     ],
