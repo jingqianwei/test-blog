@@ -1790,16 +1790,16 @@
         },
         {
             "name": "laravel-admin-ext/grid-lightbox",
-            "version": "v1.0.1",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-admin-extensions/grid-lightbox.git",
-                "reference": "4f019afa0a568401a4de36a60946b6c077bf1a65"
+                "reference": "a19772d492bea8f82d74694b9489d60a6dc32756"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-admin-extensions/grid-lightbox/zipball/4f019afa0a568401a4de36a60946b6c077bf1a65",
-                "reference": "4f019afa0a568401a4de36a60946b6c077bf1a65",
+                "url": "https://api.github.com/repos/laravel-admin-extensions/grid-lightbox/zipball/a19772d492bea8f82d74694b9489d60a6dc32756",
+                "reference": "a19772d492bea8f82d74694b9489d60a6dc32756",
                 "shasum": ""
             },
             "require": {
@@ -1841,7 +1841,7 @@
                 "laravel-admin",
                 "lightbox"
             ],
-            "time": "2018-10-04T22:08:01+00:00"
+            "time": "2019-03-07T15:51:43+00:00"
         },
         {
             "name": "laravel/framework",
