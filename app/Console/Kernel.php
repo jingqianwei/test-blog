@@ -26,6 +26,12 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+
+        // 每天凌晨1点清理一下项目所有缓存
+        $schedule->command('clear:project-cache')->dailyAt('01:00');
+
+        // 每周执行一次数据库备份
+        $schedule->command('db:backup')->weekly();
     }
 
     /**

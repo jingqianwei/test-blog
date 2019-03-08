@@ -63,6 +63,7 @@ class BackupDatabase extends Command
             $this->error('The backup process has been failed, reason is: ' . $e->getMessage());
         }
 
+        \Log::info('数据备份完成');
         return true;
     }
 

@@ -75,6 +75,7 @@ class ClearProjectCache extends Command
                 break;
         }
 
+        \Log::info('数据清理成功');
         return true;
     }
 }
