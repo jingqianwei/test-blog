@@ -32,7 +32,6 @@ class Kernel extends ConsoleKernel
 
         // 每周执行一次数据库备份
         //$schedule->command('db:backup')->weekly();
-        $schedule->command('db:backup')->everyMinute();
     }
 
     /**
