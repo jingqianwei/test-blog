@@ -8,7 +8,7 @@ return [
          * The name of this application. You can use this name to monitor
          * the backups.
          */
-        'name' => config('app.name'),
+        'name' => strtolower(config('app.name')),
 
         'source' => [
 
@@ -77,6 +77,7 @@ return [
         'destination' => [
 
             /*
+             * 备份文件前缀
              * The filename prefix used for the backup zip file.
              */
             'filename_prefix' => '',
@@ -120,7 +121,7 @@ return [
         'notifiable' => \Spatie\Backup\Notifications\Notifiable::class,
 
         'mail' => [
-            'to' => 'your@example.com',
+            'to' => 'chinwe.jing@etocrm.com',
         ],
 
         'slack' => [
