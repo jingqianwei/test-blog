@@ -72,13 +72,23 @@ class BackupDatabase extends Command
      * @Author: chinwe.jing
      * @Data: 2018/8/22 10:14
      * @param $dbConnection
+     * @param string mysql5.6以上备份数据库要用命令 mysqldump --defaults-extra-file=/etc/my.cnf test-blog > test.sql，其中my.cnf中的[client]配置数据库的连接密码即可。password = 'myServerPwd'
+     * @param string mysql5.6以下备份数据库用 mysqldump -uroot -proot test-blog > test.sql
      */
     public function setProcess($dbConnection)
     {
+        // mysql5.6以下
+//        $this->process = new Process(sprintf(
+//            'mysqldump -u%s -p%s %s > %s',
+//            config("database.connections.{$dbConnection}.username"),
+//            config("database.connections.{$dbConnection}.password"),
+//            config("database.connections.{$dbConnection}.database"),
+//            $this->path . DIRECTORY_SEPARATOR . 'backup_' . date('Ymd') . '.sql' //生成到项目文件夹外
+//        ));
+
+        // mysql5.6以上
         $this->process = new Process(sprintf(
-            'mysqldump -u%s -p%s %s > %s',
-            config("database.connections.{$dbConnection}.username"),
-            config("database.connections.{$dbConnection}.password"),
+            'mysqldump --defaults-extra-file=/etc/my.cnf %s > %s',
             config("database.connections.{$dbConnection}.database"),
             $this->path . DIRECTORY_SEPARATOR . 'backup_' . date('Ymd') . '.sql'
         ));
