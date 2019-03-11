@@ -22,6 +22,9 @@ class Kernel extends HttpKernel
 
         // 全局跨域中间件
         \Barryvdh\Cors\HandleCors::class,
+
+        // 根据不同的设备加载不同的模板文件
+        \App\Http\Middleware\Template::class,
     ];
 
     /**

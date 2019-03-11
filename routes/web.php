@@ -29,3 +29,6 @@ Route::get('test-api', function () {
 
 // 测试curl封装处理
 Route::get('test-curl', 'TestModeController@getProductList');
+
+// 测试根据不同的设备加载不同的模板文件
+Route::get('test-template-view', 'TestModeController@templateView');

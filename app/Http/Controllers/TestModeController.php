@@ -62,4 +62,14 @@ class TestModeController extends Controller
             ->cc('chinwe@etocrm.com') // 接收者
             ->send(new OrderShipped($order));
     }
+
+
+    /**
+     * 测试根据不同的设备加载不同的模板文件
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function templateView()
+    {
+        return view('registration.index');
+    }
 }
