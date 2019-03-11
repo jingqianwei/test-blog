@@ -31,7 +31,8 @@ class Kernel extends ConsoleKernel
         $schedule->command('clear:project-cache')->dailyAt('01:00');
 
         // 每周执行一次数据库备份
-        $schedule->command('db:backup')->weekly();
+        //$schedule->command('db:backup')->weekly();
+        $schedule->command('db:backup')->everyMinute();
     }
 
     /**
