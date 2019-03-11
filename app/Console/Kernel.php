@@ -30,11 +30,11 @@ class Kernel extends ConsoleKernel
         // 每天凌晨1点清理一下项目所有缓存
         $schedule->command('clear:project-cache')->dailyAt('01:00');
 
-        // 每周清理一次备份数据，禁止发邮件
-        $schedule->command('backup:clean --disable-notifications --only-db')->everyMinute();
+        // 每月清理一次备份数据，禁止发邮件
+        $schedule->command('backup:clean --disable-notifications --only-db')->monthly();
 
         // 每周备份一次数据库，禁止发邮件
-        $schedule->command('backup:run --disable-notifications --only-db')->everyMinute();
+        $schedule->command('backup:run --disable-notifications --only-db')->weekly();
     }
 
     /**
