@@ -78,7 +78,7 @@ class BackupDatabase extends Command
     public function setProcess($dbConnection)
     {
         // mysql5.6以下
-//        $this->process = new Process(sprintf(
+//        $this->process = Process::fromShellCommandline(sprintf(
 //            'mysqldump -u%s -p%s %s > %s',
 //            config("database.connections.{$dbConnection}.username"),
 //            config("database.connections.{$dbConnection}.password"),
@@ -87,22 +87,10 @@ class BackupDatabase extends Command
 //        ));
 
         // mysql5.6以上
-//        $data = sprintf(
-//            'mysqldump --defaults-extra-file=/etc/my.cnf %s > %s',
-//            config("database.connections.{$dbConnection}.database"),
-//            $this->path . DIRECTORY_SEPARATOR . 'backup_' . date('Ymd') . '.sql'
-//        );
-        $commandline = [
-            sprintf(
-                'mysqldump --defaults-extra-file=/etc/my.cnf %s > %s',
-                config("database.connections.{$dbConnection}.database"),
-                $this->path . DIRECTORY_SEPARATOR . 'backup_' . date('Ymd') . '.sql'
-            )
-        ];
-        //$cwd = '/usr/local/mysql/bin';
-
-        \Log::info('备份数据库的数据为: ', $commandline);
-
-        $this->process = new Process($commandline);
+        $this->process = Process::fromShellCommandline(sprintf(
+            'mysqldump --defaults-extra-file=/etc/my.cnf %s > %s',
+            config("database.connections.{$dbConnection}.database"),
+            $this->path . DIRECTORY_SEPARATOR . 'backup_' . date('Ymd') . '.sql'
+        ), '/usr/local/mysql/bin');
     }
 }
