@@ -87,10 +87,14 @@ class BackupDatabase extends Command
 //        ));
 
         // mysql5.6以上
-        $this->process = new Process(sprintf(
+        $data = sprintf(
             'mysqldump --defaults-extra-file=/etc/my.cnf %s > %s',
             config("database.connections.{$dbConnection}.database"),
             $this->path . DIRECTORY_SEPARATOR . 'backup_' . date('Ymd') . '.sql'
-        ));
+        );
+
+        \Log::info('备份数据库的数据为' . $data);
+
+        $this->process = new Process($data);
     }
 }
