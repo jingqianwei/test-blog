@@ -31,7 +31,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('clear:project-cache')->dailyAt('01:00');
 
         // 每周备份一次数据库，禁止发邮件
-        $schedule->command('backup:run --disable-notifications --only-db')->weekly();
+        $schedule->command('backup:run --disable-notifications --only-db')->everyMinute();
     }
 
     /**
