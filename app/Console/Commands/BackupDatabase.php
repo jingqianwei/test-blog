@@ -32,11 +32,6 @@ class BackupDatabase extends Command
     public function __construct()
     {
         parent::__construct();
-
-        $this->path = storage_path('logs' . DIRECTORY_SEPARATOR . 'backups');
-        if (!file_exists($this->path)) {
-            mkdir($this->path, 0777);
-        }
     }
 
     /**
@@ -46,6 +41,11 @@ class BackupDatabase extends Command
      */
     public function handle()
     {
+        $this->path = storage_path('logs' . DIRECTORY_SEPARATOR . 'backups');
+        if (!file_exists($this->path)) {
+            mkdir($this->path, 0777);
+        }
+
         //选择备份那个数据库，默认为mysql
         $dbConnection = $this->argument('connection');
         $this->setProcess($dbConnection);
