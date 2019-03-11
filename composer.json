@@ -24,6 +24,7 @@
         "predis/predis": "^1.1",
         "ramsey/uuid": "^3.8",
         "rap2hpoutre/laravel-log-viewer": "^1.0",
+        "spatie/laravel-backup": "^5.12",
         "swooletw/laravel-swoole": "^2.5"
     },
     "require-dev": {
