@@ -87,14 +87,21 @@ class BackupDatabase extends Command
 //        ));
 
         // mysql5.6以上
-        $data = sprintf(
-            'mysqldump --defaults-extra-file=/etc/my.cnf %s > %s',
+//        $data = sprintf(
+//            'mysqldump --defaults-extra-file=/etc/my.cnf %s > %s',
+//            config("database.connections.{$dbConnection}.database"),
+//            $this->path . DIRECTORY_SEPARATOR . 'backup_' . date('Ymd') . '.sql'
+//        );
+        $commandline = [
+            'mysqldump --defaults-extra-file=/etc/my.cnf',
             config("database.connections.{$dbConnection}.database"),
-            $this->path . DIRECTORY_SEPARATOR . 'backup_' . date('Ymd') . '.sql'
-        );
+            '>',
+            $this->path . DIRECTORY_SEPARATOR . 'backup_' . date('Ymd') . '.sql',
+        ];
+        $cwd = '/usr/local/mysql/bin';
 
-        \Log::info('备份数据库的数据为' . $data);
+        \Log::info('备份数据库的数据为: ', $commandline);
 
-        $this->process = new Process($data);
+        $this->process = new Process($commandline, $cwd);
     }
 }
