@@ -3,7 +3,13 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use WhichBrowser\Parser;
 
+/**
+ * 配置双模板
+ * Class Template
+ * @package App\Http\Middleware
+ */
 class Template
 {
     // 白名单
@@ -18,7 +24,7 @@ class Template
      */
     public function handle($request, Closure $next)
     {
-        $result = new WhichBrowser\Parser(getallheaders());
+        $result = new Parser(getallheaders());
         // 如果是桌面类型, 返回true
         $isDesktop = $result->isType('desktop');
         if ($isDesktop) {
