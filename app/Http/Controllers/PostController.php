@@ -19,7 +19,7 @@ class PostController extends Controller
     {
         //Redis缓存中没有该post,则从数据库中取值,并存入Redis中,该键值key='post:cache'.$id生命时间5分钟
         $post = Cache::remember('post:cache:'.$id, $this->cacheExpires, function () use ($id) {
-            return Post::whereId($id)->first();
+            return Post::find($id);
         });
 
         //获取客户端请求的IP
