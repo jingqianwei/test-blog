@@ -13,7 +13,7 @@ class PostController extends Controller
      * 缓存时间为30分钟
      * @var int
      */
-    public $cacheExpires = 30;
+    public $cacheExpires = 5;
 
     public function showPost(Request $request, $id)
     {

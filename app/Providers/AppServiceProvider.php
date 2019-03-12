@@ -19,7 +19,7 @@ class AppServiceProvider extends ServiceProvider
         Carbon::setLocale('zh');
 
         //设置数据表字符串字段的默认长度
-        Schema::defaultStringLength(191);
+        Schema::defaultStringLength(255);
     }
 
     /**
