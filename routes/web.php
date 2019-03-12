@@ -32,3 +32,6 @@ Route::get('test-curl', 'TestModeController@getProductList');
 
 // 测试根据不同的设备加载不同的模板文件
 Route::get('test-template-view', 'TestModeController@templateView');
+
+// 定义帖子的访问路由
+Route::get('/post/{id}', 'PostController@showPost');

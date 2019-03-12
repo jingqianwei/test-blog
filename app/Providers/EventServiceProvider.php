@@ -24,6 +24,9 @@ class EventServiceProvider extends ServiceProvider
         'Illuminate\Mail\Events\MessageSent' => [ //事件在邮件消息发送后触发
             'App\Listeners\LogSentMessage',
         ],
+        'App\Events\PostViewEvent' => [ // 帖子浏览量触发
+            'App\Listeners\PostEventListener',
+        ],
     ];
 
     /**
