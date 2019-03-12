@@ -4,8 +4,6 @@ namespace App\Listeners;
 
 use App\Events\PostViewEvent;
 use App\Models\Post;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Redis;
 
 class PostEventListener
