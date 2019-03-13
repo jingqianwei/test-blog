@@ -84,6 +84,16 @@ class AdminUserController extends Controller
 
         $grid = new Grid(new $userModel());
 
+        // 头部
+        $grid->header(function ($query) {
+            return 'header';
+        });
+
+        // 底部
+        $grid->footer(function ($query) {
+            return 'footer';
+        });
+
         $grid->id('ID')->sortable();
         // 点击图片放大
         $grid->avatar(trans('admin.avatar'))->lightbox(['width' => 50, 'height' => 50]);
