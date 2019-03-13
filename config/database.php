@@ -126,6 +126,30 @@ return [
             'database' => env('REDIS_CACHE_DB', 1),
         ],
 
+        // redis集群
+        'clusters' => [
+            'my—cluster' => [
+                [
+                    'host' => env('REDIS_HOST', '127.0.0.1'),
+                    'password' => env('REDIS_PASSWORD', null),
+                    'port' => env('REDIS_PORT', 6379),
+                    'database' => env('REDIS_DB', 2),
+                ],
+                [
+                    'host' => env('REDIS_HOST', '127.0.0.1'),
+                    'password' => env('REDIS_PASSWORD', null),
+                    'port' => env('REDIS_PORT', 6379),
+                    'database' => env('REDIS_DB', 3),
+                ],
+                [
+                    'host' => env('REDIS_HOST', '127.0.0.1'),
+                    'password' => env('REDIS_PASSWORD', null),
+                    'port' => env('REDIS_PORT', 6379),
+                    'database' => env('REDIS_DB', 4),
+                ],
+            ],
+        ],
+
     ],
 
 ];
