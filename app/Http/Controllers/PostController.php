@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Events\PostViewEvent;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Redis\RedisManager;
 use Illuminate\Support\Facades\Cache;
+//use Illuminate\Support\Facades\Redis;
 
 class PostController extends Controller
 {
@@ -17,6 +19,77 @@ class PostController extends Controller
 
     public function showPost(Request $request, $id)
     {
+        /**
+         * 以下是笔者的示例；
+        default是默认的Redis连接对象名，值是连接对象的参数；app('redis.connection')返回的就是该默认连接对象；
+
+        mydefine是笔者定义的Redis连接对象名；通过执行app('redis')->connection('mydefine')可以获取该连接对象；
+
+        mycluster1是笔者定义的Redis集群对象名；通过执行app('redis')->connection('mycluster1')可以获取该集群对象；
+         *
+         *
+        'redis' => [
+            'client' => 'predis',
+            'default' => [
+            'host' => env('REDIS_HOST', '127.0.0.1'),
+            'password' => env('REDIS_PASSWORD', null),
+            'port' => env('REDIS_PORT', 6379),
+            'database' => 0,
+        ],
+        'mydefine' => [
+            'host' => env('REDIS_HOST', '127.0.0.1'),
+            'password' => env('REDIS_PASSWORD', null),
+            'port' => env('REDIS_PORT', 6379),
+            'database' => 4,
+        ],
+        'clusters' => [
+            'mycluster1' => [
+            [
+                'host' => env('REDIS_HOST', '127.0.0.1'),
+                'password' => env('REDIS_PASSWORD', null),
+                'port' => env('REDIS_PORT', 6379),
+                'database' => 1,
+            ],
+            [
+                'host' => env('REDIS_HOST', '127.0.0.1'),
+                'password' => env('REDIS_PASSWORD', null),
+                'port' => env('REDIS_PORT', 6379),
+                'database' => 2,
+            ],
+            [
+                'host' => env('REDIS_HOST', '127.0.0.1'),
+                'password' => env('REDIS_PASSWORD', null),
+                'port' => env('REDIS_PORT', 6379),
+                'database' => 3,
+            ],
+        ],
+        ],
+        ],
+         */
+        $array = [
+            "host"=> "101.132.75.39",
+            'parameters'=> [
+                'password'=>'Hmf!1008'
+            ],
+            //"password"=> 'Hmf!1008',
+            "port"=> "6379",
+            "database" => 15,
+        ];
+        $redis = new RedisManager(app(), 'predis', ['default' => $array]); // laravel5.5以上连接方式
+        //$redis = new \Redis();
+//        $redis->connect('101.132.75.39', 6379, 2);
+//        $redis->auth('Hmf!1008');
+//        $redis->set('string:user:name', 'wshuo');
+//        $redis->connect('101.132.75.39', 6379, 2);
+//        $redis->auth('Hmf!1008');
+        $redis->set('string11111:user:name', 'wshuo');
+        dd(111);
+        // 获取所有匹配的key值
+        dd(Redis::keys('user_type_*'));
+        dd(Redis::command('keys', ['user_type_*']));
+        Redis::set('test_type', 44444444444444); // 不过期
+        Redis::setex('user_type_' . $id, 3600, $request->name);
+        exit();
         //Redis缓存中没有该post,则从数据库中取值,并存入Redis中,该键值key='post:cache'.$id生命时间5分钟
         $post = Cache::remember('post:cache:'.$id, $this->cacheExpires, function () use ($id) {
             return Post::find($id);
