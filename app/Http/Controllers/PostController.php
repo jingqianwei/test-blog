@@ -19,6 +19,7 @@ class PostController extends Controller
 
     public function showPost(Request $request, $id)
     {
+        dd(Post::viewCount(1)->get());
         //Redis缓存中没有该post,则从数据库中取值,并存入Redis中,该键值key='post:cache'.$id生命时间5分钟
         $post = Cache::remember('post:cache:'.$id, $this->cacheExpires, function () use ($id) {
             return Post::find($id);
