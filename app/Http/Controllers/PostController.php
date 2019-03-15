@@ -19,6 +19,11 @@ class PostController extends Controller
 
     public function showPost(Request $request, $id)
     {
+        $count = 10; //自增数
+        $post = Post::find($id);
+        $post->view_count = \DB::raw("view_count + {$count}"); // 这样自增可以防止并发
+        $post->save();
+        dd('更新成功');
         dd(Post::viewCount(1)->get());
         //Redis缓存中没有该post,则从数据库中取值,并存入Redis中,该键值key='post:cache'.$id生命时间5分钟
         $post = Cache::remember('post:cache:'.$id, $this->cacheExpires, function () use ($id) {
