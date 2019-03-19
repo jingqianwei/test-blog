@@ -97,7 +97,10 @@ class FileReader
         $this->spl_object->seek($start);
         while ($length-- && !$this->spl_object->eof()) {
             $row = $this->spl_object->fgetcsv();
-            // array_walk()跟foreach()功能类似，但使用array_walk()中的回调函数存在作用域，foreach()不存在作用域，使用&方法不会出问题
+            /**
+             * array_walk()跟foreach()功能类似，但使用array_walk()中的回调函数存在作用域，foreach()不存在作用域，
+             * 使用&方法不会出问题, 还可以使用array_map()方法
+             */
             array_walk($row, function (&$val) {
                 //未知原编码，通过auto自动检测后，转换编码为utf-8，防止读取文件乱码
                 $val = mb_convert_encoding($val, 'utf-8', 'auto');
