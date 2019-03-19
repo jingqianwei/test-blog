@@ -8,6 +8,8 @@
 
 namespace App\Utils;
 
+use SplFileObject;
+
 class FileReader
 {
     private $csv_file;
@@ -94,7 +96,13 @@ class FileReader
         $data = array();
         $this->spl_object->seek($start);
         while ($length-- && !$this->spl_object->eof()) {
-            $data[] = $this->spl_object->fgetcsv();
+            $row = $this->spl_object->fgetcsv();
+            // array_walk()跟foreach()功能类似，但使用array_walk()中的回调函数存在作用域，foreach()不存在作用域，使用&方法不会出问题
+            array_walk($row, function (&$val) {
+                //未知原编码，通过auto自动检测后，转换编码为utf-8，防止读取文件乱码
+                $val = mb_convert_encoding($val, 'utf-8', 'auto');
+            });
+            $data[] = $row;
             $this->spl_object->next();
         }
         return $data;
@@ -116,14 +124,20 @@ class FileReader
         $data = array();
         $this->spl_object->seek($start);
         while ($length-- && !$this->spl_object->eof()) {
-            $data = array_merge($data, $this->spl_object->fgetcsv());
+            $row = $this->spl_object->fgetcsv();
+            // array_walk()跟foreach()功能类似，但使用array_walk()中的回调函数存在作用域，foreach()不存在作用域，使用&方法不会出问题
+            array_walk($row, function (&$val) {
+                //未知原编码，通过auto自动检测后，转换编码为utf-8，防止读取文件乱码
+                $val = mb_convert_encoding($val, 'utf-8', 'auto');
+            });
+            $data = array_merge($data, $row);
             $this->spl_object->next();
         }
         return $data;
     }
 
     /**
-     * 获取文件总行数
+     * 获取文件总行数(注意当文件结尾有换行符的时候，结果不太准确，具体得跟实际情况来判断)
      * @return bool
      */
     public function get_lines() {
