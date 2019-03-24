@@ -78,7 +78,7 @@ class PostEventListener
     {
         //访问量达到300,再进行一次SQL更新
         $post = Post::find($id);
-        $post->view_count += $count;
+        $post->view_count = \DB::raw("view_count + {$count}");
         $post->save();
     }
 
