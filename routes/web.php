@@ -41,7 +41,11 @@ Route::get('login/github', 'Auth\LoginController@redirectToProvider');
 Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback');
 
 Route::get('test-array', function() {
-	$input = ['php', 'java', 'go', 'python'];
+	$input = ['php', 'php', 'java', 'go', 'python'];
+	dd(array_unique($input));
+	list($key, $val) = each($input); // 0, php
+	dd($key, $val);
+	dd(each($input));
 	//dd(array_push($input, 1)); // 传入一个值到数组尾部中，函数的返回是新数组中元素的个数
 	//dd(array_pop($input)); // 删除数组末尾的元素，函数返回这个删除的元素值
 	//dd(array_shift($input)); // 删除数组头部的元素，函数返回这个删除元素的值
