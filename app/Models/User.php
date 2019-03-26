@@ -30,6 +30,16 @@ class User extends Authenticatable
     ];
 
     /**
+     * 在模型创建时，生成 UUID v4 。
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        self::uuid();
+    }
+
+    /**
      * 用户头像访问器
      * Get avatar attribute.
      *
