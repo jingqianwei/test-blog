@@ -36,6 +36,9 @@ Route::get('test-template-view', 'TestModeController@templateView');
 // 定义帖子的访问路由
 Route::get('/post/{id}', 'PostController@showPost');
 
+// 测试redis的使用
+Route::get('/test-redis/{id}', 'PostController@testRedis');
+
 // 用github登陆
 Route::get('login/github', 'Auth\LoginController@redirectToProvider');
 Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback');

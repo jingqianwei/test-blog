@@ -47,6 +47,30 @@ class PostController extends Controller
      */
     public function testRedis(Request $request, $id)
     {
+        echo 'scan方法取出的key值' . "<br>";
+        $cursor = 0; // 初始游标
+        $pattern = '*'; // 匹配所有的key值, 用正则进行匹配
+        $count = 2; // 每一次取出的长度
+        do {
+            // 可能会取出空值
+            list($cursor, $arrKey) = Redis::scan($cursor, ['match' => $pattern, 'count'=> $count]);
+            //dump($arrKey, $cursor);
+            if ($arrKey) {
+                foreach ($arrKey as $key) {
+                   echo $key . "<br>";
+                }
+            }
+        } while ($cursor > 0);
+
+        echo "<br>" . 'keys方法取出的key值' . "<br>";
+        dd(Redis::keys('test_type_*'));
+        //dd(Redis::set('test_type_' .$id , $id * 100)); // 不过期
+        // 获取所有匹配的key值
+        //dd(Redis::keys('user_type_*'));
+        //dd(Redis::command('keys', ['user_type_*']));
+        Redis::set('test_type', 44444444444444); // 不过期
+        Redis::setex('user_type_' . $id, 3600, $request->name);
+
         // default是默认的Redis连接对象名，值是连接对象的参数；app('redis.connection')返回的就是该默认连接对象
         $redis = app('redis.connection');
 
