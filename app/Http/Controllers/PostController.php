@@ -42,6 +42,7 @@ class PostController extends Controller
     /**
      * redis测试练习
      * @link https://blog.csdn.net/qq_35641923/article/details/80825522
+     * @link http://redisdoc.com/database/scan.html
      * @param Request $request
      * @param $id
      */
