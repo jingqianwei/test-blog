@@ -48,6 +48,20 @@ class PostController extends Controller
      */
     public function testRedis(Request $request, $id)
     {
+        $num = 100000000;
+        dd(number_format($num));
+        $arr1 = [1, 2];  /**
+                                1. 数字数组，如果是相同的索引值，+号就是前面的值覆盖后面的值(前提是索引相同)，array_merge()就是纯粹的合并，前面和后面单独有的索引值，直接到新数组中
+                                2. 关联数组，如果是相同的索引值，+号和array_merge()的效果一样，都是前面的索引值覆盖后面的索引值值(前提是索引相同),前面和后面单独有的索引值，直接到新数组中
+                            * */
+        $arr2 = [3, 4, 5];
+        $arr3 = ['a' => 1, 'b' => 2];
+        $arr4 = ['a' => 1, 'b' => 2, 'c' => 3];
+
+        dd($arr1 + $arr2, array_merge($arr1, $arr2), $arr3 + $arr4, array_merge($arr3, $arr4));
+        $path = storage_path('logs') . DIRECTORY_SEPARATOR . 'text.txt';
+        $path1 = storage_path('logs') . DIRECTORY_SEPARATOR . 'text1.txt';
+        dd(md5_file($path), md5_file($path1));
         echo 'scan方法取出的key值' . "<br>";
         $cursor = 0; // 初始游标
         $pattern = '*'; // 匹配所有的key值, 用正则进行匹配
