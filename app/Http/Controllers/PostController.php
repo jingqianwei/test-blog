@@ -135,4 +135,9 @@ class PostController extends Controller
     {
         return 'rebase';
     }
+
+    public function testReset()
+    {
+        return '测试reset的使用';
+    }
 }
