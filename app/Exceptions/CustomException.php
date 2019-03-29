@@ -9,15 +9,21 @@ class CustomException extends Exception
 {
     public function render(Request $request, Exception $e)
     {
-        $errMsg = $e->getMessage() ?: '系统发生了一点错误(' . $e->getCode() . ')';
+        $code = $e->getCode() ?: 500;
+        $errMsg = $e->getMessage() ?: '系统发生了一点错误(' . $code . ')';
         if ($request->expectsJson() || $request->isJson()) {
             return response([
-                'errCode' => $e->getCode() ?: 500,
+                'errCode' => $code,
                 'errMsg' => $errMsg,
             ]);
         } else {
-            return response()->view('errors.default', [
-                'code'=> $e->getCode() ?: 500,
+            $view = 'errors.default';
+            if (view()->exists('errors' . $code)) { // 如果存在对应的错误页面
+                $view = 'errors' . $code;
+            }
+
+            return response()->view($view, [
+                'code'=> $code,
                 'msg' => $errMsg,
             ]);
         }
