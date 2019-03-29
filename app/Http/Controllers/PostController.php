@@ -115,4 +115,9 @@ class PostController extends Controller
         Redis::set('test_type', 44444444444444); // 不过期
         Redis::setex('user_type_' . $id, 3600, $request->name);
     }
+
+    public function testRebase()
+    {
+        return 'rebase';
+    }
 }
