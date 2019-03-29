@@ -5,6 +5,11 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Http\Request;
 
+/**
+ * 自定义错误输出
+ * Class CustomException
+ * @package App\Exceptions
+ */
 class CustomException extends Exception
 {
     public function render(Request $request, Exception $e)
