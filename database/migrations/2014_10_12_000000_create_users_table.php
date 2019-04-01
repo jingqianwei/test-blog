@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->text('introduction')->comment('简介');
             $table->rememberToken()->comment('令牌 token');
             $table->dateTime('last_actived_at')->nullable()->comment('最后活跃时间');
-            $table->uuid('uuid');
+            $table->uuid('uuid')->comment('uuid 标记');
             $table->timestamps();
         });
     }
