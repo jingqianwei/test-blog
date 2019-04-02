@@ -65,7 +65,7 @@ class Handler extends ExceptionHandler
     }
 
     /**
-     * 将异常l转换为 HTTP 响应。
+     * 将异常转换为 HTTP 响应。
      * Render an exception into an HTTP response.
      *
      * @param  \Illuminate\Http\Request  $request
