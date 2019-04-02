@@ -130,4 +130,51 @@ class PostController extends Controller
         Redis::set('test_type', 44444444444444); // 不过期
         Redis::setex('user_type_' . $id, 3600, $request->name);
     }
+
+    /**
+     * 生成数组
+     * @return array
+     */
+    private function productArr()
+    {
+        $origin = $current = [];
+        for ($i = 1; $i < 1000; $i++) {
+            $origin[] = [ // 源数据
+                'id' => $i,
+                'title' => 'title' . $i,
+                'content' => 'name' . $i,
+            ];
+
+            if ($i >= 500 && $i<= 800) { // 当前数据
+                $current[] = 'title' . $i;
+            }
+        }
+
+        return [$origin, $current];
+    }
+
+    /**
+     * 对比法分割数组
+     * @param string $key 通过key来对比
+     * @param array $origin 原始数组
+     * @param array $split 分割数组
+     * @return array
+     */
+    public function splitArr($key, $origin, $split)
+    {
+        //已指定字段作为键，原数组作为值得二维数组,和下面的效果一样
+        $originNew = array_column($origin, null, $key);
+        //$originNew = array_combine(array_column($origin, 'title'), $origin);
+
+        // 交换数组中的键和值
+        $splitNew = array_flip($split);
+
+        // 用key值比较获取差集,要插入的值
+        $insertData = array_diff_key($originNew, $splitNew);
+
+        // 再获取剩下的值，要更新的值
+        $updateData = array_diff_key($originNew, $insertData);
+
+        return [$insertData, $updateData];
+    }
 }
