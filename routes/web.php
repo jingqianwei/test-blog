@@ -45,6 +45,12 @@ Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback
 
 Route::get('test-array', function() {
 	$input = ['php', 'php', 'java', 'go', 'python'];
+	$diffArr = array_diff($input, ['php']); //都可以进行过滤
+	$filterArr = array_filter($input, function ($item) {
+	    return $item != 'php';
+    });
+
+	dd($diffArr, $filterArr, $input);
 	dd(array_unique($input));
 	list($key, $val) = each($input); // 0, php
 	dd($key, $val);
