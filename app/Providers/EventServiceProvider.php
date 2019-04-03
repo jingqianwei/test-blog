@@ -15,7 +15,7 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        Registered::class => [
+        Registered::class => [ // 注册之后发送验证邮箱的邮件
             SendEmailVerificationNotification::class,
         ],
         'Illuminate\Mail\Events\MessageSending' => [ //事件在邮件消息发送前触发
@@ -26,6 +26,10 @@ class EventServiceProvider extends ServiceProvider
         ],
         'App\Events\PostViewEvent' => [ // 帖子浏览量触发
             'App\Listeners\PostEventListener',
+        ],
+        'App\Events\UserRegistered' => [
+            'App\Listeners\SendWelcomeMail', // 发送欢迎邮件
+            'App\Listeners\UpdateReferrer', // 推荐注册的逻辑
         ],
     ];
 
