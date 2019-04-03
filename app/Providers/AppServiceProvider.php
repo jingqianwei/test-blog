@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if ($this->app->environment() !== 'production') { //phpstorm 提示插件,本地开发才生效
+        if (app()->isLocal()) { //phpstorm 提示插件,本地开发才生效
             //参考网址：https://github.com/barryvdh/laravel-ide-helper
             $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
         }
