@@ -1336,16 +1336,16 @@
         },
         {
             "name": "encore/laravel-admin",
-            "version": "v1.6.10",
+            "version": "v1.6.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/z-song/laravel-admin.git",
-                "reference": "f412485946265f9a8fd3bfb53071ff43bec9a56c"
+                "reference": "015a3c1d72eaeb1a1ec193789b50cc5e569dd71e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/z-song/laravel-admin/zipball/f412485946265f9a8fd3bfb53071ff43bec9a56c",
-                "reference": "f412485946265f9a8fd3bfb53071ff43bec9a56c",
+                "url": "https://api.github.com/repos/z-song/laravel-admin/zipball/015a3c1d72eaeb1a1ec193789b50cc5e569dd71e",
+                "reference": "015a3c1d72eaeb1a1ec193789b50cc5e569dd71e",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -1409,7 +1409,7 @@
                 "grid",
                 "laravel"
             ],
-            "time": "2019-03-10T16:55:45+00:00"
+            "time": "2019-04-04T09:22:37+00:00"
         },
         {
             "name": "erusev/parsedown",
@@ -4061,16 +4061,16 @@
         },
         {
             "name": "spatie/laravel-backup",
-            "version": "5.12.0",
+            "version": "5.12.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-backup.git",
-                "reference": "9f6466ad6b51dedba0ceccc65aff8a613d5f4521"
+                "reference": "553562557ef13fda0e823cc609cd7d4f2c4f2552"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/9f6466ad6b51dedba0ceccc65aff8a613d5f4521",
-                "reference": "9f6466ad6b51dedba0ceccc65aff8a613d5f4521",
+                "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/553562557ef13fda0e823cc609cd7d4f2c4f2552",
+                "reference": "553562557ef13fda0e823cc609cd7d4f2c4f2552",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -4080,12 +4080,12 @@
                 ]
             },
             "require": {
-                "illuminate/console": "~5.5.0|~5.6.0|~5.7.0",
-                "illuminate/contracts": "~5.5.0|~5.6.0|~5.7.0",
-                "illuminate/events": "~5.5.0|~5.6.0|~5.7.0",
-                "illuminate/filesystem": "~5.5.0|~5.6.0|~5.7.0",
-                "illuminate/notifications": "~5.5.0|~5.6.0|~5.7.0",
-                "illuminate/support": "~5.5.0|~5.6.0|~5.7.0",
+                "illuminate/console": "~5.5.0|~5.6.0|~5.7.0|~5.8.0",
+                "illuminate/contracts": "~5.5.0|~5.6.0|~5.7.0|~5.8.0",
+                "illuminate/events": "~5.5.0|~5.6.0|~5.7.0|~5.8.0",
+                "illuminate/filesystem": "~5.5.0|~5.6.0|~5.7.0|~5.8.0",
+                "illuminate/notifications": "~5.5.0|~5.6.0|~5.7.0|~5.8.0",
+                "illuminate/support": "~5.5.0|~5.6.0|~5.7.0|~5.8.0",
                 "league/flysystem": "^1.0.27",
                 "php": "^7.1",
                 "spatie/db-dumper": "^2.11.1",
@@ -4094,7 +4094,7 @@
             },
             "require-dev": {
                 "mockery/mockery": "^1.0",
-                "orchestra/testbench": "~3.5.0|~3.6.0|~3.7.0",
+                "orchestra/testbench": "~3.5.0|~3.6.0|~3.7.0|~3.8.0",
                 "phpunit/phpunit": "^7.3"
             },
             "suggest": {
@@ -4136,7 +4136,7 @@
                 "laravel-backup",
                 "spatie"
             ],
-            "time": "2018-12-28T07:57:48+00:00"
+            "time": "2019-04-04T12:00:30+00:00"
         },
         {
             "name": "spatie/temporary-directory",
@@ -7872,16 +7872,16 @@
         },
         {
             "name": "theseer/tokenizer",
-            "version": "1.1.1",
+            "version": "1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/theseer/tokenizer.git",
-                "reference": "06b6ce404ee574e9c1787fb67bb9980ca4387c34"
+                "reference": "1c42705be2b6c1de5904f8afacef5895cab44bf8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/theseer/tokenizer/zipball/06b6ce404ee574e9c1787fb67bb9980ca4387c34",
-                "reference": "06b6ce404ee574e9c1787fb67bb9980ca4387c34",
+                "url": "https://api.github.com/repos/theseer/tokenizer/zipball/1c42705be2b6c1de5904f8afacef5895cab44bf8",
+                "reference": "1c42705be2b6c1de5904f8afacef5895cab44bf8",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -7914,7 +7914,7 @@
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
-            "time": "2019-04-03T18:37:40+00:00"
+            "time": "2019-04-04T09:56:43+00:00"
         },
         {
             "name": "webmozart/assert",
