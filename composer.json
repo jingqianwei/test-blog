@@ -25,7 +25,6 @@
         "predis/predis": "^1.1",
         "rap2hpoutre/laravel-log-viewer": "^1.0",
         "spatie/laravel-backup": "^5.12",
-        "swooletw/laravel-swoole": "^2.5",
         "whichbrowser/parser": "^2.0"
     },
     "require-dev": {
