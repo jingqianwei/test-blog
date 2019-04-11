@@ -11,6 +11,7 @@
 |
 */
 use App\Http\Resources\UserResource;
+use App\Models\Post;
 use App\Models\User;
 
 Route::get('/', function () {
@@ -44,6 +45,18 @@ Route::get('login/github', 'Auth\LoginController@redirectToProvider');
 Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback');
 
 Route::get('test-array', function() {
+    // updateOrInsert()跟updateOrCreate()基本功能都一样，唯一的区别就是Insert()与Create()插入数据的区别
+    $post = Post::query()->updateOrInsert(['title' => '军事'], ['content' => '嘎嘎嘎嘎', 'view_count' => 2]);
+    dd($post);
+    // updateOrCreate() 如果查询不到值，则直接插入一条记录，自动保存，如果查询到值了，则直接更改对应字段值，自动保存
+    $post = Post::query()->updateOrCreate(['title' => '军事'], ['content' => '嘎嘎嘎嘎', 'view_count' => 2]);
+    dd($post);
+    // firstOrNew() 如果查询不到值，则赋值到对应字段但不保存到数据库，需要手动保存，返回bool，成功与否
+    $post = Post::query()->firstOrNew(['title' => '体育'], ['content' => '嘻嘻嘻嘻', 'view_count' => 1]);
+    dd($post->save());
+    // firstOrCreate() 如果查询不到值，则直接插入一条记录，自动保存，并返回这个Eloquent模型
+    $post = Post::query()->firstOrCreate(['title' => '军事'], ['content' => '哈哈哈哈', 'view_count' => 1]);
+    dd($post);
     // 这样更加优化
     User::query()->chunkById(100, function($query) {
         foreach ($query as $val) {
