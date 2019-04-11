@@ -30,7 +30,7 @@ class User extends Authenticatable
     ];
 
     // 禁用时间更新
-    public $timestamps = false;
+    //public $timestamps = false;
 
     /**
      * 在模型创建时，生成 UUID v4 。

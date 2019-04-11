@@ -52,8 +52,13 @@ Route::get('test-array', function() {
         }
         dd($query);
     });
+    // 如果只有一条数据，返回的是一个对象，不具有集合的使用方法，如果有多条数据，返回的就是一个集合，只具备集合的使用方法，不具备模型的方法
+    $user = DB::table('users')->where('id',1)->lockForUpdate()->get(['id', 'name']);
+    dd($user->pluck('id', 'name'));
+
+    // 如果只有一条数据，返回的是单个Eloquent模型，具有集合的所有使用方法和模型包含的方法，如果有多条数据返回的就是Eloquent模型集合，具有集合的所有使用方法
     $user = User::where('id', 1)->lockForUpdate()->first(['id', 'name']); // 排他锁
-    //$user = User::where('id', 1)->sharedLock()->first(['id', 'name']); // 共享锁
+    $user = User::where('id', 1)->sharedLock()->first(['id', 'name']); // 共享锁
     if ($user) {
         // 第一种更新
         User::where('id', 1)->update(['name' => '景乾威555']);
