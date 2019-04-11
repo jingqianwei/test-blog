@@ -44,7 +44,30 @@ Route::get('login/github', 'Auth\LoginController@redirectToProvider');
 Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback');
 
 Route::get('test-array', function() {
-	$input = ['php', 'php', 'java', 'go', 'python'];
+    // 这样更加优化
+    User::query()->chunkById(100, function($query) {
+        foreach ($query as $val) {
+            // 可以直接进行递增更新，前100个值都已经更新了
+           $val->increment('status', 1, ['name' => '测试用户123', 'phone' => 2]);
+        }
+        dd($query);
+    });
+    $user = User::where('id', 1)->lockForUpdate()->first(['id', 'name']); // 排他锁
+    //$user = User::where('id', 1)->sharedLock()->first(['id', 'name']); // 共享锁
+    if ($user) {
+        // 第一种更新
+        User::where('id', 1)->update(['name' => '景乾威555']);
+        // 第二种更新
+        $user->update(['name' => '景乾威666']);
+        // 第三种更新
+        $user->name = '景乾威777';
+        $user->save();
+    }
+    dd($user);
+    //dd(env('ARRAY'));
+    $input = [["key" => "value1"], ["key" => "value2"]];
+	//$input = ['php', 'php', 'java', 'go', 'python'];
+	dd(collect($input)->last()['key']);
 	$diffArr = array_diff($input, ['php']); //都可以进行过滤
 	$filterArr = array_filter($input, function ($item) {
 	    return $item != 'php';

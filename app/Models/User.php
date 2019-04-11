@@ -29,6 +29,9 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    // 禁用时间更新
+    public $timestamps = false;
+
     /**
      * 在模型创建时，生成 UUID v4 。
      */
