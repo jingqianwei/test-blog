@@ -44,7 +44,7 @@ class Kernel extends HttpKernel
         ],
 
         'api' => [
-            'throttle:60,1',
+            'throttle:60,1', // api接口每分钟尝试60次(支持每分钟只能请求60次)
             'bindings',
         ],
     ];
@@ -64,7 +64,7 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
-        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class, // 限制接口的请求频率中间件
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
 
         // 单独跨域中间件

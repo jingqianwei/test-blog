@@ -45,6 +45,8 @@ Route::get('login/github', 'Auth\LoginController@redirectToProvider');
 Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback');
 
 Route::get('test-array', function() {
+    // insertGetId() 返回插入id(id是自增主键)的值，如果自增列不是id(例如user_id为自增列)，那就得传第二个参数，例如：insertGetId(['title' => '军事', 'content' => '嘎嘎嘎嘎', 'view_count' => 2], 'user_id');
+    Post::query()->insertGetId(['title' => '军事', 'content' => '嘎嘎嘎嘎', 'view_count' => 2], 'user_id'); // user_id为自增列，则返回得就是user_id的值
     // updateOrInsert()跟updateOrCreate()基本功能都一样，唯一的区别就是Insert()与Create()插入数据的区别
     $post = Post::query()->updateOrInsert(['title' => '军事'], ['content' => '嘎嘎嘎嘎', 'view_count' => 2]);
     dd($post);
