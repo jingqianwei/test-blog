@@ -2,7 +2,7 @@
 
 namespace App\Traits;
 
-use Hashids\Hashids;
+use Vinkla\Hashids\Facades\Hashids;
 
 trait HashIdHelper
 {
