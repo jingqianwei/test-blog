@@ -1,5 +1,7 @@
 ### laravel模型属性说明
 ````
+$timestamps = false // 禁止更新时间(created_at, updated_at两个字段)
+
 $fillable = [
     '可批量填充的字段'
 ];

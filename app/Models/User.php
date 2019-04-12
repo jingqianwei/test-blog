@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\HashIdHelper;
 use App\Traits\UuidTrait;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -9,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable
 {
-    use Notifiable, UuidTrait;
+    use Notifiable, UuidTrait, HashIdHelper;
 
     /**
      * The attributes that are mass assignable.
