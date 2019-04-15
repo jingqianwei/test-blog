@@ -6,16 +6,15 @@ use Ramsey\Uuid\Uuid;
 
 trait UuidTrait
 {
-
     /**
      * 在模型创建时，生成 UUID v4 。
      */
-//    protected static function boot()
-//    {
-//        parent::boot();
-//
-//        self::uuid();
-//    }
+    protected static function boot()
+    {
+        parent::boot();
+
+        self::uuid();
+    }
 
     /**
      * 设置 UUID 对应的模型的字段。
