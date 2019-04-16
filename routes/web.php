@@ -107,3 +107,6 @@ Route::get('test-array', function() {
  	// 随机取数组中的值
 	return $input[array_rand($input)];
 });
+
+// 测试vue
+Route::view('test-vue', 'vue');
