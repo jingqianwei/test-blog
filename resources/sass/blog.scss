@@ -20,7 +20,7 @@
                 display:block;
                 width:162px;
                 height:40px;
-                //background:url(/static/img/logo-black.c57ddc8.svg) no-repeat;
+                background:url(../image/logo.svg) no-repeat;
                 background-size:cover;
                 text-indent:-9999rem;
                 margin:10px 0;
@@ -166,7 +166,7 @@
             -webkit-box-pack:center;
             -ms-flex-pack:center;
             justify-content:center;
-            background:url(//img.smohan.net/app/bg/index_1.jpg?imageView2/0/interlace/1/q/100|imageslim) top no-repeat #2a3440;
+            background:url(../image/index_1.jpg) top no-repeat #2a3440;
             background-size:cover
         }
         .page-index .index-banner .mo-container {
@@ -193,12 +193,12 @@
         .page-index .index-banner .index-btns {
             font-size:0;
             margin-top:3rem;
-            display:-webkit-inline-box;
+            //display:-webkit-inline-box;
             display:-ms-inline-flexbox;
             display:inline-flex
         }
         .page-index .index-banner .index-btns .index-btns__btn {
-            display:-webkit-inline-box;
+            //display:-webkit-inline-box;
             display:-ms-inline-flexbox;
             display:inline-flex;
             -webkit-box-align:center;
@@ -438,7 +438,7 @@
             -webkit-box-pack:center;
             -ms-flex-pack:center;
             justify-content:center;
-            background:url(//img.smohan.net/app/bg/index_2.jpg?imageView2/0/interlace/1/q/100|imageslim) top no-repeat;
+            background:url(../image/index_2.jpg) top no-repeat;
             background-size:cover
         }
         .page-index .index-pages-contact .mo-container {
@@ -673,45 +673,6 @@
         }
     }
     /*********************foot end**********************/
-
-    .app-back-top {
-        width:40px;
-        height:40px;
-        position:fixed;
-        bottom:20px;
-        right:-60px;
-        background-color:rgba(67, 69, 70, .75);
-        z-index:50;
-        transition:all .36s ease;
-        -webkit-user-select:none;
-        -moz-user-select:none;
-        -ms-user-select:none;
-        user-select:none;
-        box-shadow:0 1px 2px 0 rgba(0, 0, 0, .05)
-    }
-    .app-back-top:before {
-        content:"";
-        width:12px;
-        height:12px;
-        border-top:1px solid hsla(0, 0%, 100%, .75);
-        border-right:1px solid hsla(0, 0%, 100%, .75);
-        position:absolute;
-        top:45%;
-        left:55%;
-        -webkit-transform:rotate(-45deg) translate(-50%, -50%);
-        transform:rotate(-45deg) translate(-50%, -50%);
-    }
-    .app-back-top:active, .app-back-top:hover {
-        background-color:#6bc30d;
-    }
-    .app-back-top:active:before, .app-back-top:hover:before {
-        border-color:#fff;
-    }
-    .app-back-top.show {
-        right:12px;
-        -webkit-transform:scale(1) rotate(-1turn) translate(0);
-        transform:scale(1) rotate(-1turn) translate(0);
-    }
 }
 
 .mo-container {
@@ -820,4 +781,62 @@
         font-size:13px;
         margin-top:.5rem
     }
+}
+
+/***背景滚动***/
+.app:not(.app-ios) .background-attachment-fixed {
+    background-attachment:fixed!important
+}
+.background-overlay {
+    position:relative
+}
+.background-overlay:after {
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:0;
+    width:100%;
+    height:100%;
+    background-color:rgba(0, 0, 0, .7);
+}
+
+/***快速回到顶部***/
+.app-back-top {
+    width:40px;
+    height:40px;
+    position:fixed;
+    bottom:20px;
+    right:-60px;
+    background-color:rgba(67, 69, 70, .75);
+    z-index:50;
+    transition:all .36s ease;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+    box-shadow:0 1px 2px 0 rgba(0, 0, 0, .05);
+}
+.app-back-top:before {
+    content:"";
+    width:12px;
+    height:12px;
+    border-top:1px solid hsla(0, 0%, 100%, .75);
+    border-right:1px solid hsla(0, 0%, 100%, .75);
+    position:absolute;
+    top:45%;
+    left:55%;
+    -webkit-transform:rotate(-45deg) translate(-50%, -50%);
+    transform:rotate(-45deg) translate(-50%, -50%);
+}
+.app-back-top:active, .app-back-top:hover {
+    background-color:#6bc30d;
+}
+.app-back-top:active:before, .app-back-top:hover:before {
+    border-color:#fff;
+}
+.app-back-top.show {
+    right:12px;
+    -webkit-transform:scale(1) rotate(-1turn) translate(0);
+    transform:scale(1) rotate(-1turn) translate(0);
 }
