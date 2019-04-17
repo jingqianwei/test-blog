@@ -1,6 +1,9 @@
+@charset "UTF-8";
+
 .app {
   position: relative;
   /*********************head end**********************/
+  /*********************main end**********************/
   /*********************foot end**********************/
 }
 
@@ -146,6 +149,434 @@
 
 .app .app-head .app-head__body .app-nav a:hover {
   color: #181817;
+}
+
+.app .app-main {
+  min-height: 80vh;
+}
+
+.app .app-main .page-index .index-banner {
+  width: 100%;
+  height: 640px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: url(//img.smohan.net/app/bg/index_1.jpg?imageView2/0/interlace/1/q/100|imageslim) top no-repeat #2a3440;
+  background-size: cover;
+}
+
+.app .app-main .page-index .index-banner .mo-container {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  -webkit-animation-duration: 0.75s;
+  animation-duration: 0.75s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-name: zoomIn;
+  animation-name: zoomIn;
+  color: #fff;
+}
+
+.app .app-main .page-index .index-banner .app-name {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  color: #fff;
+  text-shadow: -5px 5px 0 rgba(0, 0, 0, 0.1);
+}
+
+.app .app-main .page-index .index-banner .app-slogan {
+  font-size: 2.5rem;
+}
+
+.app .app-main .page-index .index-banner .index-btns {
+  font-size: 0;
+  margin-top: 3rem;
+  display: inline-flex;
+}
+
+.app .app-main .page-index .index-banner .index-btns .index-btns__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  height: 50px;
+  width: 240px;
+  line-height: 36px;
+  padding: 7px 10px;
+  text-align: center;
+  max-width: 100%;
+  border: 1px solid transparent;
+  background-color: transparent;
+  color: #fff;
+  margin: 1rem;
+  font-size: 18px;
+  border-radius: 50px;
+  white-space: nowrap;
+}
+
+.app .app-main .page-index .index-banner .index-btns .index-btns__btn:first-child {
+  border-color: #6bc30d;
+  background-color: #6bc30d;
+}
+
+.app .app-main .page-index .index-banner .index-btns .index-btns__btn:first-child .mo-icon-github {
+  font-size: 24px;
+  margin-right: 5px;
+  position: relative;
+}
+
+.app .app-main .page-index .index-banner .index-btns .index-btns__btn:last-child {
+  border-color: #fff;
+}
+
+.app .app-main .page-index .index-banner .index-btns .index-btns__btn:hover {
+  transition: opacity 0.2s;
+  opacity: 0.7;
+}
+
+.app .app-main .page-index .index-pages {
+  position: relative;
+  width: 100%;
+  z-index: 1;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.app .app-main .page-index .index-pages .index-pages__page {
+  padding: 6rem 1rem;
+}
+
+.app .app-main .page-index .index-pages .index-pages__title {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.app .app-main .page-index .index-pages .index-pages__slogan {
+  font-size: 1.5rem;
+}
+
+.app .app-main .page-index .index-pages-structure {
+  background-color: #fff;
+}
+
+.app .app-main .page-index .index-pages-structure .atlas {
+  display: flex;
+  margin-top: 4rem;
+}
+
+.app .app-main .page-index .index-pages-structure .atlas .atlas-cell {
+  flex-basis: 100%;
+  max-width: 100%;
+  padding: 0 1rem;
+}
+
+.app .app-main .page-index .index-pages-structure .atlas .atlas-title {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  display: table;
+  font-size: 2rem;
+  text-align: center;
+  color: #fff;
+}
+
+.app .app-main .page-index .index-pages-structure .atlas .atlas-title span {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.app .app-main .page-index .index-pages-structure .atlas .atlas-list {
+  position: relative;
+  list-style: none;
+  padding-top: 15rem;
+  color: #80817f;
+}
+
+.app .app-main .page-index .index-pages-structure .atlas .atlas-list li {
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+.app .app-main .page-index .index-pages-structure .atlas .atlas-list li a {
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid #dededd;
+  font-weight: 100;
+  color: #9c9d9b;
+}
+
+.app .app-main .page-index .index-pages-structure .atlas .atlas-list li a:hover {
+  color: #0366d6;
+}
+
+.app .app-main .page-index .index-pages-structure .atlas .atlas-list:before {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 11.875rem;
+  background-color: #dededd;
+  top: 12.5rem;
+}
+
+.app .app-main .page-index .index-pages-structure .atlas .atlas-list:after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-clip: padding-box;
+  top: 185px;
+}
+
+.app .app-main .page-index .index-pages-structure .atlas .atlas-cell__fed .atlas-title {
+  background-color: rgba(78, 187, 170, 0.75);
+  float: right;
+  margin-right: -24px;
+}
+
+.app .app-main .page-index .index-pages-structure .atlas .atlas-cell__fed .atlas-list {
+  padding-right: 96px;
+}
+
+.app .app-main .page-index .index-pages-structure .atlas .atlas-cell__fed .atlas-list:before {
+  right: 54px;
+}
+
+.app .app-main .page-index .index-pages-structure .atlas .atlas-cell__fed .atlas-list:after {
+  background-color: rgba(78, 187, 170, 0.75);
+  right: 50px;
+}
+
+.app .app-main .page-index .index-pages-structure .atlas .atlas-cell__api .atlas-title {
+  background-color: rgba(107, 195, 13, 0.75);
+  margin-left: -1.5rem;
+  float: left;
+}
+
+.app .app-main .page-index .index-pages-structure .atlas .atlas-cell__api .atlas-list {
+  padding-left: 96px;
+}
+
+.app .app-main .page-index .index-pages-structure .atlas .atlas-cell__api .atlas-list:before {
+  left: 54px;
+}
+
+.app .app-main .page-index .index-pages-structure .atlas .atlas-cell__api .atlas-list:after {
+  background-color: rgba(107, 195, 13, 0.75);
+  left: 50px;
+}
+
+.app .app-main .page-index .index-pages-about .about-me {
+  margin-top: 4rem;
+  line-height: 1.8;
+}
+
+.app .app-main .page-index .index-pages-about .blog-runtime {
+  margin-top: 4rem;
+}
+
+.app .app-main .page-index .index-pages-about .blog-runtime .time-groups {
+  display: inline-block;
+  font-size: 0;
+  position: relative;
+}
+
+.app .app-main .page-index .index-pages-about .blog-runtime .time-groups > span {
+  display: inline-block;
+  width: 40px;
+  height: 44px;
+  border-radius: 4px;
+  background-color: #525251;
+  margin: 0 5px;
+  position: relative;
+}
+
+.app .app-main .page-index .index-pages-about .blog-runtime .time-groups > span:after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 50%;
+  background-color: rgba(255, 255, 255, 0.15);
+  left: 0;
+  top: 0;
+  border-bottom: 1px solid #383838;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.app .app-main .page-index .index-pages-about .blog-runtime .time-groups > span > i {
+  position: absolute;
+  width: 30px;
+  height: 100%;
+  z-index: 1;
+  top: 0;
+  left: 5px;
+  text-indent: -9999rem;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAApQBAMAAABYPIfDAAAAMFBMVEUAAAD///////////////////////////////////////////////////////////87TQQwAAAAD3RSTlMAZu673ZlEESKqzFWIdzPIukhxAAAOTklEQVR42uzZPYsTURTG8ZNsjG95+wYZ38AuKQStzNgLERvLDDaCTUS0EAQX0cJCFBvtVhS0M4JWNrudpXaWin4AzSRZ3Wzi9dzx4bn3iiBoNTIH5OavLknxYzYzR/6/aYzS+zx02k9r6SoP2ZWKjO7i0N69pf/2FYd2eSlyZ4lD+86m/t0Mh/a6vqhMcGi3sxc4/qKH2/pihkO7udQ/2zi090z0PSMc2nvNqvQ2BIdO72ltwkOn3kk3BEcx+RvAlcZj8f3u6k1E6FfzkW363XF0R9YOLhpw0fTLbv9T0y+aftH0i6ZfNuGeNS3fr9EZSzG5G/h90TFPPL/NNLliWs5vUxn1I+e3+VBk8MX3i6ZflRL7fmWXee57lJWZBD3oBl2aS9DrceC3OpXA7/XDEvjtJSL7nN/6QqVuOr9lo2Mbfts/u5jcDfy+6qTHfb/TD1esN/r9pn5jz2/3N36j0G/nbuB39zzweLv/1u8Vk57xW3a+TBPXdvoR/YI2/ZI2/Yoe35zfoX6WtYfO73B24XK66vzWH5lp8f0hjwO/qm7s+dVZ06ZfC0GbfhXRkazpd3DDNv1WFxXb9FuJm7bpcZAEXd2SoCtR2IOW9qW39GuyaXl+8f/hF02/aPrV+TwT+tWpGdOVYnI09dj5LRmd2PnNuuv8lsZih37R9IumXzT9stvoST895nXj0IXLypFtZy0KezgOr79N7/4t64Xz27yL6zH82t8fazH92t8vwfW3es9MX0sx+Rtef2/2N/zr78rknNCvnp3nvl+5uBn4ld7dwG/VXAj8rkwCv/pj5838g+th+mzn2qbr9kwpztnZUTf0m3XJJPT7OetV+rUfq5Y6v7U52MOvjI7uGnXpV4++OSHF5G+sX9zPpM5v0/aW89vsKt3vzu8dpXOt+8v334R+be486PnVqY3hF12Own6zEXbnQtD1rfD5Q/l7+Pzh/cPw+UMnCZ4/lKZZ0m9liYbfYSTF5HFw/a31zUlxfhudd41R7PxWlipmy/ld/6ovp85v+4vIjqnzu/4NN2zwW17gCzY8Vs3rxmjDtdwwZiGuG/tb1X7s+uIY7w+/b5Tb7tT5HcT6/sb5HeDzCPx+tp9/4fzWzbtGcP391EmfSDH5G/i93EkfeH6raauUJs7vRWXzPnZ+38QZG/rtdS0r+s16ZeL89mI0PL7/LvLR60qaXN3vtZw2Jy/OXNu5tv3L84eIfrMenXJ+rdxpeP/28XBw/3Zrviqe3/KBRIrJ4zQee4y5uOD+zS4uyFgEiwswtqNNxmgyRpMxu/0vTcZoMkaTMZuMsbggYywuiv1bfkf94qBfHvDLA3550IdIbtr6xUG/xf4tv6NwuX8jXOzfCBf7N8Ll/o0wwsb+jY39Gxv7Nzb2b2zu39jrsdfYv7Gxf2Nj/8bG/o1+sX+j32L/lt+xfrF/o1/s3+iX+zf67f7Gb8TG/o2N/Rsb+zc29m9s7N/Y2L+F3d4Me7jNxv6Njf0b/WL/Rr/F/i2/o365f6Nf7N/oF/s3+uX+jV4GN7zG/o3N/Rt7kASN/Ru7EoWN/Rsb+zc29mt/aPrF/o1+i/3bD/bs2IRhIIiCaAXqwSW4BPVflTnzGBA4crawlxw/UzAouDfwXHf98rf65W/1y8/0azv/bf5m87c2f2vztzZ/a/O3Nn9r87f65W/1u/4295x++Vv98rf65W/1y9/qg7+1+Vubv7X5W5u/tflbm7+18zc7f7PzN5u/1S9/q9/1t7nn9Mvf6pe/1S9/q1/+Vh/8rc3f2vytzd/a/K3N39r8rc3f2vytzd/a/K1++Vv9rr/NPadf/la//K1++Vv98rf64G9t/tbmb23+1uZvbf7W5m9t/tbO39rP7+Fv9cvf6nf9be45/fK3+uVv9cvf6pe/1Qd/a+dv7fux+Vubv7X5W5u/tflbm7+1+Vubv9Uvf6vf9bexx8Mvf/Pwy996+OVvPfzytx5++VsPv/yth1/+1sMvT+vh1+7h1/bw2/bwm795+M3fevjlbz385m8efvM3D7/rb2OPfv2G9es3XL9+w/XrN1y/fnP1a9evXb92/dr1a+u3rd+2ftv1a9evXb9+w/W7/jb26NelX1f9uurXVb+u+nXVr6t+XfXr0q+rfl3166rfrvp11a+rfl31u/429giXvwmXv9Vv/la/7x/9vuqXv9Uvf6tf/la//E24+Ztw8zfh5m/Czd/ql7/VL3+rX/5Wv+tvY49+PQ/ol7/VL3+rX/5Wv/ytfvlb/fK3+uVv9cvf9Ju/1W/+pt/8Tb98rX7t+rXrl7/V7/rbwHPd9cvf6pe/1S8/q1/badevXb92/fK3+uVv+s3f6jd/02/+pl/+Vr/8rX75W/3yt/pdfxt7/H/5m375W/3yt/rlb/XL3+qXv9Vv/qZf/la//E2/+Zt+87f6zd/0m7/pl7/VL3+rX/5Wv+tvY8+3X/5Wv/ytfvlb/fK3+uVv9cvf6pe/1S9/q1/+pt/8Tb/5W/3mb/rN3/TL3+qXv9Uvf6vf9bexx/+Xv+mXv9Uvf6tf/la//K1++Vv98rf65W/1y9/0m7/pN3/Tb/6m3/ytfvlb/fK3+uVv9bv+Nvbol7/pl7/VL3+rX/5Wv/ytfvlb/fK3+uVv9cvf9Ju/6Td/02/+pt/8rX75W/3yt/rlb/W7/vZp545R5AaiKIqC8t7DLKGX0PvfjfIJjJvDFaYFHnD08a+keODAwcFIup4Ze3w40998OLv6mw9nV3973vS3r/qbD2f1Nx/O6m8+nNXTfDiz+3Bm9+HM7sOZ/taHs/qbD2f1Nx/O6m8+nNXf3h/O9vdPDj786m/86m/51d/4rb/lV9/Kr51fO792fu382vm182vn186vnV87v/obv/v7Jwcffj1G8OsxIr8eI/j9s7/xa+e3jMFv/Y3fMhy/9Td+vcbx6zHi8usxgl+PEfn1GJFfjxH59RjB7/7+ycGHXxe/rvy68uvKryu/rvy68uvKryu/rvy68uvKryu/rvy68uvid3//5OADbv0NXP0NXP2N3/pbfvW3/Opv+dXf8qu/5Vd/y6/+lt/6G7j1N3D1tfza+bXzq7/xu79/cuR5vPKrv+VXf8uvfpZfO792fu382vnV3/Krv+VXf8tv/Y3f+hu/+lt+9bf86m/51d/43d8/Ofj89lt/y6/+ll/9jd/6W371t/zqb/mtv/Grv/F79Td+9bf86m/5rb/xW3/jV3/Lr/6WX/2N3/39k4PP26/+ll/9Lb/6G7/1t/zqb/nV3/Krv+VXf8uv/pZf/S2/+lt+62/81t/41d/yq7/lV3/jd3//5ODz9qu/5Vd/y6/+xm/9Lb/6W371t/zqb/nV3/Krv+VXf8uv/pZf/S2/+lt+9bf86m/51d/43d8/Ofjwq7/xq7/lV3/jt/6WX/0tv/pbfvW3/Opv+dXf8qu/5Vd/y6/+ll/9Lb/6W371t/zqb/zu758cfY6z/tYv3qm/+fBQf/Phof7mw0P9zYcH/c2Hh/qbDw/1tj48tH14aPvw0Pbhof7mw4L+1tbf2vrb9Yt39DcfHra/DT7HWX/Lr/6WX/0tv/obv/Uzftv8tvlt89vmt51fO792Pn+++dXf+N3+NvgcZ/0tv/pbfvW3/Nbf8mvzq7/xW3/jV3/Lb/0tv/pbfvW3y6/+xqf+1tbf2vpbfvW3/G5/G3yOs8fg/F4Zg1+f0fL7vPH7lV+Pwfn1GJxfj8H59Ric3x6D8+sxOL8eg/n0GNz2GNz2GJxfj8H53f42+BynK79d/Hbx28VvF79d/Lry68qvK79d+XXl18Vn1183v678bn8beB6v/Opv+dXf8quf8dvmt81vm992fvW3/Opv+dXfLr/6W371NzDd3239ra2/5Vd/y+/2t8HnOOtv+dXf8qu/5Vd/y6/+ll/9Lb/1N371N37rb/nV3/Krv+VXf8un/tY+9Ddbf8uv/pbf7W+Dz3HW3/Krv+VXf8uv/pZf/S2/+hu/+lt+62/81t/yq7/lV3/Lr/6WT/3t2vqbrb/lV3/L7/a3wec462/51d/yq7/lV3/Lr/6WX/2N3/obv/U3futv+dXf8qu/5Vd/y6f+dm1/H1t/y6/+lt/tb4PPcdbf8qu/5Vd/y6/+ll/9Lb/6G7/1N37rb/zW3/Krv+VXf8uv/pZP/e3a+putv+VXf8vv9rdJ5/3i5nhx09/sZ/3Ni5f+1tbf2vpbW39r19+8uNXXvLi1vbhd24tb24ub/mZ/X/3Ni5v+1oub/taLm/7mP07uz7+NOp9+9bf86m/509/a+pv9Pj/c/Nr5tfNr59fOr51fO792fu386m/87s+/jTqffvW3/Opv+dPf2vqb7Vy7/mbX3/itv+VXf8uv/pZf/S2/+lt+9bf86m/51d/yq7/xuz//Nup8+tXf8qu/5a/+1n7e+M13/c2uv/Fbf8uv/pZf/S2/+lt+9bf86m/51d/yq7/lV3/jd3/+bdS58es1Lr9e4/JXf7Prb7bXONtrXNtrXH57jcuv17j8eo3Lr9e4/PYal19/nl87v3Z+vcbxuz//Nuo8Xq78uvLr4q/rnze/Xfl15deVX1d+Xfl15deVX1d+Xfzuz7+NOrf//upv4Opv4Olvbf2trb+19bd2/Q3c+lt+9bf86m/51d/yq7/lV3/Lr/6WX/0tv/obuPvzb6POjV/9Lb/6G3/1N7v+Ztff7Pqbrb/lt/6WX/0tv/pbfvW3/Opv+dXf8qu/5Vd/y6/+xu/+/Nuoc+NXf8uv/sZf/c2uv9n6W7v+Ztff+K2/5Vd/y6/+ll/9Lb/6W371t/zqb/nV3/Krv/G7P/826nz61d/yq7/lT39r629t/a1df2u/bH71t/zqb/nV3/Krv+VXf8uv/pZf/S2/+lt+9Td+/5uff/sFPYaceQtc+gcAAAAASUVORK5CYII=) 0 0 no-repeat;
+  transition: background-position 1s ease-in-out;
+  overflow: hidden;
+}
+
+.app .app-main .page-index .index-pages-about .blog-runtime .time-groups > span > small {
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  left: 0;
+  padding-top: 5px;
+  text-align: center;
+}
+
+.app .app-main .page-index .index-pages-about .blog-runtime .time-groups:after,
+.app .app-main .page-index .index-pages-about .blog-runtime .time-groups:before {
+  position: absolute;
+  width: 120px;
+  top: 50%;
+  border-top: 1px solid #525251;
+  font-size: 14px;
+  padding-top: 5px;
+}
+
+.app .app-main .page-index .index-pages-about .blog-runtime .time-groups:before {
+  content: "\7D2F\8BA1\8FD0\884C";
+  left: -140px;
+}
+
+.app .app-main .page-index .index-pages-about .blog-runtime .time-groups:after {
+  content: "\5230\73B0\5728";
+  right: -140px;
+}
+
+.app .app-main .page-index .index-pages-about .blog-runtime p {
+  margin-top: 2rem;
+  margin-bottom: 0;
+  font-size: 14px;
+}
+
+.app .app-main .page-index .index-pages-contact {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  background: url(//img.smohan.net/app/bg/index_2.jpg?imageView2/0/interlace/1/q/100|imageslim) top no-repeat;
+  background-size: cover;
+}
+
+.app .app-main .page-index .index-pages-contact .mo-container {
+  position: relative;
+  z-index: 1;
+}
+
+.app .app-main .page-index .index-pages-contact .contact-list {
+  list-style-type: none;
+  font-size: 0;
+  padding: 1rem 0 0;
+  margin: 0;
+  position: relative;
+}
+
+.app .app-main .page-index .index-pages-contact .contact-list li {
+  display: inline-block;
+  width: 70px;
+  height: 70px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  margin: 24px;
+}
+
+.app .app-main .page-index .index-pages-contact .contact-list li a {
+  color: #cecece;
+  display: table;
+  width: 100%;
+  height: 100%;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.app .app-main .page-index .index-pages-contact .contact-list li a i {
+  font-size: 2rem;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.app .app-main .page-index .index-pages-contact .contact-list li a:hover {
+  opacity: 0.75;
+}
+
+.app .app-main .page-index .index-pages-links {
+  background-color: #fff;
+  margin-bottom: -2rem;
+}
+
+.app .app-main .page-index .index-pages-links .links-list {
+  list-style: none;
+  margin: 0;
+  padding: 3rem 0 0;
+  font-size: 0;
+}
+
+.app .app-main .page-index .index-pages-links .links-list li {
+  display: inline-block;
+  margin: 1rem;
+  font-size: 1rem;
+}
+
+.app .app-main .page-index .index-pages-links .links-list li a {
+  color: #9c9d9b;
+}
+
+.app .app-main .page-index .index-pages-links .links-list li a:hover {
+  color: #0366d6;
+}
+
+.app .app-main .page-index .index-pages-links .links-list + p {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+@media screen and (max-width: 640px) {
+  .app .app-main .page-index .index-banner .app-name {
+    font-size: 3rem;
+  }
+
+  .app .app-main .page-index .index-banner .app-slogan {
+    font-size: 2rem;
+  }
+
+  .app .app-main .page-index .index-banner .index-btns {
+    display: block;
+  }
+
+  .app .app-main .page-index .index-banner .index-btns .index-btns__btn {
+    width: 100%;
+    display: block;
+    margin: 1.5rem 0;
+  }
+
+  .app .app-main .page-index .index-banner .index-btns .mo-icon-github {
+    vertical-align: middle;
+    top: -2px;
+  }
+
+  .app .app-main .page-index .index-pages .index-pages__page {
+    padding: 4rem 1rem;
+  }
+
+  .app .app-main .page-index .index-pages .index-pages__title {
+    font-size: 24px;
+  }
+
+  .app .app-main .page-index .index-pages .index-pages__slogan {
+    font-size: 18px;
+  }
+
+  .app .app-main .page-index .index-pages .index-pages-contact li {
+    width: 3.25rem;
+    height: 3.25rem;
+  }
 }
 
 .app .app-foot {
@@ -389,6 +820,48 @@
 @media screen and (max-width: 55rem) {
   .mo-container {
     max-width: 43.125rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .page-index .index-pages-structure .atlas {
+    margin-left: -1rem;
+    margin-right: -1rem;
+    text-indent: -999rem;
+    padding-top: 56%;
+    position: relative;
+  }
+
+  .page-index .index-pages-structure .atlas:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: url(//img.smohan.net/app/mobile-index.png) top no-repeat;
+    background-size: cover;
+  }
+
+  .page-index .index-pages-about .blog-runtime .time-groups:after,
+  .page-index .index-pages-about .blog-runtime .time-groups:before,
+  .page-index .index-pages-structure .atlas .atlas-cell {
+    display: none;
+  }
+
+  .page-index .index-pages-contact .mo-container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .page-index .index-pages-contact .mo-container .contact-list li {
+    margin: 1rem;
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .page-index .index-pages-contact .mo-container .contact-list li i {
+    font-size: 1.25rem;
   }
 }
 

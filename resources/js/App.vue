@@ -1,7 +1,7 @@
 <template>
     <div class="app">
         <Head></Head>
-        <el-main>111</el-main>
+        <Main></Main>
         <Foot></Foot>
         <BackTop></BackTop>
     </div>
@@ -10,11 +10,12 @@
 <script>
     // 引入组件
     import Head from './layout/Head.vue';
+    import Main from './layout/Main.vue';
     import Foot from './layout/Foot.vue';
     import BackTop from './components/BackTop.vue';
     export default {
         name: "App",
-        components: {Head, Foot, BackTop} // 注册组件
+        components: {Head, Main, Foot, BackTop} // 注册组件
     }
 </script>
 
