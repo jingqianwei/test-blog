@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="{{ mix('css/blog.css') }}">
 </head>
 <body>
+<!--定义一个挂载点--->
 <div id="app">
-
 </div>
 <script src="{{ mix('js/app.js') }}"></script>
 </body>
