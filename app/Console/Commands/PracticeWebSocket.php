@@ -54,16 +54,17 @@ class PracticeWebSocket extends Command
         });
 
         //接收request请求
-        $this->webSocket->on('request', function ($request, $response, \swoole_websocket_server $ws) {
+        $this->webSocket->on('request', function ($request, $response) {
+            $response->end("<h1>Hello Swoole. #".rand(1000, 9999). $request->post['info'] ."</h1>");
             //接收http请求从post获取参数
             // token验证推送来源，避免恶意访问
             // 接收http请求从post获取message参数的值，给用户推送
             // $this->webSocket->connections 遍历所有WebSocket连接用户的fd，给所有用户推送
             var_dump($request->post);
-            foreach ($ws->connections as $fd) {
-                $this->info("client-{$fd} is pushed\n");
-                $ws->push($fd, $request->post['info']);
-            }
+//            foreach ($ws->connections as $fd) {
+//                $this->info("client-{$fd} is pushed\n");
+//                $ws->push($fd, $request->post['info']);
+//            }
         });
 
         //监听WebSocket连接关闭事件
