@@ -43,6 +43,7 @@ class PracticeWebSocket extends Command
 
         //监听WebSocket连接打开事件
         $ws->on('open', function ($ws, $request) {
+            \Log::info('连接成功');
             echo "server: handshake success with fd{$request->fd}\n";
             $ws->push($request->fd, "hello, welcome\n");
         });
