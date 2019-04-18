@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 
 class PracticeWebSocket extends Command
 {
+    private $webSocket;
     /**
      * The name and signature of the console command.
      *
@@ -38,26 +39,39 @@ class PracticeWebSocket extends Command
     public function handle()
     {
         //创建WebSocket服务器对象，监听0.0.0.0:9502端口
-        $ws = new \swoole_websocket_server("0.0.0.0", 9502);
+        $this->webSocket = new \swoole_websocket_server("0.0.0.0", 9502);
 
         //监听WebSocket连接打开事件
-        $ws->on('open', function ($ws, $request) {
-            \Log::info('连接成功');
+        $this->webSocket->on('open', function (\swoole_websocket_server $ws, $request) {
             echo "server: handshake success with fd{$request->fd}\n";
             $ws->push($request->fd, "hello, welcome\n");
         });
 
         //监听WebSocket消息事件
-        $ws->on('message', function ($ws, $frame) {
+        $this->webSocket->on('message', function (\swoole_websocket_server $ws, $frame) {
             echo "Message: {$frame->data}\n";
             $ws->push($frame->fd, "server: {$frame->data}");
         });
 
+        //接收request请求
+        $this->webSocket->on('request', function ($request, $response) {
+            //接收http请求从post获取参数
+            // token验证推送来源，避免恶意访问
+            if ($request->post['token'] == 11 ) {
+                // 接收http请求从post获取message参数的值，给用户推送
+                // $this->webSocket->connections 遍历所有WebSocket连接用户的fd，给所有用户推送
+                foreach ($this->webSocket->connections as $fd) {
+                    $this->webSocket->push($fd, $request->post['message']);
+                }
+            }
+        });
+
         //监听WebSocket连接关闭事件
-        $ws->on('close', function ($ws, $fd) {
+        $this->webSocket->on('close', function ($ws, $fd) {
             echo "client-{$fd} is closed\n";
         });
 
-        $ws->start();
+        // 开启
+        $this->webSocket->start();
     }
 }
