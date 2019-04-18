@@ -50,10 +50,16 @@ class PracticeWebSocket extends Command
         //监听WebSocket消息事件
         $this->webSocket->on('message', function (\swoole_websocket_server $ws, $frame) {
             $this->info("Message: {$frame->data}\n");
+            // 给单独这个WebSocket连接推送消息
             $ws->push($frame->fd, "server: {$frame->data}");
+            // $this->webSocket->connections 遍历所有WebSocket连接用户的fd，给所有用户推送消息
+            foreach ($ws->connections as $fd) {
+                $this->info("client-{$fd} is pushed\n");
+                $ws->push($fd, "server: {$frame->data}");
+            }
         });
 
-        //接收request请求
+        //接收http中request请求
         $this->webSocket->on('request', function ($request, $response) {
             $response->end("<h1>Hello Swoole. #".rand(1000, 9999). $request->post['info'] ."</h1>");
             //接收http请求从post获取参数
