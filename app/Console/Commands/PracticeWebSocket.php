@@ -45,6 +45,18 @@ class PracticeWebSocket extends Command
             $this->info($request->fd . "连接成功");
         });
 
+        //监听WebSocket消息事件
+        $server->on('message', function ($server, $frame) {
+            $this->info("receive from {$frame->fd}:{$frame->data},opcode:{$frame->opcode},fin:{$frame->finish}\n");
+            $server->push($frame->fd, "this is server");
+        });
+
+        //监听WebSocket连接关闭事件
+        $server->on('close', function ($server, $fd) {
+            $this->info("client {$fd} closed\n");
+        });
+
+        // 开启服务
         $server->start();
     }
 }
