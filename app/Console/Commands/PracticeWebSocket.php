@@ -6,7 +6,6 @@ use Illuminate\Console\Command;
 
 class PracticeWebSocket extends Command
 {
-    protected $web_socket;
     /**
      * The name and signature of the console command.
      *
@@ -60,28 +59,5 @@ class PracticeWebSocket extends Command
         });
 
         $ws->start();
-    }
-
-    private function start()
-    {
-        $this->web_socket = new \swoole_websocket_server("0.0.0.0", 9502);
-
-        $this->web_socket->on('open', function (\swoole_websocket_server $server, $request) {
-            echo "server: handshake success with fd{$request->fd}\n";
-        });
-
-        //监听WebSocket消息事件
-        $this->web_socket->on('message', array($this,'onRecordComment'));
-
-        $this->web_socket->on('close', function ($ser, $fd) {
-            echo "client {$fd} closed\n";
-        });
-
-        $this->web_socket->start();
-    }
-
-    private function onRecordComment()
-    {
-
     }
 }
