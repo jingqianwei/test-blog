@@ -61,10 +61,10 @@ class PracticeWebSocket extends Command
             // 接收http请求从post获取message参数的值，给用户推送
             // $this->webSocket->connections 遍历所有WebSocket连接用户的fd，给所有用户推送
             var_dump($request->post);
-//            foreach ($ws->connections as $fd) {
-//                $this->info("client-{$fd} is pushed\n");
-//                $ws->push($fd, $request->post['info']);
-//            }
+            foreach ($this->webSocket->connections as $fd) {
+                $this->info("client-{$fd} is pushed\n");
+                $this->webSocket->push($fd, $request->post['info']);
+            }
         });
 
         //监听WebSocket连接关闭事件
