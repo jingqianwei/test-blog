@@ -43,13 +43,13 @@ class PracticeWebSocket extends Command
 
         //监听WebSocket连接打开事件
         $this->webSocket->on('open', function (\swoole_websocket_server $ws, $request) {
-            echo "server: handshake success with fd{$request->fd}\n";
+            $this->info("server: handshake success with fd{$request->fd}\n");
             $ws->push($request->fd, "hello, welcome\n");
         });
 
         //监听WebSocket消息事件
         $this->webSocket->on('message', function (\swoole_websocket_server $ws, $frame) {
-            echo "Message: {$frame->data}\n";
+            $this->info("Message: {$frame->data}\n");
             $ws->push($frame->fd, "server: {$frame->data}");
         });
 
@@ -67,8 +67,8 @@ class PracticeWebSocket extends Command
         });
 
         //监听WebSocket连接关闭事件
-        $this->webSocket->on('close', function ($ws, $fd) {
-            echo "client-{$fd} is closed\n";
+        $this->webSocket->on('close', function ($ser, $fd) {
+            $this->info("client-{$fd} is closed\n");
         });
 
         // 开启
