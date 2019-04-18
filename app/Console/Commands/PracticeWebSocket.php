@@ -86,28 +86,21 @@ class PracticeWebSocket extends Command
 
     private function start()
     {
-        $this->server = new Swoole\WebSocket\Server("0.0.0.0", 9502);
-        $this->server->on('open', function (Swoole\WebSocket\Server $server, $request) {
-            echo "server: handshake success with fd{$request->fd}\n";
+        $server = new swoole_websocket_server("127.0.0.1", 9502);
+
+        $server->on('open', function($server, $req) {
+            echo "connection open: {$req->fd}\n";
         });
 
-        $this->server->on('message', function (Swoole\WebSocket\Server $server, $frame) {
-            echo "receive from {$frame->fd}:{$frame->data},opcode:{$frame->opcode},fin:{$frame->finish}\n";
-            $server->push($frame->fd, "this is server");
+        $server->on('message', function($server, $frame) {
+            echo "received message: {$frame->data}\n";
+            $server->push($frame->fd, json_encode(["hello", "world"]));
         });
 
-        $this->server->on('close', function ($ser, $fd) {
-            echo "client {$fd} closed\n";
+        $server->on('close', function($server, $fd) {
+            echo "connection close: {$fd}\n";
         });
 
-        $this->server->on('request', function ($request, $response) {
-            // 接收http请求从get获取message参数的值，给用户推送
-            // $this->server->connections 遍历所有websocket连接用户的fd，给所有用户推送
-            foreach ($this->server->connections as $fd) {
-                $this->server->push($fd, $request->post['info']);
-            }
-        });
-
-        $this->server->start();
+        $server->start();
     }
 }
