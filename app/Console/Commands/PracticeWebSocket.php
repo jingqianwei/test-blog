@@ -52,9 +52,9 @@ class PracticeWebSocket extends Command
         });
 
         //监听WebSocket连接关闭事件
-        $server->on('close', function ($server, $fd) {
-            $this->info("client {$fd} closed\n");
-        });
+//        $server->on('close', function ($server, $fd) {
+//            $this->info("client {$fd} closed\n");
+//        });
 
         // 开启服务
         $server->start();
