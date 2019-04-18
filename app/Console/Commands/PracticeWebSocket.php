@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 
 class PracticeWebSocket extends Command
 {
+    protected $web_socket;
     /**
      * The name and signature of the console command.
      *
@@ -41,12 +42,12 @@ class PracticeWebSocket extends Command
         $server = new \swoole_websocket_server("0.0.0.0", 9502);
 
         // 创建WebSocket连接打开事件
-        $server->on('open', function ($server, $request) {
+        $server->on('open', function (\swoole_websocket_server $server, $request) {
             echo $request->fd . "连接成功";
         });
 
         //监听WebSocket消息事件
-        $server->on('message', function ($server, $frame) {
+        $server->on('message', function (\swoole_websocket_server $server, $frame) {
             echo "receive from {$frame->fd}:{$frame->data},opcode:{$frame->opcode},fin:{$frame->finish}\n";
             $server->push($frame->fd, "this is server");
         });
@@ -76,5 +77,10 @@ class PracticeWebSocket extends Command
         });
 
         $this->web_socket->start();
+    }
+
+    private function onRecordComment()
+    {
+
     }
 }
