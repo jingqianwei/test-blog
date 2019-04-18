@@ -101,6 +101,7 @@ class PracticeWebSocket extends Command
             global $server;//调用外部的server
             // $server->connections 遍历所有websocket连接用户的fd，给所有用户推送
             foreach ($server->connections as $fd) {
+                echo $request->post['info'];
                 $server->push($fd, $request->post['info']);
             }
         });
