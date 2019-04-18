@@ -38,27 +38,27 @@ class PracticeWebSocket extends Command
      */
     public function handle()
     {
-        // 创建WebSocket服务器对象。监听0.0.0.0:9520
-        $server = new \swoole_websocket_server("0.0.0.0", 9502);
+        //创建WebSocket服务器对象，监听0.0.0.0:9502端口
+        $ws = new \swoole_websocket_server("0.0.0.0", 9502);
 
-        // 创建WebSocket连接打开事件
-        $server->on('open', function (\swoole_websocket_server $server, $request) {
-            echo $request->fd . "连接成功";
+        //监听WebSocket连接打开事件
+        $ws->on('open', function ($ws, $request) {
+            echo "server: handshake success with fd{$request->fd}\n";
+            $ws->push($request->fd, "hello, welcome\n");
         });
 
         //监听WebSocket消息事件
-        $server->on('message', function (\swoole_websocket_server $server, $frame) {
-            echo "receive from {$frame->fd}:{$frame->data},opcode:{$frame->opcode},fin:{$frame->finish}\n";
-            $server->push($frame->fd, "this is server");
+        $ws->on('message', function ($ws, $frame) {
+            echo "Message: {$frame->data}\n";
+            $ws->push($frame->fd, "server: {$frame->data}");
         });
 
         //监听WebSocket连接关闭事件
-//        $server->on('close', function ($server, $fd) {
-//            $this->info("client {$fd} closed\n");
-//        });
+        $ws->on('close', function ($ws, $fd) {
+            echo "client-{$fd} is closed\n";
+        });
 
-        // 开启服务
-        $server->start();
+        $ws->start();
     }
 
     private function start()
