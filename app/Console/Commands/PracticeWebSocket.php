@@ -42,12 +42,12 @@ class PracticeWebSocket extends Command
 
         // 创建WebSocket连接打开事件
         $server->on('open', function ($server, $request) {
-            $this->info($request->fd . "连接成功");
+            echo $request->fd . "连接成功";
         });
 
         //监听WebSocket消息事件
         $server->on('message', function ($server, $frame) {
-            $this->info("receive from {$frame->fd}:{$frame->data},opcode:{$frame->opcode},fin:{$frame->finish}\n");
+            echo "receive from {$frame->fd}:{$frame->data},opcode:{$frame->opcode},fin:{$frame->finish}\n";
             $server->push($frame->fd, "this is server");
         });
 
@@ -58,5 +58,23 @@ class PracticeWebSocket extends Command
 
         // 开启服务
         $server->start();
+    }
+
+    private function start()
+    {
+        $this->web_socket = new \swoole_websocket_server("0.0.0.0", 9502);
+
+        $this->web_socket->on('open', function (\swoole_websocket_server $server, $request) {
+            echo "server: handshake success with fd{$request->fd}\n";
+        });
+
+        //监听WebSocket消息事件
+        $this->web_socket->on('message', array($this,'onRecordComment'));
+
+        $this->web_socket->on('close', function ($ser, $fd) {
+            echo "client {$fd} closed\n";
+        });
+
+        $this->web_socket->start();
     }
 }
