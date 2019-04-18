@@ -110,3 +110,6 @@ Route::get('test-array', function() {
 
 // 测试vue
 Route::view('test-vue', 'vue');
+
+// 测试WebSocket
+Route::view('test-web-socket', 'websocket');

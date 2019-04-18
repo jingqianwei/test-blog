@@ -33,8 +33,26 @@ class TestModeController extends Controller
 
     public function getProductList()
     {
+        $this->swooleTest();
         // 封装curl类的测试
         return $this->curl->get('http://atest.woaap.com:11038/get/send/sms/code', ['mobile'=> '15999645710']);
+    }
+
+    /**
+     * @param array $param
+     */
+    public function swooleTest($param = ['s_id'=>2, 'info'=>'info'])
+    {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "http://101.132.75.39:9502");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_HEADER, 1);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        //设置post数据
+        $post_data = $param;
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+        curl_exec($ch);
+        curl_close($ch);
     }
 
     public function test()

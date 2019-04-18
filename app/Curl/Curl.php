@@ -16,6 +16,7 @@ use App\Exceptions\ResponseNotXMLException;
  * Class Curl
  * @package App\Curl
  * @method get(string $string, array $array)
+ * @method post(string $string, array $array)
  */
 class Curl
 {
