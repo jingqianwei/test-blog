@@ -86,21 +86,24 @@ class PracticeWebSocket extends Command
 
     private function start()
     {
-        $server = new swoole_websocket_server("127.0.0.1", 9502);
-
-        $server->on('open', function($server, $req) {
-            echo "connection open: {$req->fd}\n";
+        $server = new Swoole\WebSocket\Server("0.0.0.0", 9501);
+        $server->on('open', function (Swoole\WebSocket\Server $server, $request) {
+            echo "server: handshake success with fd{$request->fd}\n";
         });
-
-        $server->on('message', function($server, $frame) {
-            echo "received message: {$frame->data}\n";
-            $server->push($frame->fd, json_encode(["hello", "world"]));
+        $server->on('message', function (Swoole\WebSocket\Server $server, $frame) {
+            echo "receive from {$frame->fd}:{$frame->data},opcode:{$frame->opcode},fin:{$frame->finish}\n";
+            $server->push($frame->fd, "this is server");
         });
-
-        $server->on('close', function($server, $fd) {
-            echo "connection close: {$fd}\n";
+        $server->on('close', function ($ser, $fd) {
+            echo "client {$fd} closed\n";
         });
-
+        $server->on('request', function (Swoole\Http\Request $request, Swoole\Http\Response $response) {
+            global $server;//调用外部的server
+            // $server->connections 遍历所有websocket连接用户的fd，给所有用户推送
+            foreach ($server->connections as $fd) {
+                $server->push($fd, $request->post['info']);
+            }
+        });
         $server->start();
     }
 }
