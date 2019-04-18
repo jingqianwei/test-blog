@@ -57,13 +57,12 @@ class PracticeWebSocket extends Command
         $this->webSocket->on('request', function ($request, $response) {
             //接收http请求从post获取参数
             // token验证推送来源，避免恶意访问
-            if ($request->post['token'] == 11 ) {
-                // 接收http请求从post获取message参数的值，给用户推送
-                // $this->webSocket->connections 遍历所有WebSocket连接用户的fd，给所有用户推送
-                foreach ($this->webSocket->connections as $fd) {
-                    $this->webSocket->push($fd, $request->post['message']);
-                }
-            }
+            dump($request->post);
+            // 接收http请求从post获取message参数的值，给用户推送
+            // $this->webSocket->connections 遍历所有WebSocket连接用户的fd，给所有用户推送
+//            foreach ($this->webSocket->connections as $fd) {
+//                $this->webSocket->push($fd, $request->post['message']);
+//            }
         });
 
         //监听WebSocket连接关闭事件
