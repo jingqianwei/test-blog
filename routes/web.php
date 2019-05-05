@@ -13,6 +13,8 @@
 use App\Http\Resources\UserResource;
 use App\Models\Post;
 use App\Models\User;
+use App\Utils\SimpleSnowFlake;
+use App\Utils\SnowFlake;
 
 Route::get('/', function () {
     return view('welcome');
@@ -113,3 +115,11 @@ Route::view('test-vue', 'vue');
 
 // 测试WebSocket
 Route::view('test-web-socket', 'websocket');
+
+Route::get('test-except', 'TestException@test');
+
+Route::get('generate-id', function () {
+    $res = new SimpleSnowFlake();
+    $res1 = new SnowFlake(1, 1, 1, 1);
+    dd($res->generateID(), $res1->getNextId());
+});
