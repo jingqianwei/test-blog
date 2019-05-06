@@ -56,7 +56,7 @@ class PracticeWebSocket extends Command
         $this->web_socket->on('message', array($this,'onRecordComment'));
 
         $this->web_socket->on('close', function ($ser, $fd) {
-            //$this->info("client-{$fd} is closed\n");
+            $this->info("client-{$fd} is closed\n");
         });
 
         $this->web_socket->start();
