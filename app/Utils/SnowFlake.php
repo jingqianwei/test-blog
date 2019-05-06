@@ -76,9 +76,9 @@ class SnowFlake
     }
 
     /**
-     * 进行下一个毫秒数
-     * @param $lastTimestamp
-     * @return float
+     * 阻塞到下一个毫秒，直到获得新的时间戳
+     * @param float $lastTimestamp 上次生成ID的时间截
+     * @return float 当前毫秒时间戳
      */
     private function nextMillisecond($lastTimestamp)
     {
