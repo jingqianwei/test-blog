@@ -46,23 +46,31 @@ class SnowFlake
      * @param int $sequence 顺序号，必须大于0小于等于4096
      * @throws \Exception
      */
-    public function __construct($business_id, $data_center_id, $machine_id, $sequence)
+    public function __construct($business_id = 1, $data_center_id = 1, $machine_id = 1, $sequence = 1)
     {
+        //判断参数合法性
         if($business_id <= 0 || $business_id > $this->maxBusinessId()){
             throw new \Exception('Business Id can\'t be greater than 15 or less than 0');
         }
+        //判断参数合法性
         if($data_center_id <=0 || $data_center_id > $this->maxDataCenterId()){
             throw new \Exception('DataCenter Id can\'t be greater than 4 or less than 0');
         }
+        //判断参数合法性
         if($machine_id <= 0 || $machine_id > $this->maxMachineId()){
             throw new \Exception('Machine Id can\'t be greater than 128 or less than 0');
         }
+        //判断参数合法性
         if($sequence <= 0 || $sequence > $this->maxSequence()){
             throw new \Exception('Sequence can\'t be greater than 4096 or less than 0');
         }
+        //设置业务线
         $this->business_id = $business_id;
+        //设置数据中心
         $this->data_center_id = $data_center_id;
-        $this->business_id = $business_id;
+        //设置当前机器
+        $this->machine_id = $machine_id;
+        //设置当前顺序号
         $this->sequence = $sequence;
     }
 
@@ -126,7 +134,7 @@ class SnowFlake
     }
 
     /**
-     * 生成64位id
+     * 移位并通过或运算拼到一起组成64位的ID
      * @param $timestamp
      * @param $business_id
      * @param $data_center_id
@@ -227,27 +235,39 @@ class SnowFlake
      */
     public function getGenerateId()
     {
+        //获取当前毫秒时间戳
         $timestamp = $this->getTimestamp();
+        //如果当前时间小于上一次ID生成的时间戳，说明系统时钟回退过这个时候应当抛出异常
         if ($timestamp < $this->last_timestamp) {
             throw new InvalidSystemClockException(sprintf("Clock moved backwards. Refusing to generate id for %d milliseconds", ($this->last_timestamp - $timestamp)));
         }
 
+        //如果是同一毫秒内生成的，则进行毫秒序列化
         if ($timestamp == $this->last_timestamp) {
-            // &是位运算符
+            //获取当前序列号值, &是位运算符
             $sequence = $this->nextSequence() & $this->maxSequence();
             // sequence rollover, wait til next millisecond
+            //毫秒序列化值溢出（就是超过了4096）
             if ($sequence == 0) {
+                //阻塞到下一秒，获得新的时间戳
                 $timestamp = $this->nextMillisecond($this->last_timestamp);
             }
-        } else {
+        } else {  //如果不是同一毫秒，那么重置毫秒序列化值
             $this->sequence = 0;
+            //获取当前序列号值
             $sequence = $this->nextSequence();
         }
+        //重置上一次生成的时间戳
         $this->last_timestamp = $timestamp;
+        //时间戳左移 22 位
         $t = floor($timestamp - self::TWE_POC) << $this->timestampLeftShift();
+        //业务线标识左移 12 位
         $b = $this->getBusinessId() << $this->businessIdLeftShift();
+        //数据中心左移 12 位
         $dc = $this->getDataCenterId() << $this->dataCenterIdShift();
+        //机器id左移 12 位
         $worker = $this->getMachineId() << $this->machineIdShift();
+        //移位并通过或运算拼到一起组成64位的ID
         return $this->mintId64($t, $b, $dc, $worker, $sequence);
     }
 }
