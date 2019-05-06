@@ -121,5 +121,5 @@ Route::get('test-except', 'TestException@test');
 Route::get('generate-id', function () {
     $res = new SimpleSnowFlake();
     $res1 = new SnowFlake(1, 1, 1, 1);
-    dd($res->generateID(), $res1->getNextId());
+    dd($res->generateID(), $res1->getGenerateId());
 });

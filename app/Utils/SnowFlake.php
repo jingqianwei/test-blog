@@ -233,6 +233,7 @@ class SnowFlake
         }
 
         if ($timestamp == $this->last_timestamp) {
+            // &是位运算符
             $sequence = $this->nextSequence() & $this->maxSequence();
             // sequence rollover, wait til next millisecond
             if ($sequence == 0) {
