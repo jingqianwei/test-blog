@@ -49,7 +49,7 @@ class PracticeWebSocket extends Command
             'daemonize'=>1
         ));
         $this->web_socket->on('open',function (\swoole_websocket_server $server, $request){
-            $this->info('websocket连接握手成功' . $request->fd);
+            Log::info('websocket连接', ['握手成功'.$request->fd]);
         });
 
         //监听WebSocket消息事件
@@ -65,6 +65,6 @@ class PracticeWebSocket extends Command
 
     public function  onRecordComment(\swoole_websocket_server $ws,$frame){
         $data = json_decode($frame->data,true);
-        $this->info('websocket接受到的数据为' . $frame->data);
+        Log::info('websocket接受到的数据为', $data);
     }
 }
