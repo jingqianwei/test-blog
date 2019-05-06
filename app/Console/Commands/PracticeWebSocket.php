@@ -63,8 +63,13 @@ class PracticeWebSocket extends Command
 
     }
 
-    public function  onRecordComment(\swoole_websocket_server $ws,$frame){
+    public function  onRecordComment(\swoole_websocket_server $ws, $frame){
         $data = json_decode($frame->data,true);
         Log::info('websocket接受到的数据为', $data);
+        foreach ($ws->connections as $fd){
+            $ws->push($fd, json_encode(array('errcode'=>'0','errmsg'=>'成功','data'=>$data),JSON_UNESCAPED_UNICODE));
+        }
+
+        return true;
     }
 }
