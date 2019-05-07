@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Log;
 
 class PracticeWebSocket extends Command
 {
-    private $web_socket;
+    private $webSocket;
     /**
      * The name and signature of the console command.
      *
@@ -39,31 +39,41 @@ class PracticeWebSocket extends Command
      */
     public function handle()
     {
-        $this->start();
-    }
+        // 初始化连接
+        $this->webSocket = new \swoole_websocket_server("0.0.0.0", 9502);
 
-    public function start()
-    {
-        $this->web_socket = new \swoole_websocket_server("0.0.0.0", 9502);
-        $this->web_socket->set(array(
-            'daemonize'=> 1, // 守护进程
-            'log_file' => '/data/log/swoole.log', // 日志地址
-        ));
-        $this->web_socket->on('open',function (\swoole_websocket_server $server, $request){
+        // 设置连接配置
+        $this->webSocket->set(
+            [
+                'daemonize'=> 1, // 守护进程
+                'log_file' => '/data/log/swoole.log', // 日志地址
+            ]
+        );
+
+        // 打开连接
+        $this->webSocket->on('open',function (\swoole_websocket_server $server, $request){
             Log::info('websocket连接', ['握手成功' . $request->fd]);
         });
 
         //监听WebSocket消息事件
-        $this->web_socket->on('message', array($this,'onRecordComment'));
+        $this->webSocket->on('message', [$this, 'onRecordComment']);
 
-        $this->web_socket->on('close', function ($ser, $fd) {
-            $this->info("client-{$fd} is closed\n");
+        //监听WebSocket关闭事件
+        $this->webSocket->on('close', function ($ser, $fd) {
+            Log::info("websocket连接 client-{$fd} 断开");
         });
 
-        $this->web_socket->start();
+        $this->webSocket->start();
     }
 
-    public function  onRecordComment(\swoole_websocket_server $ws, $frame){
+    /**
+     * 回复的回调方法
+     * @param \swoole_websocket_server $ws
+     * @param $frame
+     * @return bool
+     */
+    protected function  onRecordComment(\swoole_websocket_server $ws, $frame)
+    {
         $data = json_decode($frame->data,true);
         Log::info('连接的fd数为 start：' . count($ws->connections));
         Log::info('websocket接受到的数据为', $data);

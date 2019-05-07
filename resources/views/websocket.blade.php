@@ -39,7 +39,7 @@
             //发生了错误事件
             socket.onerror = function() {
                 alert("发生了错误");
-            }
+            };
         });
 
         //发送消息
