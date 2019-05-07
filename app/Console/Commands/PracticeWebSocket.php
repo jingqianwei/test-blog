@@ -45,8 +45,9 @@ class PracticeWebSocket extends Command
     public function start()
     {
         $this->web_socket = new \swoole_websocket_server("0.0.0.0", 9502);
-        $this->web_socket->set(array( // 守护进程
-            'daemonize'=> 1
+        $this->web_socket->set(array(
+            'daemonize'=> 1, // 守护进程
+            'log_file' => '/data/log/swoole.log', // 日志地址
         ));
         $this->web_socket->on('open',function (\swoole_websocket_server $server, $request){
             Log::info('websocket连接', ['握手成功' . $request->fd]);
