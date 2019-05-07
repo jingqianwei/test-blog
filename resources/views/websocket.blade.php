@@ -44,7 +44,16 @@
 
         //发送消息
         $("#btnSend").click(function() {
-            socket.send("这是来自客户端的消息" + location.href + new Date());
+            let message = {
+                title: '这是来自客户端的消息',
+                nickname: 'user' + Math.ceil((Math.random() * 1000)),
+                mobile: '1599964571' + Math.ceil((Math.random() * 1000)),
+                comment: '小白',
+                time: new Date(),
+                url: location.href
+            };
+
+            socket.send(JSON.stringify(message));
         });
 
         //关闭
