@@ -49,7 +49,7 @@ class PracticeWebSocket extends Command
             'daemonize'=> 1
         ));
         $this->web_socket->on('open',function (\swoole_websocket_server $server, $request){
-            Log::info('websocket连接', ['握手成功'.$request->fd]);
+            Log::info('websocket连接', ['握手成功' . $request->fd]);
         });
 
         //监听WebSocket消息事件
