@@ -45,8 +45,8 @@ class PracticeWebSocket extends Command
     public function start()
     {
         $this->web_socket = new \swoole_websocket_server("0.0.0.0", 9502);
-        $this->web_socket->set(array(
-            'daemonize'=>0
+        $this->web_socket->set(array( // 守护进程
+            'daemonize'=> 1
         ));
         $this->web_socket->on('open',function (\swoole_websocket_server $server, $request){
             Log::info('websocket连接', ['握手成功'.$request->fd]);
@@ -60,7 +60,6 @@ class PracticeWebSocket extends Command
         });
 
         $this->web_socket->start();
-
     }
 
     public function  onRecordComment(\swoole_websocket_server $ws, $frame){
