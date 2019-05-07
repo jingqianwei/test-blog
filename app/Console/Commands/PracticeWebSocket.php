@@ -76,9 +76,13 @@ class PracticeWebSocket extends Command
     {
         $data = json_decode($frame->data,true);
         Log::info('websocket接受到的数据为', $data);
-        foreach ($ws->connections as $fd){
-            Log::info('连接的fd为' . $fd);
-            $ws->push($fd, json_encode(['errcode'=>'0', 'errmsg'=>'成功', 'data'=>$data],JSON_UNESCAPED_UNICODE));
+        // $ws->connections 遍历所有websocket连接用户的fd，给所有用户推送
+        foreach ($ws->connections as $fd) {
+            // 需要先判断是否是正确的websocket连接，否则有可能会push失败
+            if ($ws->isEstablished($fd)) {
+                Log::info('连接的fd为' . $fd);
+                $ws->push($fd, json_encode(['errcode'=>'0', 'errmsg'=>'成功', 'data'=>$data],JSON_UNESCAPED_UNICODE));
+            }
         }
 
         return true;
