@@ -31,6 +31,9 @@ class EventServiceProvider extends ServiceProvider
             'App\Listeners\SendWelcomeMail', // 发送欢迎邮件
             'App\Listeners\UpdateReferrer', // 推荐注册的逻辑
         ],
+        'App\Events\TestRegistered' => [ // 测试注册成功
+            'App\Listeners\SendPoint', //送积分
+        ],
     ];
 
     /**

@@ -11,8 +11,11 @@ namespace App\Http\Controllers;
 
 use App\Curl\Curl;
 use App\Curl\JsonHttpCurlDriver;
+use App\Events\TestRegistered;
+use App\Jobs\RegisterSendPoint;
 use App\Mail\OrderShipped;
 use App\Models\Order;
+use App\Models\User;
 use App\Services\Factory;
 use App\Services\VwCarAbstractFactory;
 use App\Services\VwCarFactory;
@@ -36,6 +39,17 @@ class TestModeController extends Controller
         $this->swooleTest();
         // 封装curl类的测试
         return $this->curl->get('http://atest.woaap.com:11038/get/send/sms/code', ['mobile'=> '15999645710']);
+    }
+
+    public function testRegister()
+    {
+        // 假装前面已经注册成功了
+
+        // 用队列送积分
+        $this->dispatch(new RegisterSendPoint());
+
+        // 用监听事件送积分
+        event(new TestRegistered());
     }
 
     /**
