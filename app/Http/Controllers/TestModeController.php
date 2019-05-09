@@ -12,10 +12,10 @@ namespace App\Http\Controllers;
 use App\Curl\Curl;
 use App\Curl\JsonHttpCurlDriver;
 use App\Events\TestRegistered;
+use App\Jobs\ExerciseQueue;
 use App\Jobs\RegisterSendPoint;
 use App\Mail\OrderShipped;
 use App\Models\Order;
-use App\Models\User;
 use App\Services\Factory;
 use App\Services\VwCarAbstractFactory;
 use App\Services\VwCarFactory;
@@ -45,10 +45,13 @@ class TestModeController extends Controller
     {
         // 假装前面已经注册成功了
 
-        // 用队列送积分
-        $this->dispatch(new RegisterSendPoint());
+        // 测试队列执行，走default队列，异步执行
+        $this->dispatch(new ExerciseQueue());
 
-        // 用监听事件送积分
+        // 用队列送积分，走register队列，异步执行
+        $this->dispatch((new RegisterSendPoint())->onQueue('register'));
+
+        // 用监听事件送积分，同步执行
         event(new TestRegistered());
     }
 
