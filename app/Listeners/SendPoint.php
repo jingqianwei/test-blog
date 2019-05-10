@@ -26,6 +26,6 @@ class SendPoint
      */
     public function handle(TestRegistered $event)
     {
-        \Log::info(__METHOD__ . '注册送积分');
+        \Log::info(__METHOD__ . '同步注册送积分');
     }
 }

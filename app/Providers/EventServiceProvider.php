@@ -33,6 +33,7 @@ class EventServiceProvider extends ServiceProvider
         ],
         'App\Events\TestRegistered' => [ // 测试注册成功
             'App\Listeners\SendPoint', //送积分
+            'App\Listeners\SendVitalityValue', //送活力值
         ],
     ];
 

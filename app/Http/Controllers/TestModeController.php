@@ -51,7 +51,7 @@ class TestModeController extends Controller
         // 用队列送积分，走register队列，异步执行
         $this->dispatch((new RegisterSendPoint())->onQueue('register'));
 
-        // 用监听事件送积分，同步执行
+        // 用监听事件送积分，默认同步执行
         event(new TestRegistered());
     }
 

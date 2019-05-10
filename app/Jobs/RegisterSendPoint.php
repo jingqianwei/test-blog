@@ -18,7 +18,7 @@ class RegisterSendPoint implements ShouldQueue
      *
      * @var int
      */
-    public $timeout = 1200;
+    public $timeout = 120;
 
     /**
      * 任务失败后可以尝试的最大次数。
@@ -33,20 +33,6 @@ class RegisterSendPoint implements ShouldQueue
      * @var bool
      */
     public $deleteWhenMissingModels = true;
-
-    /**
-     * 任务应该发送到的队列的连接的名称
-     *
-     * @var string|null
-     */
-    public $connection = 'redis';
-
-    /**
-     * 任务应该发送到的队列的名称
-     *
-     * @var string|null
-     */
-    public $queue = 'listeners';
 
     /**
      * Create a new job instance.
