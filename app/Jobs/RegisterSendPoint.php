@@ -76,6 +76,6 @@ class RegisterSendPoint implements ShouldQueue
     public function failed(Exception $exception)
     {
         // 给用户发送任务失败的通知，等等……
-        \Log::error(__FUNCTION__ . '队列执行失败，错误信息为：' . $exception->getMessage());
+        \Log::error(__METHOD__ . '队列执行失败，错误信息为：' . $exception->getMessage());
     }
 }

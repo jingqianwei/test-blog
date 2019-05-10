@@ -30,6 +30,20 @@ class SendVitalityValue implements ShouldQueue
     public $queue = 'listeners';
 
     /**
+     * 任务可以执行的最大秒数 (超时时间)。
+     *
+     * @var int
+     */
+    public $timeout = 120;
+
+    /**
+     * 任务失败后可以尝试的最大次数。
+     *
+     * @var int
+     */
+    public $tries = 3;
+
+    /**
      * Create the event listener.
      *
      * @return void
@@ -47,6 +61,21 @@ class SendVitalityValue implements ShouldQueue
      */
     public function handle(TestRegistered $event)
     {
-        \Log::info(__METHOD__ . '异步注册送积分');
+        $i = 0;
+        // TODO 不加这个条件，失败后就默认执行尝试的最大次数
+        if ($this->attempts() > 3) {
+            \Log::info(__METHOD__ . '测试队列执行失败！');
+            return;
+        }
+
+        if ($i == 0) {
+            $this->release();
+            \Log::info(__METHOD__ . '测试队列执行第' . $this->attempts() . '次');
+            return; //TODO 不加return还会往后面执行
+        }
+
+        \Log::info(__METHOD__ , '异步注册送积分');
     }
+
+    // TODO 这个中没有failed()方法，想输出错误直接用try{}catch(){}捕获
 }
