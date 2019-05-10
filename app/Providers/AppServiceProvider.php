@@ -29,12 +29,14 @@ class AppServiceProvider extends ServiceProvider
         Queue::before(function (JobProcessing $event) {
             // $event->connectionName
             //$event->job;
+            //$event->data;
         });
 
         // 队列执行后
         Queue::after(function (JobProcessed $event) {
             // $event->connectionName
             //$event->job;
+            //$event->data;
         });
 
         // 队列执行失败
