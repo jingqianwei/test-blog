@@ -35,6 +35,20 @@ class RegisterSendPoint implements ShouldQueue
     public $deleteWhenMissingModels = true;
 
     /**
+     * 任务应该发送到的队列的连接的名称
+     *
+     * @var string|null
+     */
+    public $connection = 'redis';
+
+    /**
+     * 任务应该发送到的队列的名称
+     *
+     * @var string|null
+     */
+    public $queue = 'listeners';
+
+    /**
      * Create a new job instance.
      *
      * @return void

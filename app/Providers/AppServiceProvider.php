@@ -3,6 +3,10 @@
 namespace App\Providers;
 
 use Carbon\Carbon;
+use Illuminate\Queue\Events\JobFailed;
+use Illuminate\Queue\Events\JobProcessed;
+use Illuminate\Queue\Events\JobProcessing;
+use Illuminate\Support\Facades\Queue;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
@@ -20,6 +24,25 @@ class AppServiceProvider extends ServiceProvider
 
         //设置数据表字符串字段的默认长度
         Schema::defaultStringLength(255);
+
+        // 队列执行前
+        Queue::before(function (JobProcessing $event) {
+            // $event->connectionName
+            //$event->job;
+        });
+
+        // 队列执行后
+        Queue::after(function (JobProcessed $event) {
+            // $event->connectionName
+            //$event->job;
+        });
+
+        // 队列执行失败
+        Queue::failing(function (JobFailed $event) {
+            // $event->connectionName
+            // $event->job
+            // $event->exception
+        });
     }
 
     /**
