@@ -54,7 +54,7 @@ class RedisMethod
      * @param       $config
      * @param array $attr
      */
-    private function __construct( $config, $attr = [])
+    private function __construct($config, $attr = [])
     {
         $this->attr  = array_merge($this->attr, $attr);
         $this->redis = new \Redis;
@@ -77,9 +77,15 @@ class RedisMethod
      * @param array $config
      * @param array $attr
      * @return Redis
+     * @throws \Exception
      */
     public static function getInstance($config, $attr = [])
     {
+        //判断php是否支持redis扩展
+        if(!extension_loaded('redis')) {
+            throw new \Exception('php未开启redis扩展');
+        }
+
         // 如果是一个字符串，将其认为是数据库的ID号。以简化写法。
         if(!is_array($attr)) {
             $dbId = $attr;
