@@ -53,6 +53,7 @@ class RedisMethod
      * Redis constructor.
      * @param       $config
      * @param array $attr
+     * @throws \Exception
      */
     private function __construct($config, $attr = [])
     {
@@ -65,6 +66,11 @@ class RedisMethod
         if($config['auth']) {
             $this->auth($config['auth']);
             $this->auth = $config['auth'];
+        }
+
+        // 判断redis连接
+        if (!$this->ping()) {
+            throw new \Exception('redis连接失败！');
         }
 
         $this->expireTime = time() + $this->attr['timeout'];
@@ -509,10 +515,6 @@ class RedisMethod
 
     /**
      * lIndex 返回队列中指定索引的元素
-     * Created by PhpStorm.
-     * User: w
-     * Date: 2018-12-09
-     * Time: 12:13
      * @param $key
      * @param $index
      * @return mixed
@@ -957,6 +959,11 @@ class RedisMethod
         return $this->redis->ping();
     }
 
+    /**
+     * 输入redis链接密码
+     * @param $auth
+     * @return bool
+     */
     public function auth($auth)
     {
         return $this->redis->auth($auth);
