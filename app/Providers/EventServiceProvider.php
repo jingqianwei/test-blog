@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -35,6 +34,18 @@ class EventServiceProvider extends ServiceProvider
             'App\Listeners\SendPoint', //送积分
             'App\Listeners\SendVitalityValue', //送活力值
         ],
+    ];
+
+    /**
+     * 事件订阅
+     * Event Subscribers 是一种特殊的 Listener, 前面讲的是一个 listener 里只能放一个 hander（），
+     * 事件订阅可以把很多处理器（handler）放到一个类里面，然后用一个 listner 把它们集合起来，
+     * 这样不同的事件只要对应一个 listner 就可以了。
+     * The subscriber classes to register.
+     * @var array
+     */
+    protected $subscribe = [
+
     ];
 
     /**
