@@ -70,7 +70,7 @@ class SignGenerator
     }
 
     /**
-     * 获取唯一值
+     * 获取唯一值 TODO 注意使用方法，不然容易造成死循环
      * @throws \ErrorException
      * @throws \Exception
      */
