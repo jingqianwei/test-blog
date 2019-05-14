@@ -84,27 +84,35 @@ class SignGenerator
         }
 
         do{
+            // 1、初始化发号器
             $id = pow(2,self::BITS_FULL - self::BITS_PRE) << self::BITS_PRE;
 
-            //时间戳 41位
+            // 2、为发号器添加时间属性，时间戳 41位
             $nowTime = (int)(microtime(true) * 1000);
             $startTime = (int)(strtotime(self::OFFSET_TIME) * 1000);
+            //计算毫秒差，基于上图，这里 diffTime=326570168
             $diffTime = $nowTime - $startTime;
+            //计算出位移 的偏移量
             $shift = self::BITS_FULL - self::BITS_PRE - self::BITS_TIME;
+            //改变uuid的时间bit位
             $id |= $diffTime << $shift;
             echo "diffTime=",$diffTime,"\t";
 
-            //服务器
+            // 3、为发号器添加服务器编号，服务器
+            //在新的$shift 计算出位移 的偏移量
             $shift = $shift - self::BITS_SERVER;
+            //改变uuid的服务器bit位
             $id |= $this->serverId << $shift;
             echo "serverId=",$this->serverId,"\t";
 
-            //业务
+            // 4、为发号器添加业务编号，业务
+            //在新的$shift 计算出位移 的偏移量
             $shift = $shift - self::BITS_WORKER;
+            //改变uuid的业务编号bit位
             $id |= $this->workerId << $shift;
             echo "workerId=",$this->workerId,"\t";
 
-            //自增值
+            // 5、为发号器添加sequence，自增值
             $sequenceNumber = $this->getSequence($id);
             echo "sequenceNumber=",$sequenceNumber,"\t";
             if($sequenceNumber > pow(2, self::BITS_SEQUENCE)) {
