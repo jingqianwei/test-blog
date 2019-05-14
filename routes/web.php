@@ -86,6 +86,7 @@ Route::get('test-array', function() {
         $user->save();
     }
     dd($user);
+    dd(str_pad(1, 12, 0)); // 通过指定字符把字符串填充到指定长度 100000000000
     //dd(env('ARRAY'));
     $input = [["key" => "value1"], ["key" => "value2"]];
 	//$input = ['php', 'php', 'java', 'go', 'python'];
