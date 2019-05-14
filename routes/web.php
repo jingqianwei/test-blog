@@ -13,6 +13,7 @@
 use App\Http\Resources\UserResource;
 use App\Models\Post;
 use App\Models\User;
+use App\Utils\SignGenerator;
 use App\Utils\SimpleSnowFlake;
 use App\Utils\SnowFlake;
 
@@ -125,4 +126,21 @@ Route::get('generate-id', function () {
     $res = new SimpleSnowFlake();
     $res1 = new SnowFlake(1, 1, 1, 1);
     dd($res->generateID(), $res1->getGenerateId());
+});
+
+Route::get('redis-id', function() {
+    // 连接redis
+    $redis = new \Redis;
+    $redis->connect("127.0.0.1", 6379);
+    $redis->auth('123456');
+    $instance = SignGenerator::getInstance($redis);
+
+    // 获取uuid
+    $instance->setWorkerId(2)->setServerId(1);
+    $number = $instance->getNumber();
+    dd($number);
+
+    // 反解uuid
+    $item = $instance->reverseNumber(3467477958926337);
+    dd($item);
 });
