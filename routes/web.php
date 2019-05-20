@@ -232,3 +232,14 @@ Route::get('test-db', function () {
         DB::rollBack();
     }
 });
+
+// 生成批量更新的sql语句
+Route::get('test-update', function () {
+    $data = [
+        ['id' => 1, 'sort' => 1],
+        ['id' => 2, 'sort' => 3],
+        ['id' => 3, 'sort' => 5],
+    ];
+
+    echo batch_update($data, 'posts');
+});
