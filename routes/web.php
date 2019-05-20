@@ -218,3 +218,17 @@ Route::get('test-pipe', function() {
     $replies = $pipe->exec();
     dd($replies);
 });
+
+// 制作计数器
+Route::get('test-db', function () {
+    DB::beginTransaction();
+    $post = Post::where('id', 1)->lockForUpdate()->first();
+    if ($post) {
+        Log::info('获取的值为' . $post->view_count); // 使用悲观锁，取到的值都是正确的
+        $post->view_count = DB::raw('view_count + 1');
+        $post->save();
+        DB::commit();
+    } else {
+        DB::rollBack();
+    }
+});
