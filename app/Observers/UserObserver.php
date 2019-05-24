@@ -26,7 +26,7 @@ class UserObserver
      */
     public function saved(User $user)
     {
-        // todo 跟在created(updated)后面，sql插入(更新)语句已经执行完毕后，created(updated)事件结束后触发的事件
+        // todo 跟在created(updated)后面，sql插入(更新)(加上了创建时间或修改时间)语句已经执行完毕后，created(updated)事件结束后触发的事件
         \Log::info('监听数据保存后的事件: saved ', $user->toArray());
     }
 
@@ -50,7 +50,7 @@ class UserObserver
      */
     public function created(User $user)
     {
-        // todo 跟在creating后面，sql插入语句已经执行完毕后，触发的事件
+        // todo 跟在creating后面，sql插入语句(加上了创建时间)已经执行完毕后，触发的事件
         \Log::info('监听数据创建后的事件: created ', $user->toArray());
     }
 
@@ -74,7 +74,7 @@ class UserObserver
      */
     public function updated(User $user)
     {
-        // todo 跟在updating后面，sql更新语句已经执行完毕后，触发的事件
+        // todo 跟在updating后面，sql更新语句(加上了修改时间)已经执行完毕后，触发的事件
         \Log::info('监听数据更新后的事件: updated ', $user->toArray());
     }
 
