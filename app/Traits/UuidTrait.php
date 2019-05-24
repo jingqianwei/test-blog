@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 
+use App\Observers\UserObserver;
 use Ramsey\Uuid\Uuid;
 
 trait UuidTrait
@@ -14,6 +15,9 @@ trait UuidTrait
         parent::boot();
 
         self::uuid();
+
+        // 注册用户表的观察者
+        static::observe(UserObserver::class); // 或者 User::observe(new UserObserver);
     }
 
     /**
@@ -31,6 +35,7 @@ trait UuidTrait
     protected static function uuid()
     {
         static::creating(function ($model) {
+            // 给self::uuidField()字段赋值
             $model->{self::uuidField()} = Uuid::uuid4()->toString();
         });
     }

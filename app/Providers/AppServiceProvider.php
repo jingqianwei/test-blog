@@ -48,8 +48,8 @@ class AppServiceProvider extends ServiceProvider
             // $event->exception
         });
 
-        // 注册用户表得观察者
-        User::observe(UserObserver::class); // 或者 User::observe(new UserObserver);
+        // 注册用户表的观察者 todo (一般建议写到对应的模型中)
+        //User::observe(UserObserver::class); // 或者 User::observe(new UserObserver);
     }
 
     /**

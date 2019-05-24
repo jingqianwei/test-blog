@@ -7,50 +7,6 @@ use App\Models\User;
 class UserObserver
 {
     /**
-     * 监听数据即将创建的事件。
-     *
-     * @param  User $user
-     * @return void
-     */
-    public function creating(User $user)
-    {
-
-    }
-
-    /**
-     * 监听数据创建后的事件。
-     *
-     * @param  User $user
-     * @return void
-     */
-    public function created(User $user)
-    {
-
-    }
-
-    /**
-     * 监听数据即将更新的事件。
-     *
-     * @param  User $user
-     * @return void
-     */
-    public function updating(User $user)
-    {
-
-    }
-
-    /**
-     * 监听数据更新后的事件。
-     *
-     * @param  User $user
-     * @return void
-     */
-    public function updated(User $user)
-    {
-
-    }
-
-    /**
      * 监听数据即将保存的事件。
      *
      * @param  User $user
@@ -58,7 +14,8 @@ class UserObserver
      */
     public function saving(User $user)
     {
-
+        // todo 相当于对user表得各个字段完成了赋值，但还没开始进行sql插入语句的执行
+        \Log::info('监听数据即将保存的事件: saving ', $user->toArray());
     }
 
     /**
@@ -69,7 +26,56 @@ class UserObserver
      */
     public function saved(User $user)
     {
+        // todo 跟在created(updated)后面，sql插入(更新)语句已经执行完毕后，created(updated)事件结束后触发的事件
+        \Log::info('监听数据保存后的事件: saved ', $user->toArray());
+    }
 
+    /**
+     * 监听数据即将创建的事件。
+     *
+     * @param  User $user
+     * @return void
+     */
+    public function creating(User $user)
+    {
+        // todo 跟在saving事件后面，但还是没进行sql插入语句的执行
+        \Log::info('监听数据即将创建的事件: creating ', $user->toArray());
+    }
+
+    /**
+     * 监听数据创建后的事件。
+     *
+     * @param  User $user
+     * @return void
+     */
+    public function created(User $user)
+    {
+        // todo 跟在creating后面，sql插入语句已经执行完毕后，触发的事件
+        \Log::info('监听数据创建后的事件: created ', $user->toArray());
+    }
+
+    /**
+     * 监听数据即将更新的事件。
+     *
+     * @param  User $user
+     * @return void
+     */
+    public function updating(User $user)
+    {
+        // todo 跟在saving事件后面，但还是没进行sql更新语句的执行
+        \Log::info('监听数据即将更新的事件: updating ', $user->toArray());
+    }
+
+    /**
+     * 监听数据更新后的事件。
+     *
+     * @param  User $user
+     * @return void
+     */
+    public function updated(User $user)
+    {
+        // todo 跟在updating后面，sql更新语句已经执行完毕后，触发的事件
+        \Log::info('监听数据更新后的事件: updated ', $user->toArray());
     }
 
     /**
@@ -80,7 +86,7 @@ class UserObserver
      */
     public function deleting(User $user)
     {
-
+        // todo 表中数据删除前的执行，已经指定要删除的记录，但还没执行sql删除语句
     }
 
     /**
@@ -91,7 +97,7 @@ class UserObserver
      */
     public function deleted(User $user)
     {
-
+        // todo 表中数据删除后的执行，sql删除语句已经执行完毕后，触发的事件
     }
 
     /**

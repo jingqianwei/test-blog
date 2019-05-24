@@ -243,3 +243,6 @@ Route::get('test-update', function () {
 
     echo batch_update($data, 'posts');
 });
+
+// 测试观察者的使用
+Route::get('test-user', 'UserController@create');

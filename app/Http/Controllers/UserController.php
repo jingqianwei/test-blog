@@ -33,4 +33,15 @@ class UserController extends Controller
 
         return Auth::login($user);
     }
+
+    public function create()
+    {
+        $user = new User();
+        $user->name = '哈哈哈';
+        $user->phone = '18682366727';
+        $user->email = '1207511201@qq.com';
+        $user->password = '123456';
+        $user->introduction = '232131';
+        $user->save();
+    }
 }
