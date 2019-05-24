@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\User;
+use App\Observers\UserObserver;
 use Carbon\Carbon;
 use Illuminate\Queue\Events\JobFailed;
 use Illuminate\Queue\Events\JobProcessed;
@@ -45,6 +47,9 @@ class AppServiceProvider extends ServiceProvider
             // $event->job
             // $event->exception
         });
+
+        // 注册用户表得观察者
+        User::observe(UserObserver::class); // 或者 User::observe(new UserObserver);
     }
 
     /**
