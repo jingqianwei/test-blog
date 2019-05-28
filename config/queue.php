@@ -63,6 +63,7 @@ return [
             'queue' => env('REDIS_QUEUE', 'default'),
             'retry_after' => 90, // 90秒重试
             'block_for' => null,
+            'read_write_timeout' => 0, // 设置redis写不超时，默认超时时间为60s
         ],
 
     ],

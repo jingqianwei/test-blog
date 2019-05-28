@@ -117,6 +117,7 @@ return [
             'password' => env('REDIS_PASSWORD', null),
             'port' => env('REDIS_PORT', 6379),
             'database' => env('REDIS_DB', 0),
+            'read_write_timeout' => 0, // 设置redis写不超时，默认超时时间为60s
         ],
 
         'cache' => [
@@ -124,6 +125,7 @@ return [
             'password' => env('REDIS_PASSWORD', null),
             'port' => env('REDIS_PORT', 6379),
             'database' => env('REDIS_CACHE_DB', 1),
+            'read_write_timeout' => 0, // 设置redis写不超时，默认超时时间为60s
         ],
 
         // redis集群
@@ -134,18 +136,21 @@ return [
                     'password' => env('REDIS_PASSWORD', null),
                     'port' => env('REDIS_PORT', 6379),
                     'database' => env('REDIS_DB', 2),
+                    'read_write_timeout' => 0, // 设置redis写不超时，默认超时时间为60s
                 ],
                 [
                     'host' => env('REDIS_HOST', '127.0.0.1'),
                     'password' => env('REDIS_PASSWORD', null),
                     'port' => env('REDIS_PORT', 6379),
                     'database' => env('REDIS_DB', 3),
+                    'read_write_timeout' => 0, // 设置redis写不超时，默认超时时间为60s
                 ],
                 [
                     'host' => env('REDIS_HOST', '127.0.0.1'),
                     'password' => env('REDIS_PASSWORD', null),
                     'port' => env('REDIS_PORT', 6379),
                     'database' => env('REDIS_DB', 4),
+                    'read_write_timeout' => 0, // 设置redis写不超时，默认超时时间为60s
                 ],
             ],
         ],
