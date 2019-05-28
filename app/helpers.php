@@ -124,4 +124,29 @@ if (! function_exists('check_array_dimension')) {
     }
 }
 
+if (! function_exists('avoid_repeat_write')) {
+    /**
+     * 通过redis避免重复写入
+     * @param string $redis_key 设置redis的key值
+     * @return bool
+     */
+    function avoid_repeat_write($redis_key)
+    {
+        $lock_key = 'LOCK_PREFIX' . $redis_key;
+        $is_lock = Redis::setnx($lock_key, 1); // 加锁
+        if($is_lock == true) { // 获取锁权限
+            // 释放锁
+            Redis::del($lock_key);
+
+            return true;
+        } else {
+            // 防止死锁
+            if(Redis::ttl($lock_key) == -1){
+                Redis::expire($lock_key, 5);
+            }
+            return false; // 获取不到锁权限，直接返回
+        }
+    }
+}
+
 
