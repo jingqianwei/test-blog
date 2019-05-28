@@ -117,7 +117,7 @@ return [
             'password' => env('REDIS_PASSWORD', null),
             'port' => env('REDIS_PORT', 6379),
             'database' => env('REDIS_DB', 0),
-            'read_write_timeout' => 0, // 设置redis写不超时，默认超时时间为60s
+            'read_write_timeout' => 0, // 设置redis写不超时，默认超时时间为60s，参考网址：https://blog.csdn.net/sinat_21158419/article/details/53610445
         ],
 
         'cache' => [
