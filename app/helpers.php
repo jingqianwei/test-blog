@@ -149,4 +149,27 @@ if (! function_exists('avoid_repeat_write')) {
     }
 }
 
+if (! function_exists('str_random')) {
+    /**
+     * 生成更真实的"随机"字符串
+     * @param int $length 字符串长度(一个字母代表一个长度)
+     * @return string
+     * @throws Exception
+     */
+    function str_random($length = 16)
+    {
+        $string = '';
+
+        while (($len = strlen($string)) < $length) {
+            $size = $length - $len;
+
+            $bytes = random_bytes($size);
+
+            $string .= substr(str_replace(['/', '+', '='], '', base64_encode($bytes)), 0, $size);
+        }
+
+        return $string;
+    }
+}
+
 
