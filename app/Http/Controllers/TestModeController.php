@@ -19,6 +19,7 @@ use App\Models\Order;
 use App\Services\Factory;
 use App\Services\VwCarAbstractFactory;
 use App\Services\VwCarFactory;
+use Lib\QRcode;
 
 /**
  * 设计模式的使用
@@ -96,6 +97,26 @@ class TestModeController extends Controller
         \Mail::to('jqw@qq.com')
             ->cc('chinwe@etocrm.com') // 接收者
             ->send(new OrderShipped($order));
+
+        // 生成二维码
+        $object =  new QRcode();
+        //打开缓冲区
+        ob_start();
+        /**
+         * 1.第一个参数为写入二维码中的内容
+         * 2.第二个参数为是否在本地生成图片，false 否(已文本流的形式存在)
+         * 3.第三个参数为二维码的容错率，H表示最高
+         * 4.第四个参数为生成二维码的大小
+         * 5.第五个参数为生成二维码上下左右间距的大小
+         */
+        $object->png('哈哈哈', false, 'H', 3, 2);
+        //这里就是把生成的图片流从缓冲区保存到内存对象上，使用base64_encode变成编码字符串，通过json返回给页面。
+        $imageString = base64_encode(ob_get_contents());
+        //关闭缓冲区
+        ob_end_clean();
+
+        //把生成的base64字符串返回给前端
+        dd($imageString);
     }
 
 
