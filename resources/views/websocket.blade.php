@@ -13,7 +13,7 @@
     <input type="button" id="btnSend" value="发送" />
     <a href="{{ url('/test-curl') }}">运行WebSocket</a>
 </div>
-<script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js" type="text/javascript"></script>
 <script type="text/javascript">
     $(function () {
         let socket;
