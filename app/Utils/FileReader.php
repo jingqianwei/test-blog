@@ -147,8 +147,48 @@ class FileReader
         if(!$this->_open_file()) {
             return false;
         }
+
+        // 跟下面效果一样：$this->spl_object->fseek(-1, SEEK_END);
         $this->spl_object->seek(filesize($this->csv_file));
         return $this->spl_object->key() + 1;
+    }
+
+    /**
+     * 获取文件总行数(已经去除了空行)
+     * @return bool|int
+     */
+    public function get_file_lines() {
+        if(!$this->_open_file()) {
+            return false;
+        }
+
+        return count(file($this->csv_file, FILE_IGNORE_NEW_LINES|FILE_SKIP_EMPTY_LINES));
+    }
+
+    /**
+     * 检测文件末尾是否有换行
+     * @return array|bool
+     */
+    public function is_file() {
+        if(!$this->_open_file()) {
+            return false;
+        }
+
+        $data = [];
+        // 设置末尾第一行
+        $this->spl_object->fseek(-1, SEEK_END);
+        while(! $this->spl_object->eof())
+        {
+            $row = $this->spl_object->fgetc();
+            if ($row == "\n") {
+                $data[] = $row;
+            } else {
+                break;
+            }
+            $this->spl_object->fseek(-2, SEEK_END);
+        }
+
+        return $data;
     }
 
     /**
