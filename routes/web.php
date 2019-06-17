@@ -16,6 +16,7 @@ use App\Models\User;
 use App\Utils\SignGenerator;
 use App\Utils\SimpleSnowFlake;
 use App\Utils\SnowFlake;
+use App\Utils\Timer;
 
 Route::get('/', function () {
     return view('welcome');
@@ -246,3 +247,25 @@ Route::get('test-update', function () {
 
 // 测试观察者的使用
 Route::get('test-user', 'UserController@create');
+
+Route::get('test-time', function() {
+    $timer = new Timer();
+
+    //注册 - 3s - 重复触发
+    $timer->insert(array('expire' => 3, 'repeat' => true, 'action' => function(){
+        Log::info('3秒 - 重复 - hello world' . "\r\n");
+    }));
+
+    //注册 - 3s - 重复触发
+    $timer->insert(array('expire' => 3, 'repeat' => true, 'action' => function(){
+        Log::info('3秒 - 重复 - go, go' . "\r\n");
+    }));
+
+    //注册 - 6s - 触发一次
+    $timer->insert(array('expire' => 6, 'repeat' => false, 'action' => function(){
+        Log::info('6秒 - 一次 - hello mo,mo' . "\r\n");
+    }));
+
+    //监听
+    $timer->monitor(false);
+});
