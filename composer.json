@@ -26,8 +26,7 @@
         "rap2hpoutre/laravel-log-viewer": "^1.0",
         "spatie/laravel-backup": "^5.12",
         "vinkla/hashids": "~5.1",
-        "whichbrowser/parser": "^2.0",
-        "ext-pcntl": "*"
+        "whichbrowser/parser": "^2.0"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

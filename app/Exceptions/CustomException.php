@@ -12,6 +12,11 @@ use Illuminate\Http\Request;
  */
 class CustomException extends Exception
 {
+    public function __construct($message, int $code = 200)
+    {
+        parent::__construct($message, $code);
+    }
+
     public function render(Request $request, Exception $e)
     {
         $code = $e->getCode() ?: 500;
