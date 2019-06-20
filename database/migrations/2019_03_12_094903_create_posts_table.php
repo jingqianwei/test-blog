@@ -13,11 +13,12 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
+        // todo string，1个长度可以存一个字母或一个数字或一个汉字
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string("title")->comment('标题');
-            $table->string("content")->comment('内容');
-            $table->integer('view_count')->unsigned()->comment('浏览量');
+            $table->string("title", 32)->comment('标题');
+            $table->text("content")->comment('内容');
+            $table->smallInteger('view_count')->unsigned()->default(0)->comment('浏览量');
             $table->timestamps();
         });
     }
