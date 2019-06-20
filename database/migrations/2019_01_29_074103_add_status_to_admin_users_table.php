@@ -14,7 +14,7 @@ class AddStatusToAdminUsersTable extends Migration
     public function up()
     {
         Schema::table('admin_users', function (Blueprint $table) {
-            $table->boolean('status')->default(0)->after('avatar')->comment('状态，0：禁用，1：开启');
+            $table->boolean('status')->unsigned()->default(0)->after('avatar')->comment('状态，0：禁用，1：开启');
         });
     }
 
