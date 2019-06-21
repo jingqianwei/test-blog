@@ -269,3 +269,8 @@ Route::get('test-time', function() {
     //监听
     $timer->monitor(false);
 });
+
+// 框架启动时间
+Route::get('start-up/time', function () {
+    dd(round(microtime(true) - LARAVEL_START, 3) . 's');
+});
