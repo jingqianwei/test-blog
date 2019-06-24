@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "appstract/laravel-opcache",
-            "version": "2.0.2",
+            "version": "2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/appstract/laravel-opcache.git",
-                "reference": "ef41a0f5e6d717317d5434b39add6e17152b620b"
+                "reference": "899ed38246f25da38b40a2eabaa6c9aa41903023"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/appstract/laravel-opcache/zipball/ef41a0f5e6d717317d5434b39add6e17152b620b",
-                "reference": "ef41a0f5e6d717317d5434b39add6e17152b620b",
+                "url": "https://api.github.com/repos/appstract/laravel-opcache/zipball/899ed38246f25da38b40a2eabaa6c9aa41903023",
+                "reference": "899ed38246f25da38b40a2eabaa6c9aa41903023",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -71,7 +71,7 @@
                 "laravel",
                 "php"
             ],
-            "time": "2018-07-19T12:41:58+00:00"
+            "time": "2019-06-17T19:35:57+00:00"
         },
         {
             "name": "appstract/lush-http",
@@ -1279,16 +1279,16 @@
         },
         {
             "name": "egulias/email-validator",
-            "version": "2.1.8",
+            "version": "2.1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/egulias/EmailValidator.git",
-                "reference": "c26463ff9241f27907112fbcd0c86fa670cfef98"
+                "reference": "128cc721d771ec2c46ce59698f4ca42b73f71b25"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/c26463ff9241f27907112fbcd0c86fa670cfef98",
-                "reference": "c26463ff9241f27907112fbcd0c86fa670cfef98",
+                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/128cc721d771ec2c46ce59698f4ca42b73f71b25",
+                "reference": "128cc721d771ec2c46ce59698f4ca42b73f71b25",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -1338,20 +1338,20 @@
                 "validation",
                 "validator"
             ],
-            "time": "2019-05-16T22:02:54+00:00"
+            "time": "2019-06-23T10:14:27+00:00"
         },
         {
             "name": "encore/laravel-admin",
-            "version": "v1.7.1",
+            "version": "v1.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/z-song/laravel-admin.git",
-                "reference": "c7a24ef32f0e384a0e54940ce4bc7e156ff34501"
+                "reference": "6306ab390c6194a8cd847bcdc6232669de32b3bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/z-song/laravel-admin/zipball/c7a24ef32f0e384a0e54940ce4bc7e156ff34501",
-                "reference": "c7a24ef32f0e384a0e54940ce4bc7e156ff34501",
+                "url": "https://api.github.com/repos/z-song/laravel-admin/zipball/6306ab390c6194a8cd847bcdc6232669de32b3bb",
+                "reference": "6306ab390c6194a8cd847bcdc6232669de32b3bb",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -1415,7 +1415,7 @@
                 "grid",
                 "laravel"
             ],
-            "time": "2019-06-10T05:48:25+00:00"
+            "time": "2019-06-23T10:12:08+00:00"
         },
         {
             "name": "erusev/parsedown",
@@ -5979,16 +5979,16 @@
         },
         {
             "name": "filp/whoops",
-            "version": "2.3.1",
+            "version": "2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filp/whoops.git",
-                "reference": "bc0fd11bc455cc20ee4b5edabc63ebbf859324c7"
+                "reference": "1a1a1044ad00e285bd2825fac4c3a0443d90ad33"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filp/whoops/zipball/bc0fd11bc455cc20ee4b5edabc63ebbf859324c7",
-                "reference": "bc0fd11bc455cc20ee4b5edabc63ebbf859324c7",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/1a1a1044ad00e285bd2825fac4c3a0443d90ad33",
+                "reference": "1a1a1044ad00e285bd2825fac4c3a0443d90ad33",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -6042,7 +6042,7 @@
                 "throwable",
                 "whoops"
             ],
-            "time": "2018-10-23T09:00:00+00:00"
+            "time": "2019-06-23T09:00:00+00:00"
         },
         {
             "name": "fzaninotto/faker",
