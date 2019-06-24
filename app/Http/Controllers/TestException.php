@@ -18,6 +18,11 @@ class TestException extends Controller
         echo 'end';
     }
 
+    /**
+     * @param $num
+     * @return mixed
+     * @throws \Exception
+     */
     private function test1($num)
     {
         try{
@@ -27,6 +32,11 @@ class TestException extends Controller
         }
     }
 
+    /**
+     * @param $num
+     * @return mixed
+     * @throws \Exception
+     */
     private function test2($num)
     {
         try {
@@ -36,6 +46,11 @@ class TestException extends Controller
         }
     }
 
+    /**
+     * @param $num
+     * @return mixed
+     * @throws \Exception
+     */
     private function test3($num)
     {
         if ($num > 1) {
