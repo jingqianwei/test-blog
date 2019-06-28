@@ -274,3 +274,23 @@ Route::get('test-time', function() {
 Route::get('start-up/time', function () {
     dd(round(microtime(true) - LARAVEL_START, 3) . 's');
 });
+
+
+// 集合使用
+Route::get('test-collect', function () {
+    $arr = [1, 2, 3, 4, 5];
+    $collect = collect($arr)->map(function ($item) {
+        return [
+            'key1' => $item * 2,
+            'key2' => $item * 4,
+        ];
+    })->values()->toArray();
+    $collect['name'] = 1;
+
+    dd($collect);
+});
+
+// 测试订阅redis过期
+Route::get('test-cache', function() {
+    Cache::put('ORDER_CONFIRM:222222', 222222,3); // 1分钟后过期--执行取消订单
+});
