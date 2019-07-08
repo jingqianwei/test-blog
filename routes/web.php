@@ -299,3 +299,8 @@ Route::get('test-cache', function() {
 Route::get('test-channel', function() {
     \Illuminate\Support\Facades\Redis::publish('test-channel', json_encode(['foo' => 'bar']));
 });
+
+// 测试模型关系
+Route::get('test-model', function() {
+    dd(Post::with('commentId')->withCount('commentId')->get()->toArray());
+});
