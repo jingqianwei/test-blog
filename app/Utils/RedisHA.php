@@ -11,6 +11,7 @@ namespace App\Utils;
 use Illuminate\Redis\RedisManager;
 
 /**
+ * redis集群
  * 使用方法：
  * $index 指定redis连接键
  * $hash_set = RedisHash::connection($index)->hset('hash:key', 1204752,json_encode(['name'=>'小锦鲤']));
