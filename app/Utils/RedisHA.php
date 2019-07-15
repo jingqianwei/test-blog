@@ -15,7 +15,7 @@ use Illuminate\Redis\RedisManager;
  * $index 指定redis连接键
  * $hash_set = RedisHash::connection($index)->hset('hash:key', 1204752,json_encode(['name'=>'小锦鲤']));
  */
-class RedisHash
+class RedisHA
 {
     protected static $connections = [];
 
