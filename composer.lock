@@ -7546,6 +7546,7 @@
             "dist": {
                 "type": "zip",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "url": "https://api.github.com/repos/mnabialek/laravel-version/zipball/a1685dc0868a4faebc01000f86ff24c7922403f5",
                 "reference": "a1685dc0868a4faebc01000f86ff24c7922403f5",
                 "shasum": "",
@@ -7555,6 +7556,11 @@
                         "preferred": true
                     }
                 ]
+=======
+                "url": "https://api.github.com/repos/mnabialek/laravel-version/zipball/cdf2b864df387cff4bf1847d0e1a004750fbc4eb",
+                "reference": "cdf2b864df387cff4bf1847d0e1a004750fbc4eb",
+                "shasum": ""
+>>>>>>> fix
 =======
                 "url": "https://api.github.com/repos/mnabialek/laravel-version/zipball/cdf2b864df387cff4bf1847d0e1a004750fbc4eb",
                 "reference": "cdf2b864df387cff4bf1847d0e1a004750fbc4eb",
