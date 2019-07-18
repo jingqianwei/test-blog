@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\JwtAuth;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -69,6 +70,9 @@ class Kernel extends HttpKernel
 
         // 单独跨域中间件
         'cors' => \Barryvdh\Cors\HandleCors::class,
+
+        // jwt 认证
+        'jwt_auth' => JwtAuth::class,
     ];
 
     /**

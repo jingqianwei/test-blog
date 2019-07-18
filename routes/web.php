@@ -304,3 +304,12 @@ Route::get('test-channel', function() {
 Route::get('test-model', function() {
     dd(Post::with('commentId')->withCount('commentId')->get()->toArray());
 });
+
+
+# 测试生成jwt-token
+Route::get('test/jwt', function () {
+    $apiJwt = new \App\Utils\JwtAuth();
+    $token = $apiJwt->createToken(123);
+
+    dd($token, $apiJwt->validateToken($token));
+});

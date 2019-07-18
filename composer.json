@@ -20,10 +20,10 @@
         "laravel/framework": "^5.8.0",
         "laravel/socialite": "^4.1",
         "laravel/tinker": "^1.0",
+        "lcobucci/jwt": "^3.3",
         "predis/predis": "^1.1",
         "rap2hpoutre/laravel-log-viewer": "^1.0",
         "spatie/laravel-backup": "^5.12",
-        "swooletw/laravel-swoole": "^2.6.63",
         "vinkla/hashids": "~5.1",
         "whichbrowser/parser": "^2.0"
     },

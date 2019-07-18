@@ -30,7 +30,7 @@ class Handler extends ExceptionHandler
     /**
      * 报告或记录异常
      * Report or log an exception.
-     *此处是发送异常给 Sentry、Bugsnag 等外部服务的好位置。
+     *此处是发送异常给 Sentry 等外部服务的好位置。
      *
      * @param  \Exception $exception
      * @return void
@@ -74,12 +74,18 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        if (config('app.debug')) { //本地开发环境，输出错误
-            return parent::render($request, $exception);
+        if (config('app.debug') === false) {
+            // 捕获自定义错误
+            if ($exception instanceof CustomException) {
+                return $exception->render($request, $exception);
+            }
+
+            // 捕获授权错误
+            if ($exception instanceof ApiException) {
+                return response()->json(['errCode' => $exception->getCode(), 'errMsg' => $exception->getMessage()]);
+            }
         }
 
-        if ($exception instanceof CustomException) {
-            return $exception->render($request, $exception);
-        }
+        return parent::render($request, $exception);
     }
 }
