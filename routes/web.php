@@ -13,6 +13,7 @@
 use App\Http\Resources\UserResource;
 use App\Models\Post;
 use App\Models\User;
+use App\Utils\JwtAuth;
 use App\Utils\SignGenerator;
 use App\Utils\SimpleSnowFlake;
 use App\Utils\SnowFlake;
@@ -308,8 +309,14 @@ Route::get('test-model', function() {
 
 # 测试生成jwt-token
 Route::get('test/jwt', function () {
-    $apiJwt = new \App\Utils\JwtAuth();
-    $token = $apiJwt->createToken(123);
+    $apiJwt = JwtAuth::getInstance();
+    $token = $apiJwt->encode();
 
-    dd($token, $apiJwt->validateToken($token));
+    dd($token, $apiJwt->decode());
 });
+
+# 测试秒杀
+Route::get('test/store', 'SecondKillController@storage');
+
+# 秒杀
+Route::get('test/kill', 'SecondKillController@secondsKill');

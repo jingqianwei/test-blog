@@ -40,9 +40,16 @@ return [
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],
 
+        // mysql读写分离配置：https://www.cnblogs.com/chenhaoyu/p/10773988.html
         'mysql' => [
             'driver' => 'mysql',
-            'host' => env('DB_HOST', '127.0.0.1'),
+            'read' => [ // 读
+                'host' => env('DB_HOST', '127.0.0.1'),
+            ],
+            'write' => [ // 写
+                'host' => env('DB_WRITE_HOST', '127.0.0.1'),
+            ],
+            //'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
             'database' => env('DB_DATABASE', 'forge'),
             'username' => env('DB_USERNAME', 'forge'),
