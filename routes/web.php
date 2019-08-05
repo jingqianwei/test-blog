@@ -14,6 +14,7 @@ use App\Http\Resources\UserResource;
 use App\Models\Post;
 use App\Models\User;
 use App\Utils\JwtAuth;
+use App\Utils\RedisLeaderBoard;
 use App\Utils\SignGenerator;
 use App\Utils\SimpleSnowFlake;
 use App\Utils\SnowFlake;
@@ -320,3 +321,27 @@ Route::get('test/store', 'SecondKillController@storage');
 
 # 秒杀
 Route::get('test/kill', 'SecondKillController@secondsKill');
+
+# redis排行榜
+Route::get('test-board', function () {
+    $redis = new RedisLeaderBoard();
+//    // 插入10条数据
+//    for ($i = 0; $i < 10; $i++) {
+//        $res = $redis->addLeaderBoard('id'. $i, $i);
+//        dump($res);
+//    }
+
+    // 获取最高分的前5条数据
+    $preLimit = $redis->getLeaderBoard(5);
+
+    // 获取最低分的前5条数据
+    $nextLimit = $redis->getLeaderBoard(5, false);
+
+    // 取最大值，用最小的key, id0 ~ id9
+    $bigValueAes = $redis->getNodeRank('id0'); // 最大值，用最小的key
+
+    // 取最大值，用最大的key, id0 ~ id9
+    $bigValueDesc = $redis->getNodeRank('id9', false); // 最大值，用最大的key
+
+    dd($preLimit, $nextLimit, $bigValueAes, $bigValueDesc);
+});
