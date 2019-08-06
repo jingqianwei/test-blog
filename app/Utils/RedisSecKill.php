@@ -8,7 +8,11 @@
 
 namespace App\Utils;
 
-
+/**
+ * redis 秒杀
+ * @link https://blog.csdn.net/m_nanle_xiaobudiu/article/details/80479666
+ * @package App\Utils
+ */
 class RedisSecKill
 {
     /**
