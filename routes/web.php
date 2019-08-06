@@ -357,3 +357,21 @@ Route::get('test/secKill', function () {
     // 消费队列
     $redis->consumer();
 });
+
+Route::get('test/redis', function () {
+    $key = 'mamon:memberinfo';
+
+    // 连接redis
+    $redis = new \Redis;
+    $redis->connect("127.0.0.1", 6379);
+    $redis->auth('123456');
+
+    $redis->hSet($key, 'id', 222); // 直接设置值
+    $redis->hSetNx($key, 'id', 1111); // 当hashKey值不存在时才会设置
+    $redis->hMSet($key, [
+        'name' => '小红',
+        'sex'  => '女',
+        'time' => time(),
+    ]);
+    dd('设置成功');
+});
