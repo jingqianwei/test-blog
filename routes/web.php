@@ -15,6 +15,7 @@ use App\Models\Post;
 use App\Models\User;
 use App\Utils\JwtAuth;
 use App\Utils\RedisLeaderBoard;
+use App\Utils\RedisSecKill;
 use App\Utils\SignGenerator;
 use App\Utils\SimpleSnowFlake;
 use App\Utils\SnowFlake;
@@ -344,4 +345,15 @@ Route::get('test-board', function () {
     $bigValueDesc = $redis->getNodeRank('id9', false); // 最大值，用最大的key
 
     dd($preLimit, $nextLimit, $bigValueAes, $bigValueDesc);
+});
+
+# 秒杀
+Route::get('test/secKill', function () {
+    $redis = new RedisSecKill();
+
+    // 生产抢购队列
+    $redis->producer();
+
+    // 消费队列
+    $redis->consumer();
 });
