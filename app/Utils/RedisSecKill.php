@@ -75,6 +75,8 @@ class RedisSecKill
             $this->mysql = new \PDO("mysql:dbname=test;host=127.0.0.1", 'root', 'root');
         }
 
+        // 取出队列所有的数据$this->redis->lRange($this->redisKey, 0, -1); 0: 开始位置，-1: 结束位置
+
         // 从队列最前面取出一个值,因为队列是右进，所以左出是第一个，并减少一个
         while ($uid = $this->redis->lPop($this->redisKey)) {
             //生成订单号

@@ -366,12 +366,12 @@ Route::get('test/redis', function () {
     $redis->connect("127.0.0.1", 6379);
     $redis->auth('123456');
 
-    $redis->hSet($key, 'id', 222); // 直接设置值
+    $redis->hSet($key, 'id', 222); // 直接设置值,不管值是否已存在
     $redis->hSetNx($key, 'id', 1111); // 当hashKey值不存在时才会设置
     $redis->hMSet($key, [
         'name' => '小红',
         'sex'  => '女',
         'time' => time(),
-    ]);
+    ]); // 批量设置键值对值
     dd('设置成功');
 });
