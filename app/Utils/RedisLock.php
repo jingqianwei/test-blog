@@ -129,6 +129,7 @@ EOF;
      */
     public function existsKey($key, $value = '', $expire = 1)
     {
+        // 注意：采用与false比较的原因。Redis的nil(类似null)会被转换为Lua的false
         $script = <<<EOF
             local key = KEYS[1]
             local value = ARGV[1]
