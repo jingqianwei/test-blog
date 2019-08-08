@@ -150,8 +150,7 @@ Route::get('redis-id', function() {
 });
 
 Route::get('test-pipe', function() {
-    function G($star,$end = '')
-    {
+    function G($star,$end = '') {
         static $info = []; #静态变量在生命周期内都是有效的
         if (!empty($end))
         {
@@ -172,8 +171,7 @@ Route::get('test-pipe', function() {
     G('1');
     //不具备原子性 ,管道(pipeline 只是把多个redis指令一起发出去，redis并没有保证这些指定的执行是原子的)
     $redis->multi(Redis::PIPELINE); // 或者直接使用$redis->pipeline()
-    for ($i=0;$i<100000;$i++)
-    {
+    for ($i=0;$i<100000;$i++) {
         $redis->set("test_{$i}",pow($i,2));
         $redis->get("test_{$i}");
     }
@@ -188,8 +186,7 @@ Route::get('test-pipe', function() {
     G('2');
     //事物具备原子性(multi相当于一个redis的transaction的，保证整个操作的原子性，避免由于中途出错而导致最后产生的数据不一致)
     $redis->multi();
-    for ($i=0;$i<100000;$i++)
-    {
+    for ($i=0;$i<100000;$i++) {
         $redis->set("test_{$i}",pow($i,2));
         $redis->get("test_{$i}");
     }
@@ -204,8 +201,7 @@ Route::get('test-pipe', function() {
     //普通
     G('3');
     //事物具备原子性(单线程，保证唯一原子性)
-    for ($i=0;$i<100000;$i++)
-    {
+    for ($i=0;$i<100000;$i++) {
         $redis->set("test_{$i}",pow($i,2));
         $redis->get("test_{$i}");
     }
