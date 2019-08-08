@@ -2184,16 +2184,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.8.30",
+            "version": "v5.8.31",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "7ccf0cf63931a8d8391aed90e6fc011381ea6838"
+                "reference": "24cc1786bd55876fa52380306354772355345efd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/7ccf0cf63931a8d8391aed90e6fc011381ea6838",
-                "reference": "7ccf0cf63931a8d8391aed90e6fc011381ea6838",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/24cc1786bd55876fa52380306354772355345efd",
+                "reference": "24cc1786bd55876fa52380306354772355345efd",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -2333,7 +2333,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2019-07-30T14:08:47+00:00"
+            "time": "2019-08-06T15:09:02+00:00"
         },
         {
             "name": "laravel/socialite",
@@ -2780,16 +2780,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.22.0",
+            "version": "2.22.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "1a0e48b5f656065ba3c265b058b25d36c2162a5e"
+                "reference": "738fbd8d80b2c5e158fda76c29c2de432fcc6f7e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/1a0e48b5f656065ba3c265b058b25d36c2162a5e",
-                "reference": "1a0e48b5f656065ba3c265b058b25d36c2162a5e",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/738fbd8d80b2c5e158fda76c29c2de432fcc6f7e",
+                "reference": "738fbd8d80b2c5e158fda76c29c2de432fcc6f7e",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -2849,7 +2849,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2019-07-28T09:02:12+00:00"
+            "time": "2019-08-07T12:36:44+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -6052,16 +6052,16 @@
         },
         {
             "name": "filp/whoops",
-            "version": "2.4.1",
+            "version": "2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filp/whoops.git",
-                "reference": "6fb502c23885701a991b0bba974b1a8eb6673577"
+                "reference": "cde50e6720a39fdacb240159d3eea6865d51fd96"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filp/whoops/zipball/6fb502c23885701a991b0bba974b1a8eb6673577",
-                "reference": "6fb502c23885701a991b0bba974b1a8eb6673577",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/cde50e6720a39fdacb240159d3eea6865d51fd96",
+                "reference": "cde50e6720a39fdacb240159d3eea6865d51fd96",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -6101,8 +6101,8 @@
             "authors": [
                 {
                     "name": "Filipe Dobreira",
-                    "homepage": "https://github.com/filp",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "homepage": "https://github.com/filp"
                 }
             ],
             "description": "php error handling for cool kids",
@@ -6115,7 +6115,7 @@
                 "throwable",
                 "whoops"
             ],
-            "time": "2019-07-04T09:00:00+00:00"
+            "time": "2019-08-07T09:00:00+00:00"
         },
         {
             "name": "fzaninotto/faker",
@@ -6361,16 +6361,16 @@
         },
         {
             "name": "mockery/mockery",
-            "version": "1.2.2",
+            "version": "1.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mockery/mockery.git",
-                "reference": "0eb0b48c3f07b3b89f5169ce005b7d05b18cf1d2"
+                "reference": "4eff936d83eb809bde2c57a3cea0ee9643769031"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mockery/mockery/zipball/0eb0b48c3f07b3b89f5169ce005b7d05b18cf1d2",
-                "reference": "0eb0b48c3f07b3b89f5169ce005b7d05b18cf1d2",
+                "url": "https://api.github.com/repos/mockery/mockery/zipball/4eff936d83eb809bde2c57a3cea0ee9643769031",
+                "reference": "4eff936d83eb809bde2c57a3cea0ee9643769031",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -6428,7 +6428,7 @@
                 "test double",
                 "testing"
             ],
-            "time": "2019-02-13T09:37:52+00:00"
+            "time": "2019-08-07T15:01:07+00:00"
         },
         {
             "name": "myclabs/deep-copy",
