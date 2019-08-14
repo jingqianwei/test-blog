@@ -19,6 +19,7 @@ use App\Models\Order;
 use App\Services\Factory;
 use App\Services\VwCarAbstractFactory;
 use App\Services\VwCarFactory;
+use GuzzleHttp\Client;
 use Lib\QRcode;
 
 /**
@@ -71,6 +72,18 @@ class TestModeController extends Controller
         curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
         curl_exec($ch);
         curl_close($ch);
+    }
+
+    /**
+     * Client 测试
+     */
+    public function clientTest()
+    {
+        $client = new Client([
+            'base_uri' => 'http://101.132.75.39:9502',
+            'verify' => false,
+            'timeout' => 30,
+        ]);
     }
 
     public function test()
