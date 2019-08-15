@@ -69,12 +69,12 @@ class SendVitalityValue implements ShouldQueue
         }
 
         if ($i == 0) {
-            $this->release();
+            $this->release(2);
             \Log::info(__METHOD__ . '测试队列执行第' . $this->attempts() . '次');
             return; //TODO 不加return还会往后面执行
         }
 
-        \Log::info(__METHOD__ , '异步注册送积分');
+        \Log::info(__METHOD__ . '异步注册送积分');
     }
 
     // TODO 这个中没有failed()方法，想输出错误直接用try{}catch(){}捕获
