@@ -41,6 +41,12 @@ class BackupDatabase extends Command
      */
     public function handle()
     {
+        $total = 10001;
+        if ($total % 100 == 1) {
+            dd('多了', floor($total / 100));
+        } else {
+            dd('刚好', ceil($total / 100));
+        }
         $this->path = storage_path('logs' . DIRECTORY_SEPARATOR . 'backups');
         if (!file_exists($this->path)) {
             mkdir($this->path, 0777);

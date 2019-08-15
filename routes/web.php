@@ -15,6 +15,7 @@ use App\Models\Post;
 use App\Models\User;
 use App\Utils\JwtAuth;
 use App\Utils\RedisLeaderBoard;
+use App\Utils\RedisSecKill;
 use App\Utils\SignGenerator;
 use App\Utils\SimpleSnowFlake;
 use App\Utils\SnowFlake;
@@ -90,7 +91,8 @@ Route::get('test-array', function() {
         $user->save();
     }
     dd($user);
-    dd(str_pad(1, 12, 0)); // 通过指定字符把字符串填充到指定长度 100000000000
+    dd(str_pad(1, 12, 0)); // 通过指定字符把字符串填充到指定长度 100000000000, 默认向右填充
+    dd(str_pad(1, 12, 0, STR_PAD_LEFT)); // 000000000001 ,向左填充0
     //dd(env('ARRAY'));
     $input = [["key" => "value1"], ["key" => "value2"]];
 	//$input = ['php', 'php', 'java', 'go', 'python'];
@@ -149,8 +151,7 @@ Route::get('redis-id', function() {
 });
 
 Route::get('test-pipe', function() {
-    function G($star,$end = '')
-    {
+    function G($star,$end = '') {
         static $info = []; #静态变量在生命周期内都是有效的
         if (!empty($end))
         {
@@ -171,8 +172,7 @@ Route::get('test-pipe', function() {
     G('1');
     //不具备原子性 ,管道(pipeline 只是把多个redis指令一起发出去，redis并没有保证这些指定的执行是原子的)
     $redis->multi(Redis::PIPELINE); // 或者直接使用$redis->pipeline()
-    for ($i=0;$i<100000;$i++)
-    {
+    for ($i=0;$i<100000;$i++) {
         $redis->set("test_{$i}",pow($i,2));
         $redis->get("test_{$i}");
     }
@@ -187,8 +187,7 @@ Route::get('test-pipe', function() {
     G('2');
     //事物具备原子性(multi相当于一个redis的transaction的，保证整个操作的原子性，避免由于中途出错而导致最后产生的数据不一致)
     $redis->multi();
-    for ($i=0;$i<100000;$i++)
-    {
+    for ($i=0;$i<100000;$i++) {
         $redis->set("test_{$i}",pow($i,2));
         $redis->get("test_{$i}");
     }
@@ -203,8 +202,7 @@ Route::get('test-pipe', function() {
     //普通
     G('3');
     //事物具备原子性(单线程，保证唯一原子性)
-    for ($i=0;$i<100000;$i++)
-    {
+    for ($i=0;$i<100000;$i++) {
         $redis->set("test_{$i}",pow($i,2));
         $redis->get("test_{$i}");
     }
@@ -344,4 +342,33 @@ Route::get('test-board', function () {
     $bigValueDesc = $redis->getNodeRank('id9', false); // 最大值，用最大的key
 
     dd($preLimit, $nextLimit, $bigValueAes, $bigValueDesc);
+});
+
+# 秒杀
+Route::get('test/secKill', function () {
+    $redis = new RedisSecKill();
+
+    // 生产抢购队列
+    $redis->producer();
+
+    // 消费队列
+    $redis->consumer();
+});
+
+Route::get('test/redis', function () {
+    $key = 'mamon:memberinfo';
+
+    // 连接redis
+    $redis = new \Redis;
+    $redis->connect("127.0.0.1", 6379);
+    $redis->auth('123456');
+
+    $redis->hSet($key, 'id', 222); // 直接设置值,不管值是否已存在
+    $redis->hSetNx($key, 'id', 1111); // 当hashKey值不存在时才会设置
+    $redis->hMSet($key, [
+        'name' => '小红',
+        'sex'  => '女',
+        'time' => time(),
+    ]); // 批量设置键值对值
+    dd('设置成功');
 });

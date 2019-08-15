@@ -70,8 +70,8 @@ class RedisLock
 
     /**
      * 通过lua进行加锁
-     * @param $key
-     * @param int $expire
+     * @param string $key 加索的key值
+     * @param int $expire 过期时间
      * @return mixed
      */
     public function lockByLua($key, $expire = 5)
@@ -96,7 +96,7 @@ EOF;
 
     /**
      * 释放锁
-     * @param $key
+     * @param string $key 加锁的key值
      * @return mixed
      */
     public function unlock($key)
@@ -121,6 +121,34 @@ EOF;
     }
 
     /**
+     * 检查一个key值是否存在，不存在就设置一个值
+     * @param string $key key值
+     * @param string $value 设置的值，默认为空
+     * @param int $expire 过期时间，默认为1
+     * @return mixed
+     */
+    public function existsKey($key, $value = '', $expire = 1)
+    {
+        // 注意：采用与false比较的原因。Redis的nil(类似null)会被转换为Lua的false
+        $script = <<<EOF
+            local key = KEYS[1]
+            local value = ARGV[1]
+            local expire = ARGV[2]
+            
+            if redis.call('get', key) == false 
+            then 
+                redis.call('set', key, value) 
+                redis.call('expire', key, expire) 
+                return 0 
+            else 
+                return 1 
+            end
+EOF;
+
+        return $this->_eval($script, [$key, $value, $expire]);
+    }
+
+    /**
      * 执行lua命令
      * @param string $script 要执行的lua命令
      * @param array $params 传进去的参数(必须是数组):
@@ -141,5 +169,6 @@ EOF;
             // to do...
             $redisLock->unlock($key);
         }
+     *  通知lua执行的命令都具有原子性，要不都成功，要不都失败
      */
 }
