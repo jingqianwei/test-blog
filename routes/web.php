@@ -248,6 +248,9 @@ Route::get('test-update', function () {
 // 测试观察者的使用
 Route::get('test-user', 'UserController@create');
 
+// 导出用户表数据
+Route::get('test-export', 'UserController@export');
+
 Route::get('test-time', function() {
     $timer = new Timer();
 
