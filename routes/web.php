@@ -302,7 +302,16 @@ Route::get('test-channel', function() {
 
 // 测试模型关系
 Route::get('test-model', function() {
-    dd(Post::with('commentId')->withCount('commentId')->get()->toArray());
+    // 获取sql语句
+    $sql = Post::where('id', 1)->toSql();
+
+    // 获取sql中的参数值
+    $binds = Post::where('id', 1)->getBindings();
+
+    // 获取模型关系数据
+    $modelData = Post::with('commentId')->withCount('commentId')->get()->toArray();
+
+    dd($sql, $binds, $modelData);
 });
 
 
