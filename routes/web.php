@@ -321,10 +321,16 @@ Route::get('test-model', function() {
 # 测试生成jwt-token
 Route::get('test/jwt', function () {
     $apiJwt = JwtAuth::getInstance();
+    $apiJwt->setUid('哈哈哈哈');
     $token = $apiJwt->encode();
 
-    dd($token, $apiJwt->decode());
+    dd($token->getToken(), $token);
 });
+
+// 测试token的使用
+Route::get('test/jwt/token', function () {
+   return response()->json([JwtAuth::getInstance()->getUid(), date('Y-m-d H:i:s')]);
+})->middleware('jwt_auth:1');
 
 # 测试秒杀
 Route::get('test/store', 'SecondKillController@storage');
