@@ -293,6 +293,22 @@ Route::get('test-collect', function () {
     dd($collect);
 });
 
+// 测试缓存的用法
+Route::get('test-re-cache', function () {
+    /**
+     * 如果缓存中不存在你想要的数据时，则传递给 remember 方法的 闭包 将被执行，
+     * 然后将其结果返回并放置到缓存中, 下次再取值时，优先去缓存中取,
+     * 需要注意laravel高版本时间单位是秒，而不是分钟，具体请以文档为准
+     * 还要注意，redis中没有返回值，返回的是null，如果是false，''，[]，redis也会认为取到值了
+     */
+    $data = Cache::remember('test123456', 60, function () {
+        \Illuminate\Support\Facades\Log::info('缓存中取不到值');
+        return null;
+    });
+
+    dd($data, "\n", Cache::get('test123456'));
+});
+
 // 测试订阅redis过期
 Route::get('test-cache', function() {
     Cache::put('ORDER_CONFIRM:222222', 222222,3); // 1分钟后过期--执行取消订单
