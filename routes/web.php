@@ -248,6 +248,9 @@ Route::get('test-update', function () {
 // 测试观察者的使用
 Route::get('test-user', 'UserController@create');
 
+// 导出用户表数据
+Route::get('test-export', 'UserController@export');
+
 Route::get('test-time', function() {
     $timer = new Timer();
 
@@ -290,6 +293,21 @@ Route::get('test-collect', function () {
     dd($collect);
 });
 
+// 测试缓存的用法
+Route::get('test-re-cache', function () {
+    /**
+     * 如果缓存中不存在你想要的数据时，则传递给 remember 方法的 闭包 将被执行，
+     * 然后将其结果返回并放置到缓存中, 下次再取值时，优先去缓存中取,
+     * 需要注意laravel高版本时间单位是秒，而不是分钟，具体请以文档为准
+     * 还要注意，redis中没有对应的值则返回的是null，如果是false，''，[]，redis也会认为取到值了
+     */
+    $data = Cache::remember('test123456', 60, function () {
+        return null;
+    });
+
+    dd($data, "\n", Cache::get('test123456'));
+});
+
 // 测试订阅redis过期
 Route::get('test-cache', function() {
     Cache::put('ORDER_CONFIRM:222222', 222222,3); // 1分钟后过期--执行取消订单
@@ -302,17 +320,32 @@ Route::get('test-channel', function() {
 
 // 测试模型关系
 Route::get('test-model', function() {
-    dd(Post::with('commentId')->withCount('commentId')->get()->toArray());
+    // 获取sql语句
+    $sql = Post::where('id', 1)->toSql();
+
+    // 获取sql中的参数值
+    $binds = Post::where('id', 1)->getBindings();
+
+    // 获取模型关系数据
+    $modelData = Post::with('commentId')->withCount('commentId')->get()->toArray();
+
+    dd($sql, $binds, $modelData);
 });
 
 
 # 测试生成jwt-token
 Route::get('test/jwt', function () {
     $apiJwt = JwtAuth::getInstance();
+    $apiJwt->setUid('哈哈哈哈');
     $token = $apiJwt->encode();
 
-    dd($token, $apiJwt->decode());
+    dd($token->getToken(), $token);
 });
+
+// 测试token的使用
+Route::get('test/jwt/token', function () {
+   return response()->json([JwtAuth::getInstance()->getUid(), date('Y-m-d H:i:s')]);
+})->middleware('jwt_auth:1');
 
 # 测试秒杀
 Route::get('test/store', 'SecondKillController@storage');

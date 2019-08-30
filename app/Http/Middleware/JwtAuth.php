@@ -14,10 +14,11 @@ class JwtAuth
      *
      * @param  \Illuminate\Http\Request $request
      * @param  \Closure $next
+     * @param int $type 支持中件间传参,在路由中直接加
      * @return mixed
      * @throws ApiException
      */
-    public function handle($request, Closure $next)
+    public function handle($request, Closure $next, $type = 0)
     {
         //中间件中不能用json_encode
         $token = $request->token;
@@ -33,5 +34,14 @@ class JwtAuth
         } else {
             throw new ApiException(ApiError::NO_TOKEN_ERR);
         }
+    }
+
+    // 用于在返回结果之后调用
+    public function terminate($request, $response)
+    {
+        // 存储 session 数据...
+        \Log::info('结束之后的数据', [$request->ip(), $request->old()]);
+        // 结果返回之后调用
+        // 记录 API 的响应结果
     }
 }
