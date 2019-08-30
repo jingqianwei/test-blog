@@ -25,6 +25,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// 测试文件复制
+Route::get('test-file', function () {
+    $destination = storage_path() . '/php/test.php';
+    $source = storage_path() . '/tpl/test.tpl';
+    clearstatcache();
+    copy($source, $destination);
+});
+
+// 测试格式化json数据写入文件，参考网址：https://cloud.tencent.com/developer/article/1097305
+Route::get('test-json', function () {
+    $path = storage_path() . '/json/test.json';
+    if (is_file($path)) {
+        file_put_contents($path, json_encode(User::all()->toArray(),JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT));
+        dd(User::all()->toArray());
+    }
+    dd('没有文件');
+});
+
 //日志查看页面
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 
