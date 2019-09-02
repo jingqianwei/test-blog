@@ -44,6 +44,17 @@ class User extends Authenticatable
 //    }
 
     /**
+     * 为模型事件。
+     *
+     * @link https://www.jianshu.com/p/d9e0c1fd4c73
+     * @var array
+     */
+//    protected $dispatchesEvents = [
+//        'saved' => UserSaved::class,
+//        'deleted' => UserDeleted::class,
+//    ];
+
+    /**
      * 用户头像访问器
      * Get avatar attribute.
      *
