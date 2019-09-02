@@ -328,7 +328,7 @@ Route::get('test-re-cache', function () {
 
 // 测试订阅redis过期
 Route::get('test-cache', function() {
-    Cache::put('ORDER_CONFIRM:222222', 222222,3); // 1分钟后过期--执行取消订单
+    Cache::put('ORDER_CONFIRM:222222', 222222, 60); // 1分钟后过期--执行取消订单
 });
 
 // redis给test-channel发布消息
