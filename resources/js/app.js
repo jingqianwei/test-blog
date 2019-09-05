@@ -5,7 +5,7 @@ import router from './router'
 //Vue.use(elementUI, {size: 'medium'}); // 将elementUI引入vue中
 import App from './App.vue';
 
-const app = new Vue({
+new Vue({
     el: '#app',
     router,
     render: h => h(App)

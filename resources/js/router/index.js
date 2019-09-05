@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 // 内容组件
-import Main from '../layout/Main'
+import Main from '../components/Main'
 import Article from '../components/Article'
 import Message from '../components/Message'
 import Laboratory from '../components/Laboratory'
