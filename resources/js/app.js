@@ -1,3 +1,4 @@
+//require('./bootstrap');
 window.Vue = require('vue');
 import router from './router'
 //import elementUI from 'element-ui';

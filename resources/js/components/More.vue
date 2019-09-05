@@ -1,9 +1,9 @@
 <template>
-    <div class="app-main">
+    <main class="app-main">
         <div class="app-viewport">
             更多
         </div>
-    </div>
+    </main>
 </template>
 
 <script>

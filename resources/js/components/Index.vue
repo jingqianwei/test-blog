@@ -1,5 +1,5 @@
 <template>
-    <div class="app-main">
+    <main class="app-main">
         <div class="app-viewport">
             <div class="page-index">
                 <div class="index-banner background-overlay background-attachment-fixed">
@@ -83,7 +83,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 </template>
 
 <script>

@@ -1,9 +1,9 @@
 <template>
-    <div class="app-main">
+    <main class="app-main">
         <div class="app-viewport">
             留言
         </div>
-    </div>
+    </main>
 </template>
 
 <script>
