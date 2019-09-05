@@ -1023,13 +1023,13 @@
             white-space: nowrap;
         }
         .post-item__count {
-            display: -webkit-inline-box;
+            //display: -webkit-inline-box;
             display: inline-flex;
             -webkit-box-align: center;
             align-items: center;
         }
         .post-item__tags {
-            display: -webkit-inline-box;
+            //display: -webkit-inline-box;
             display: inline-flex;
             -webkit-box-align: center;
             align-items: center;
@@ -1047,7 +1047,7 @@
                 font-family: var(--font-nnumber);
                 margin-left: 1rem;
                 font-size: 14px;
-                display: -webkit-inline-box;
+                //display: -webkit-inline-box;
                 display: inline-flex;
                 -webkit-box-align: center;
                 align-items: center;
