@@ -136,7 +136,7 @@ Route::get('test-array', function() {
 });
 
 // 测试vue
-Route::view('test-vue', 'vue');
+Route::view('test-vue/{any}', 'vue')->where('any','.*');
 
 // 测试WebSocket
 Route::view('test-web-socket', 'websocket');
