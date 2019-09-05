@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 // 内容组件
-import Main from '../components/Main'
+import Index from '../components/Index'
 import Article from '../components/Article'
 import Message from '../components/Message'
 import Laboratory from '../components/Laboratory'
@@ -12,9 +12,9 @@ Vue.use(VueRouter);
 
 const routes = [
     {
-        path: '/main',
-        name: 'main',
-        component: Main,
+        path: '/index',
+        name: 'index',
+        component: Index,
     },
     {
         path: '/article',
@@ -38,13 +38,13 @@ const routes = [
     },
     {
         path: '*',
-        redirect: '/main',
+        redirect: '/index',
     }
 ];
 
 const router = new VueRouter({
     routes: routes,
-    base:'test-vue', // 基础路径
+    base:'vue', // 基础路径
     mode: 'history'
 });
 

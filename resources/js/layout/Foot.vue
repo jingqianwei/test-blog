@@ -2,7 +2,7 @@
     <footer class="app-foot">
         <div class="mo-container">
             <div class="foot-top mo-clearfix">
-                <h3 class="slogan mo-left">SMOHAN · 游弋在代码里的人生！</h3>
+                <h3 class="slogan mo-left">CHINWE · 游弋在代码里的人生！</h3>
                 <form method="get" action="https://google.com.hk/search" target="_blank" autocomplete="off" class="google-search mo-right">
                     <label class="search-label">
                         <input type="text" name="q" spellcheck="false" maxlength="40" placeholder="Search..." class="search-input">
@@ -20,7 +20,7 @@
                     <li><a href="https://smohan.net/rss.xml" target="_blank">Rss</a></li>
                     <li><a href="https://s-mohan.github.io/demo/" target="_blank">Demo</a></li>
                 </ul>
-                <p>Copyright © 2012-2019 Smohan. All Rights Reserved.盗版必究.V.6.2.1.蜀ICP备16016092号-2.</p>
+                <p>Copyright © 2012-2019 Chinwe. All Rights Reserved.盗版必究.V.6.2.1.蜀ICP备16016092号-2.</p>
                 <div class="contact-way">
                     <a target="_blank" href="https://github.com/S-mohan/" data-tipsy="Github" class="mo-tipsy--top">
                         <i class="mo-icon-github"></i>

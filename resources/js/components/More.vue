@@ -1,5 +1,9 @@
 <template>
-    <div>更多</div>
+    <div class="app-main">
+        <div class="app-viewport">
+            更多
+        </div>
+    </div>
 </template>
 
 <script>

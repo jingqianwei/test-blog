@@ -1,13 +1,14 @@
 <template>
-    <div>文章</div>
+    <div class="app-main">
+        <div class="app-viewport">
+            文章
+        </div>
+    </div>
 </template>
 
 <script>
     export default {
-        name: "Article",
-        created() {
-            console.log(111111111111)
-        }
+        name: "Article"
     }
 </script>
 
