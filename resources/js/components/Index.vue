@@ -1,9 +1,9 @@
 <template>
-    <div class="app-main">
+    <main class="app-main">
         <div class="app-viewport">
             <div class="page-index">
                 <div class="index-banner background-overlay background-attachment-fixed">
-                    <div class="mo-container"><h1 class="app-name">SMOHAN</h1>
+                    <div class="mo-container"><h1 class="app-name">CHINWE</h1>
                         <p class="app-slogan">Cruising in the code of life</p>
                         <div class="index-btns">
                             <a target="_blank" href="https://github.com/S-mohan" class="index-btns__btn">
@@ -83,7 +83,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 </template>
 
 <script>

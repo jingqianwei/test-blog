@@ -1,21 +1,23 @@
 <template>
     <div class="app">
-        <Head></Head>
-        <Main></Main>
-        <Foot></Foot>
-        <BackTop></BackTop>
+        <top></top>
+        <router-view></router-view>
+        <foot></foot>
+        <backTop></backTop>
     </div>
 </template>
 
 <script>
     // 引入组件
-    import Head from './layout/Head.vue';
-    import Main from './layout/Main.vue';
-    import Foot from './layout/Foot.vue';
-    import BackTop from './components/BackTop.vue';
+    import top from './layout/Top';
+    import foot from './layout/Foot';
+    import backTop from './layout/BackTop';
     export default {
         name: "App",
-        components: {Head, Main, Foot, BackTop} // 注册组件
+        components: {top, foot, backTop}, // 注册组件
+        created() {
+            console.log('router:',this.$router, 'route:',this.$route) // 打印路由
+        }
     }
 </script>
 
