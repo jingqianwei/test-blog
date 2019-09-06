@@ -17,6 +17,24 @@ class CustomException extends Exception
         parent::__construct($message, $code);
     }
 
+    /**
+     * 报告异常， 这样不用在Handler里面使用，直接就会输出到页面
+     *
+     * @param Exception $e
+     * @return void
+     */
+    public function report(Exception $e)
+    {
+        //
+    }
+
+    /**
+     * 转换异常为 HTTP 响应
+     * 直接就会输出到页面
+     * @param Request $request
+     * @param Exception $e
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
     public function render(Request $request, Exception $e)
     {
         $code = $e->getCode() ?: 500;
