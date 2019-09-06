@@ -1,10 +1,10 @@
 <template>
     <header class="app-head">
         <div class="mo-container app-head__body">
-            <a @click="jumpPage('index')" class="app-logo active">水墨寒的博客</a>
+            <a :href="homepage" class="app-logo active">水墨寒的博客</a>
             <nav class="app-nav">
                 <ul class="app-nav__main">
-                    <li @click="jumpPage('index')"><a>首页</a></li>
+                    <li><a :href="homepage">首页</a></li>
                     <li @click="jumpPage('article')"><a>文章</a></li>
                     <li @click="jumpPage('message')"><a>留言</a></li>
                     <li @click="jumpPage('laboratory')"><a>实验室</a></li>
@@ -24,12 +24,18 @@
 <script>
     export default {
         name: "Head",
+        data() {
+            return {
+                homepage: window.location.href // 首页地址
+            }
+        },
         methods: {
             jumpPage(path){
                 this.$router.push({name: path});
             }
         }
     }
+    console.log(window.location.href)
 </script>
 
 <style scoped>

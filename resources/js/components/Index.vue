@@ -10,7 +10,7 @@
                                 <i class="mo-icon-github"></i>
                                 GitHub
                             </a>
-                            <a href="/blog/" class="index-btns__btn">进入博客</a>
+                            <a class="index-btns__btn" @click="jumpPage('article')" >进入博客</a>
                         </div>
                     </div>
                 </div>
@@ -88,7 +88,12 @@
 
 <script>
     export default {
-        name: "Main"
+        name: "Main",
+        methods: {
+            jumpPage(path) {
+                this.$router.push({name: path})
+            }
+        }
     }
 </script>
 

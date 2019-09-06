@@ -75,11 +75,6 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
         if (config('app.debug') === false) {
-            // 捕获自定义错误
-            if ($exception instanceof CustomException) {
-                return $exception->render($request, $exception);
-            }
-
             // 捕获授权错误
             if ($exception instanceof ApiException) {
                 return response()->json(['errCode' => $exception->getCode(), 'errMsg' => $exception->getMessage()]);

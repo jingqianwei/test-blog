@@ -135,8 +135,8 @@ Route::get('test-array', function() {
 	return $input[array_rand($input)];
 });
 
-// 测试vue
-Route::view('/vue/{any}', 'vue')->where('any','.*');
+// vue博客开发, 对理路由进行正则限制，对后面的值进项可选控制
+Route::view('/vue/{any?}', 'vue')->where('any','[A-Za-z]+');
 
 // 测试WebSocket
 Route::view('test-web-socket', 'websocket');

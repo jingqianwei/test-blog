@@ -16,7 +16,7 @@
         name: "App",
         components: {top, foot, backTop}, // 注册组件
         created() {
-            console.log('router:',this.$router, 'route:',this.$route) // 打印路由
+            console.log('router:', this.$router, 'route:', this.$route) // 打印路由
         }
     }
 </script>

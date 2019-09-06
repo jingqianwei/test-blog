@@ -8,11 +8,14 @@ import Message from '../components/Message'
 import Laboratory from '../components/Laboratory'
 import More from '../components/More'
 
+// 文章详情页
+import Detail from '../components/page/Detail'
+
 Vue.use(VueRouter);
 
 const routes = [
     {
-        path: '/index',
+        path: '',
         name: 'index',
         component: Index,
     },
@@ -37,15 +40,20 @@ const routes = [
         component: More,
     },
     {
+        path: '/article/:id', // 文章详情
+        name: 'detail',
+        component: Detail,
+    },
+    {
         path: '*',
-        redirect: '/index',
+        redirect: '',
     }
 ];
 
 const router = new VueRouter({
     routes: routes,
     base:'vue', // 基础路径
-    mode: 'history'
+    mode: 'history',
 });
 
 export default router
