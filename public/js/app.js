@@ -240,7 +240,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Article"
+  name: "Article",
+  methods: {
+    jumpPage: function jumpPage(path, id) {
+      //this.$router.push({name: path, query: {id: val}})
+      this.$router.push({
+        name: path,
+        params: {
+          id: id
+        }
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -413,6 +424,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "More"
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/page/Detail.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/page/Detail.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "Detail"
 });
 
 /***/ }),
@@ -1064,7 +1094,22 @@ var render = function() {
               _c("section", { staticClass: "post-item" }, [
                 _vm._m(0),
                 _vm._v(" "),
-                _vm._m(1),
+                _c("div", { staticClass: "post-item__body clearfix" }, [
+                  _c(
+                    "figure",
+                    {
+                      staticClass: "post-item__thumbnail g-flicker",
+                      on: {
+                        click: function($event) {
+                          return _vm.jumpPage("detail", 111)
+                        }
+                      }
+                    },
+                    [_vm._m(1)]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(2)
+                ]),
                 _vm._v(" "),
                 _c("aside", { staticClass: "post-item__foot clearfix" }, [
                   _c(
@@ -1191,7 +1236,7 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _vm._m(2)
+            _vm._m(3)
           ])
         ]),
         _vm._v(" "),
@@ -1228,7 +1273,7 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _vm._m(3)
+            _vm._m(4)
           ])
         ])
       ])
@@ -1275,58 +1320,56 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "post-item__body clearfix" }, [
-      _c("figure", { staticClass: "post-item__thumbnail g-flicker" }, [
-        _c("a", { attrs: { href: "/blog/d5uvpu" } }, [
-          _c("img", {
-            staticClass: "lazy in",
-            attrs: { src: "", alt: "如何实现一个颜色选择器" }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "markdown-body post-item__contents post-contents" },
-        [
-          _c("p", [
-            _vm._v(
-              "\n                                    在开发公司UI组件库的过程中，颜色组件ColorPicker由于时间关系没有去深入研究，看着花花绿绿的色谱图，以为实现起来会很复杂，就直接将一个开源的颜色选择器封装了一下。这大概是半年以前的事了，这篇文章也在我的博客中以草稿形式（只有标题没有内容，当时是做了一个记录，想着后来有时间了去研究，目前这种草稿还有很多😂）存放了半年了。前段时间请教了公司UI同事一些颜色相关的概念，又去搜索了下这方面的知识，收获还是蛮大的，尤其是知乎"
-            ),
-            _c(
-              "a",
-              {
-                attrs: {
-                  href: "https://www.zhihu.com/question/22077462",
-                  title: "null",
-                  target: "_blank"
-                }
-              },
-              [
-                _vm._v(
-                  "色彩空间中的\n                                    HSL、HSV、HSB 有什么区别？"
-                )
-              ]
-            ),
-            _vm._v("这篇提问中，"),
-            _c(
-              "a",
-              {
-                attrs: {
-                  href: "https://www.zhihu.com/people/forrest-72",
-                  title: "null",
-                  target: "_blank"
-                }
-              },
-              [_vm._v("@Forrest")]
-            ),
-            _vm._v(
-              "近乎大白话的回答，超赞👍。\n                                "
-            )
-          ])
-        ]
-      )
+    return _c("a", [
+      _c("img", {
+        staticClass: "lazy in",
+        attrs: { src: "", alt: "如何实现一个颜色选择器" }
+      })
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "markdown-body post-item__contents post-contents" },
+      [
+        _c("p", [
+          _vm._v(
+            "\n                                    在开发公司UI组件库的过程中，颜色组件ColorPicker由于时间关系没有去深入研究，看着花花绿绿的色谱图，以为实现起来会很复杂，就直接将一个开源的颜色选择器封装了一下。这大概是半年以前的事了，这篇文章也在我的博客中以草稿形式（只有标题没有内容，当时是做了一个记录，想着后来有时间了去研究，目前这种草稿还有很多😂）存放了半年了。前段时间请教了公司UI同事一些颜色相关的概念，又去搜索了下这方面的知识，收获还是蛮大的，尤其是知乎"
+          ),
+          _c(
+            "a",
+            {
+              attrs: {
+                href: "https://www.zhihu.com/question/22077462",
+                title: "null",
+                target: "_blank"
+              }
+            },
+            [
+              _vm._v(
+                "色彩空间中的\n                                    HSL、HSV、HSB 有什么区别？"
+              )
+            ]
+          ),
+          _vm._v("这篇提问中，"),
+          _c(
+            "a",
+            {
+              attrs: {
+                href: "https://www.zhihu.com/people/forrest-72",
+                title: "null",
+                target: "_blank"
+              }
+            },
+            [_vm._v("@Forrest")]
+          ),
+          _vm._v("近乎大白话的回答，超赞👍。\n                                ")
+        ])
+      ]
+    )
   },
   function() {
     var _vm = this
@@ -1950,6 +1993,30 @@ var staticRenderFns = [
     ])
   }
 ]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/page/Detail.vue?vue&type=template&id=cc2f9314&scoped=true&":
+/*!**************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/page/Detail.vue?vue&type=template&id=cc2f9314&scoped=true& ***!
+  \**************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [_vm._v("文章详情页")])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -17724,6 +17791,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/page/Detail.vue":
+/*!*************************************************!*\
+  !*** ./resources/js/components/page/Detail.vue ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Detail_vue_vue_type_template_id_cc2f9314_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Detail.vue?vue&type=template&id=cc2f9314&scoped=true& */ "./resources/js/components/page/Detail.vue?vue&type=template&id=cc2f9314&scoped=true&");
+/* harmony import */ var _Detail_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Detail.vue?vue&type=script&lang=js& */ "./resources/js/components/page/Detail.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Detail_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Detail_vue_vue_type_template_id_cc2f9314_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Detail_vue_vue_type_template_id_cc2f9314_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "cc2f9314",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/page/Detail.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/page/Detail.vue?vue&type=script&lang=js&":
+/*!**************************************************************************!*\
+  !*** ./resources/js/components/page/Detail.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Detail_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Detail.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/page/Detail.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Detail_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/page/Detail.vue?vue&type=template&id=cc2f9314&scoped=true&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/components/page/Detail.vue?vue&type=template&id=cc2f9314&scoped=true& ***!
+  \********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Detail_vue_vue_type_template_id_cc2f9314_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Detail.vue?vue&type=template&id=cc2f9314&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/page/Detail.vue?vue&type=template&id=cc2f9314&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Detail_vue_vue_type_template_id_cc2f9314_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Detail_vue_vue_type_template_id_cc2f9314_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/layout/BackTop.vue":
 /*!*****************************************!*\
   !*** ./resources/js/layout/BackTop.vue ***!
@@ -17948,12 +18084,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Message__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/Message */ "./resources/js/components/Message.vue");
 /* harmony import */ var _components_Laboratory__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/Laboratory */ "./resources/js/components/Laboratory.vue");
 /* harmony import */ var _components_More__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/More */ "./resources/js/components/More.vue");
+/* harmony import */ var _components_page_Detail__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/page/Detail */ "./resources/js/components/page/Detail.vue");
 
  // 内容组件
 
 
 
 
+
+ // 文章详情页
 
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
@@ -17977,6 +18116,10 @@ var routes = [{
   path: '/more',
   name: 'more',
   component: _components_More__WEBPACK_IMPORTED_MODULE_6__["default"]
+}, {
+  path: '/article/:id',
+  name: 'detail',
+  component: _components_page_Detail__WEBPACK_IMPORTED_MODULE_7__["default"]
 }, {
   path: '*',
   redirect: '/index'

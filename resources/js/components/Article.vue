@@ -15,7 +15,7 @@
                                         class="month">Feb</span><span class="year">2019</span></div>
                                 </aside>
                                 <div class="post-item__body clearfix">
-                                    <figure class="post-item__thumbnail g-flicker"><a href="/blog/d5uvpu"><img
+                                    <figure class="post-item__thumbnail g-flicker" @click="jumpPage('detail', 111)"><a><img
                                         src=""
                                         alt="如何实现一个颜色选择器" class="lazy in"></a></figure>
                                     <div class="markdown-body post-item__contents post-contents"><p>
@@ -104,7 +104,13 @@
 
 <script>
     export default {
-        name: "Article"
+        name: "Article",
+        methods: {
+            jumpPage(path, id) {
+                //this.$router.push({name: path, query: {id: val}})
+                this.$router.push({name: path, params: {id}})
+            }
+        }
     }
 </script>
 
