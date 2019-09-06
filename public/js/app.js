@@ -354,7 +354,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Main"
+  name: "Main",
+  methods: {
+    jumpPage: function jumpPage(path) {
+      this.$router.push({
+        name: path
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -441,8 +448,149 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Detail"
+  name: "Detail",
+  created: function created() {
+    // 获取文章id
+    var article_id = this.$route.params.id;
+    console.log('文章id为：' + article_id); // 然后通过文章id，去查询数据库，获取文章详情，并渲染页面即可
+  }
 });
 
 /***/ }),
@@ -1501,388 +1649,367 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("main", { staticClass: "app-main" }, [
+    _c("div", { staticClass: "app-viewport" }, [
+      _c("div", { staticClass: "page-index" }, [
+        _c(
+          "div",
+          {
+            staticClass:
+              "index-banner background-overlay background-attachment-fixed"
+          },
+          [
+            _c("div", { staticClass: "mo-container" }, [
+              _c("h1", { staticClass: "app-name" }, [_vm._v("CHINWE")]),
+              _vm._v(" "),
+              _c("p", { staticClass: "app-slogan" }, [
+                _vm._v("Cruising in the code of life")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "index-btns" }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "index-btns__btn",
+                    on: {
+                      click: function($event) {
+                        return _vm.jumpPage("article")
+                      }
+                    }
+                  },
+                  [_vm._v("进入博客")]
+                )
+              ])
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _vm._m(1)
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("main", { staticClass: "app-main" }, [
-      _c("div", { staticClass: "app-viewport" }, [
-        _c("div", { staticClass: "page-index" }, [
-          _c(
-            "div",
-            {
-              staticClass:
-                "index-banner background-overlay background-attachment-fixed"
-            },
-            [
-              _c("div", { staticClass: "mo-container" }, [
-                _c("h1", { staticClass: "app-name" }, [_vm._v("CHINWE")]),
-                _vm._v(" "),
-                _c("p", { staticClass: "app-slogan" }, [
-                  _vm._v("Cruising in the code of life")
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "index-btns" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "index-btns__btn",
-                      attrs: {
-                        target: "_blank",
-                        href: "https://github.com/S-mohan"
-                      }
-                    },
-                    [
-                      _c("i", { staticClass: "mo-icon-github" }),
-                      _vm._v(
-                        "\n                            GitHub\n                        "
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticClass: "index-btns__btn",
-                      attrs: { href: "/blog/" }
-                    },
-                    [_vm._v("进入博客")]
-                  )
-                ])
-              ])
-            ]
-          ),
+    return _c(
+      "a",
+      {
+        staticClass: "index-btns__btn",
+        attrs: { target: "_blank", href: "https://github.com/S-mohan" }
+      },
+      [
+        _c("i", { staticClass: "mo-icon-github" }),
+        _vm._v("\n                            GitHub\n                        ")
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "index-pages" }, [
+      _c(
+        "section",
+        { staticClass: "index-pages__page index-pages-structure" },
+        [
+          _c("h2", { staticClass: "index-pages__title" }, [
+            _vm._v("\n                    再见PHP，你好NODE")
+          ]),
           _vm._v(" "),
-          _c("div", { staticClass: "index-pages" }, [
+          _c("p", { staticClass: "index-pages__slogan" }, [
+            _vm._v("博客新版尝试使用如下技术/工具构建")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "atlas" }, [
             _c(
-              "section",
-              { staticClass: "index-pages__page index-pages-structure" },
+              "div",
+              { staticClass: "atlas-cell atlas-cell__fed mo-clearfix" },
               [
-                _c("h2", { staticClass: "index-pages__title" }, [
-                  _vm._v("\n                    再见PHP，你好NODE")
+                _c("h3", { staticClass: "atlas-title" }, [
+                  _c("span", [_vm._v("FED")])
                 ]),
                 _vm._v(" "),
-                _c("p", { staticClass: "index-pages__slogan" }, [
-                  _vm._v("博客新版尝试使用如下技术/工具构建")
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "atlas" }, [
-                  _c(
-                    "div",
-                    { staticClass: "atlas-cell atlas-cell__fed mo-clearfix" },
-                    [
-                      _c("h3", { staticClass: "atlas-title" }, [
-                        _c("span", [_vm._v("FED")])
-                      ]),
-                      _vm._v(" "),
-                      _c("ul", { staticClass: "atlas-list mo-text-right" }, [
-                        _c("li", [_vm._v("Vue 2")]),
-                        _vm._v(" "),
-                        _c("li", [
-                          _vm._v(
-                            "Mo Css Framework\n                                    "
-                          ),
-                          _c(
-                            "a",
-                            {
-                              attrs: {
-                                href: "https://github.com/S-mohan/mo-css",
-                                target: "_blank"
-                              }
-                            },
-                            [_vm._v("(github)")]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("li", [_vm._v("...")])
-                      ])
-                    ]
-                  ),
+                _c("ul", { staticClass: "atlas-list mo-text-right" }, [
+                  _c("li", [_vm._v("Vue 2")]),
                   _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "atlas-cell atlas-cell__api mo-clearfix" },
-                    [
-                      _c("h3", { staticClass: "atlas-title" }, [
-                        _c("span", [_vm._v("API")])
-                      ]),
-                      _vm._v(" "),
-                      _c("ul", { staticClass: "atlas-list mo-text-left" }, [
-                        _c("li", [_vm._v("Express 4")]),
-                        _vm._v(" "),
-                        _c("li", [_vm._v("Mongodb && Mongoose")])
-                      ])
-                    ]
-                  )
+                  _c("li", [
+                    _vm._v(
+                      "Mo Css Framework\n                                    "
+                    ),
+                    _c(
+                      "a",
+                      {
+                        attrs: {
+                          href: "https://github.com/S-mohan/mo-css",
+                          target: "_blank"
+                        }
+                      },
+                      [_vm._v("(github)")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("li", [_vm._v("...")])
                 ])
               ]
             ),
             _vm._v(" "),
             _c(
-              "section",
-              { staticClass: "index-pages__page index-pages-about" },
+              "div",
+              { staticClass: "atlas-cell atlas-cell__api mo-clearfix" },
               [
-                _c("h2", { staticClass: "index-pages__title" }, [
-                  _vm._v("关于我，关于博客")
+                _c("h3", { staticClass: "atlas-title" }, [
+                  _c("span", [_vm._v("API")])
                 ]),
                 _vm._v(" "),
-                _c("p", { staticClass: "index-pages__slogan" }, [
-                  _vm._v("一段从2012年开始用起来的自我介绍")
-                ]),
-                _vm._v(" "),
-                _c("p", { staticClass: "about-me" }, [
-                  _vm._v(
-                    "\n                        水墨寒，90后双鱼座普通男青年！毕业于成都一所普通大学的电子信息专业，\n                        "
-                  ),
-                  _c("br"),
-                  _vm._v(
-                    " 思维欠发达，差点迷失于错综复杂的电路与多维空间信号中……遂改行，从事于WEB前端开发。\n                        "
-                  ),
-                  _c("br"),
-                  _vm._v(
-                    " 喜欢敲代码的感觉，相信编程是一门艺术\n                        "
-                  ),
-                  _c("br"),
-                  _vm._v(" 自诩为游弋在代码里的人生\n                    ")
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "blog-runtime" }, [
-                  _c("time", { staticClass: "time-groups" }, [
-                    _c("span", [
-                      _c("i", {
-                        staticStyle: { "background-position": "0px -264px" }
-                      }),
-                      _vm._v(" "),
-                      _c("small", [_vm._v("年")])
-                    ]),
-                    _vm._v(" "),
-                    _c("span", [
-                      _c("i", {
-                        staticStyle: { "background-position": "0px -264px" }
-                      }),
-                      _vm._v(" "),
-                      _c("small", [_vm._v("个月")])
-                    ]),
-                    _vm._v(" "),
-                    _c("span", [
-                      _c("i", {
-                        staticStyle: { "background-position": "0px -1100px" }
-                      }),
-                      _vm._v(" "),
-                      _c("small", [_vm._v("天")])
-                    ]),
-                    _vm._v(" "),
-                    _c("span", [
-                      _c("i", {
-                        staticStyle: { "background-position": "0px -704px" }
-                      }),
-                      _vm._v(" "),
-                      _c("small", [_vm._v("小时")])
-                    ]),
-                    _vm._v(" "),
-                    _c("span", [
-                      _c("i", {
-                        staticStyle: { "background-position": "0px -88px" }
-                      }),
-                      _vm._v(" "),
-                      _c("small", [_vm._v("分钟")])
-                    ]),
-                    _vm._v(" "),
-                    _c("span", [
-                      _c("i", {
-                        staticStyle: { "background-position": "0px -352px" }
-                      }),
-                      _vm._v(" "),
-                      _c("small", [_vm._v("秒")])
-                    ])
-                  ]),
+                _c("ul", { staticClass: "atlas-list mo-text-left" }, [
+                  _c("li", [_vm._v("Express 4")]),
                   _vm._v(" "),
-                  _c("p", [_vm._v("从2012年10月25日00:00开始")])
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "section",
-              {
-                staticClass:
-                  "index-pages__page index-pages-contact background-overlay background-attachment-fixed"
-              },
-              [
-                _c("div", { staticClass: "mo-container" }, [
-                  _c(
-                    "h2",
-                    {
-                      staticClass: "index-pages__title",
-                      staticStyle: { color: "rgb(255, 255, 255)" }
-                    },
-                    [_vm._v("\n                        你可以在这些场所找到我")]
-                  ),
-                  _vm._v(" "),
-                  _c("ul", { staticClass: "contact-list" }, [
-                    _c("li", [
-                      _c(
-                        "a",
-                        {
-                          attrs: {
-                            target: "_blank",
-                            href: "https://github.com/S-mohan"
-                          }
-                        },
-                        [_c("i", { staticClass: "mo-icon-github" })]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c(
-                        "a",
-                        {
-                          attrs: {
-                            target: "_blank",
-                            href: "http://weibo.com/smohan"
-                          }
-                        },
-                        [_c("i", { staticClass: "mo-icon-weibo" })]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c(
-                        "a",
-                        {
-                          attrs: {
-                            target: "_blank",
-                            href:
-                              "https://gold.xitu.io/user/57e0ef875bbb50005e756b30"
-                          }
-                        },
-                        [_c("i", { staticClass: "mo-icon-xitu" })]
-                      )
-                    ])
-                  ])
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "section",
-              { staticClass: "index-pages__page index-pages-links" },
-              [
-                _c("h2", { staticClass: "index-pages__title" }, [
-                  _vm._v("友情链接")
-                ]),
-                _vm._v(" "),
-                _c("ul", { staticClass: "links-list" }, [
-                  _c("li", [
-                    _c(
-                      "a",
-                      {
-                        attrs: {
-                          target: "_blank",
-                          href: "http://www.bigk.cn/",
-                          rel: "nofollow noopener"
-                        }
-                      },
-                      [_vm._v("Kevin's Blog - 大凯网")]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c(
-                      "a",
-                      {
-                        attrs: {
-                          target: "_blank",
-                          href: "https://guoxiaoming.com/",
-                          rel: "nofollow noopener"
-                        }
-                      },
-                      [_vm._v("郭小铭")]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c(
-                      "a",
-                      {
-                        attrs: {
-                          target: "_blank",
-                          href: "http://blog.kugouming.com/",
-                          rel: "nofollow noopener"
-                        }
-                      },
-                      [_vm._v("酷狗明")]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c(
-                      "a",
-                      {
-                        attrs: {
-                          target: "_blank",
-                          href: "http://www.dahuotu.com/",
-                          rel: "nofollow noopener"
-                        }
-                      },
-                      [_vm._v("大火兔")]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c(
-                      "a",
-                      {
-                        attrs: {
-                          target: "_blank",
-                          href: "https://itruke.com/",
-                          rel: "nofollow noopener"
-                        }
-                      },
-                      [_vm._v("技术宅男子")]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c(
-                      "a",
-                      {
-                        attrs: {
-                          target: "_blank",
-                          href: "http://www.pintuer.com/",
-                          rel: "nofollow noopener"
-                        }
-                      },
-                      [_vm._v("拼图Pintuer")]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c(
-                      "a",
-                      {
-                        attrs: {
-                          target: "_blank",
-                          href: "http://www.mooban.cn/",
-                          rel: "nofollow noopener"
-                        }
-                      },
-                      [_vm._v("魔工坊")]
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("p", { staticClass: "mo-text-hint" }, [
-                  _c("a", { attrs: { href: "/links/" } }, [
-                    _vm._v("+ 申请友链链接")
-                  ])
+                  _c("li", [_vm._v("Mongodb && Mongoose")])
                 ])
               ]
             )
           ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("section", { staticClass: "index-pages__page index-pages-about" }, [
+        _c("h2", { staticClass: "index-pages__title" }, [
+          _vm._v("关于我，关于博客")
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "index-pages__slogan" }, [
+          _vm._v("一段从2012年开始用起来的自我介绍")
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "about-me" }, [
+          _vm._v(
+            "\n                        水墨寒，90后双鱼座普通男青年！毕业于成都一所普通大学的电子信息专业，\n                        "
+          ),
+          _c("br"),
+          _vm._v(
+            " 思维欠发达，差点迷失于错综复杂的电路与多维空间信号中……遂改行，从事于WEB前端开发。\n                        "
+          ),
+          _c("br"),
+          _vm._v(
+            " 喜欢敲代码的感觉，相信编程是一门艺术\n                        "
+          ),
+          _c("br"),
+          _vm._v(" 自诩为游弋在代码里的人生\n                    ")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "blog-runtime" }, [
+          _c("time", { staticClass: "time-groups" }, [
+            _c("span", [
+              _c("i", { staticStyle: { "background-position": "0px -264px" } }),
+              _vm._v(" "),
+              _c("small", [_vm._v("年")])
+            ]),
+            _vm._v(" "),
+            _c("span", [
+              _c("i", { staticStyle: { "background-position": "0px -264px" } }),
+              _vm._v(" "),
+              _c("small", [_vm._v("个月")])
+            ]),
+            _vm._v(" "),
+            _c("span", [
+              _c("i", {
+                staticStyle: { "background-position": "0px -1100px" }
+              }),
+              _vm._v(" "),
+              _c("small", [_vm._v("天")])
+            ]),
+            _vm._v(" "),
+            _c("span", [
+              _c("i", { staticStyle: { "background-position": "0px -704px" } }),
+              _vm._v(" "),
+              _c("small", [_vm._v("小时")])
+            ]),
+            _vm._v(" "),
+            _c("span", [
+              _c("i", { staticStyle: { "background-position": "0px -88px" } }),
+              _vm._v(" "),
+              _c("small", [_vm._v("分钟")])
+            ]),
+            _vm._v(" "),
+            _c("span", [
+              _c("i", { staticStyle: { "background-position": "0px -352px" } }),
+              _vm._v(" "),
+              _c("small", [_vm._v("秒")])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("p", [_vm._v("从2012年10月25日00:00开始")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "section",
+        {
+          staticClass:
+            "index-pages__page index-pages-contact background-overlay background-attachment-fixed"
+        },
+        [
+          _c("div", { staticClass: "mo-container" }, [
+            _c(
+              "h2",
+              {
+                staticClass: "index-pages__title",
+                staticStyle: { color: "rgb(255, 255, 255)" }
+              },
+              [_vm._v("\n                        你可以在这些场所找到我")]
+            ),
+            _vm._v(" "),
+            _c("ul", { staticClass: "contact-list" }, [
+              _c("li", [
+                _c(
+                  "a",
+                  {
+                    attrs: {
+                      target: "_blank",
+                      href: "https://github.com/S-mohan"
+                    }
+                  },
+                  [_c("i", { staticClass: "mo-icon-github" })]
+                )
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _c(
+                  "a",
+                  {
+                    attrs: { target: "_blank", href: "http://weibo.com/smohan" }
+                  },
+                  [_c("i", { staticClass: "mo-icon-weibo" })]
+                )
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _c(
+                  "a",
+                  {
+                    attrs: {
+                      target: "_blank",
+                      href: "https://gold.xitu.io/user/57e0ef875bbb50005e756b30"
+                    }
+                  },
+                  [_c("i", { staticClass: "mo-icon-xitu" })]
+                )
+              ])
+            ])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("section", { staticClass: "index-pages__page index-pages-links" }, [
+        _c("h2", { staticClass: "index-pages__title" }, [_vm._v("友情链接")]),
+        _vm._v(" "),
+        _c("ul", { staticClass: "links-list" }, [
+          _c("li", [
+            _c(
+              "a",
+              {
+                attrs: {
+                  target: "_blank",
+                  href: "http://www.bigk.cn/",
+                  rel: "nofollow noopener"
+                }
+              },
+              [_vm._v("Kevin's Blog - 大凯网")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c(
+              "a",
+              {
+                attrs: {
+                  target: "_blank",
+                  href: "https://guoxiaoming.com/",
+                  rel: "nofollow noopener"
+                }
+              },
+              [_vm._v("郭小铭")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c(
+              "a",
+              {
+                attrs: {
+                  target: "_blank",
+                  href: "http://blog.kugouming.com/",
+                  rel: "nofollow noopener"
+                }
+              },
+              [_vm._v("酷狗明")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c(
+              "a",
+              {
+                attrs: {
+                  target: "_blank",
+                  href: "http://www.dahuotu.com/",
+                  rel: "nofollow noopener"
+                }
+              },
+              [_vm._v("大火兔")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c(
+              "a",
+              {
+                attrs: {
+                  target: "_blank",
+                  href: "https://itruke.com/",
+                  rel: "nofollow noopener"
+                }
+              },
+              [_vm._v("技术宅男子")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c(
+              "a",
+              {
+                attrs: {
+                  target: "_blank",
+                  href: "http://www.pintuer.com/",
+                  rel: "nofollow noopener"
+                }
+              },
+              [_vm._v("拼图Pintuer")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c(
+              "a",
+              {
+                attrs: {
+                  target: "_blank",
+                  href: "http://www.mooban.cn/",
+                  rel: "nofollow noopener"
+                }
+              },
+              [_vm._v("魔工坊")]
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "mo-text-hint" }, [
+          _c("a", { attrs: { href: "/links/" } }, [_vm._v("+ 申请友链链接")])
         ])
       ])
     ])
@@ -2014,9 +2141,518 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("文章详情页")])
+  return _c("main", { staticClass: "app-main post-detail" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "app-viewport" }, [
+      _c("article", { staticClass: "post-detail_main markdown-body" }, [
+        _c(
+          "div",
+          { staticClass: "mo-share clearfix", attrs: { id: "mo-share" } },
+          [
+            _c("ul", { staticClass: "mo-share__items" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c(
+                "li",
+                { staticClass: "mo-share__btn mo-share__item share-weibo" },
+                [
+                  _c(
+                    "a",
+                    {
+                      attrs: {
+                        href:
+                          "http://service.weibo.com/share/share.php?url=https://smohan.net/blog/zkqfmq&title=基于Webpack/TypeScript/Koa的环境配置&appkey=678438995&pic=https://img.smohan.net/c4e769c9031225f3c39166368a15b05a.jpg&searchPic=true&ralateUid=3061825921",
+                        target: "_blank"
+                      }
+                    },
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "svg-icon",
+                          attrs: {
+                            height: "24",
+                            width: "24",
+                            "aria-hidden": "true"
+                          }
+                        },
+                        [_c("use", { attrs: { "xlink:href": "#icon-weibo" } })]
+                      )
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                {
+                  staticClass:
+                    "mo-share__btn mo-share__item share-wechat mo-dropdown"
+                },
+                [
+                  _c("a", { staticClass: "mo-dropdown__toggle" }, [
+                    _c(
+                      "svg",
+                      {
+                        staticClass: "svg-icon",
+                        attrs: {
+                          height: "24",
+                          width: "24",
+                          "aria-hidden": "true"
+                        }
+                      },
+                      [_c("use", { attrs: { "xlink:href": "#icon-wechat" } })]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(2)
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                { staticClass: "mo-share__btn mo-share__item share-twitter" },
+                [
+                  _c(
+                    "a",
+                    {
+                      attrs: {
+                        href:
+                          "https://twitter.com/intent/tweet?text=基于Webpack/TypeScript/Koa的环境配置 https://smohan.net/blog/zkqfmq",
+                        target: "_blank"
+                      }
+                    },
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "svg-icon",
+                          attrs: {
+                            height: "24",
+                            width: "24",
+                            "aria-hidden": "true"
+                          }
+                        },
+                        [
+                          _c("use", {
+                            attrs: { "xlink:href": "#icon-twitter" }
+                          })
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              )
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c("section", { staticClass: "post-detail__comments" }, [
+          _vm._m(3),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticStyle: {
+                "margin-top": "30px",
+                position: "relative",
+                "z-index": "3"
+              },
+              attrs: { id: "post-comments__form" }
+            },
+            [
+              _c("div", { staticClass: "comment-form is-focusin js-form" }, [
+                _vm._m(4),
+                _vm._v(" "),
+                _c("div", { staticClass: "comment-form__body js-form-body" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "comment-form__edit js-form-edit",
+                      attrs: { tabindex: "0", role: "form" }
+                    },
+                    [
+                      _c("textarea", {
+                        staticClass: "textarea js-input js-fd-content",
+                        attrs: {
+                          spellcheck: "false",
+                          placeholder: "留点空白给你说..."
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "feedback" }, [
+                        _c(
+                          "svg",
+                          {
+                            staticClass: "svg-icon",
+                            staticStyle: {
+                              fill: "url(#gradient-horizontal) currentColor"
+                            },
+                            attrs: {
+                              height: "48",
+                              width: "48",
+                              "aria-hidden": "true"
+                            }
+                          },
+                          [
+                            _c("use", {
+                              attrs: { "xlink:href": "#icon-check_circle" }
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "span",
+                          { staticClass: "feedback-label gradient-text" },
+                          [_vm._v("发布成功，将在审核后展示...")]
+                        )
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "comment-form__bar clearfix",
+                      attrs: { tabindex: "0", role: "button" }
+                    },
+                    [
+                      _c("div", { staticClass: "mo-dropdown pull-left" }, [
+                        _c(
+                          "a",
+                          {
+                            staticClass:
+                              "mo-dropdown__toggle comment-form__emoji js-emoji-toggle"
+                          },
+                          [
+                            _c(
+                              "svg",
+                              {
+                                staticClass: "svg-icon",
+                                attrs: {
+                                  height: "24",
+                                  width: "24",
+                                  "aria-hidden": "true"
+                                }
+                              },
+                              [
+                                _c("use", {
+                                  staticClass: "emoji-normal",
+                                  attrs: { "xlink:href": "#icon-face" }
+                                }),
+                                _vm._v(" "),
+                                _c("use", {
+                                  staticClass: "emoji-actived",
+                                  attrs: { "xlink:href": "#icon-face-2" }
+                                })
+                              ]
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _vm._m(5)
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(6)
+                    ]
+                  )
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", {
+            staticClass: "comments-list",
+            attrs: { id: "post-comments__list" }
+          }),
+          _vm._v(" "),
+          _vm._m(7)
+        ])
+      ])
+    ])
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("aside", { staticClass: "post-detail__banner" }, [
+      _c("figure", {
+        staticClass: "g-banner-bg in",
+        staticStyle: {
+          "background-image":
+            'url("https://img.smohan.net/c4e769c9031225f3c39166368a15b05a.jpg?imageMogr2/format/webp/interlace/1/blur/15x15/quality/85|imageslim")'
+        },
+        attrs: { "data-suffix": "postBanner" }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "app-viewport" }, [
+        _c("h1", { staticClass: "post-detail__title" }, [
+          _vm._v("基于Webpack/TypeScript/Koa的环境配置")
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "post-detail__tags" }, [
+          _c("span", { staticClass: "mo-tag mo-tag--primary" }, [
+            _vm._v("原创")
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "mo-tag mo-tag--primary-ghost" }, [
+            _c("span", { staticClass: "gradient-text" }, [_vm._v("前端开发")])
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "li",
+      { staticClass: "mo-share__btn mo-share__item share-reward mo-dropdown" },
+      [
+        _c("a", { staticClass: "mo-dropdown__toggle" }, [
+          _c("span", [_vm._v("赏")])
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "mo-dropdown__body dropdown-reward js-flip" },
+          [
+            _c("div", { staticClass: "reward-item reward-item__front" }, [
+              _c("div", { staticClass: "reward-type" }, [
+                _c("span", [_vm._v("微信")]),
+                _vm._v(" "),
+                _c("span", {
+                  staticClass: "corner js-flip-toggle",
+                  attrs: { title: "切换到支付宝" }
+                })
+              ]),
+              _vm._v(" "),
+              _c("img", {
+                staticClass: "js-lazy g-lazy-img",
+                attrs: {
+                  src:
+                    "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=",
+                  "data-lazy": "/static/img/wechat-reward.jpg",
+                  alt: "微信赞助"
+                }
+              }),
+              _vm._v(" "),
+              _c("span", { staticClass: "title" }, [_vm._v("喝杯茶咯~")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "reward-item reward-item__back" }, [
+              _c("div", { staticClass: "reward-type" }, [
+                _c("span", [_vm._v("支付宝")]),
+                _vm._v(" "),
+                _c("span", {
+                  staticClass: "corner js-flip-toggle",
+                  attrs: { title: "切换到微信" }
+                })
+              ]),
+              _vm._v(" "),
+              _c("img", {
+                staticClass: "js-lazy g-lazy-img",
+                attrs: {
+                  src:
+                    "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=",
+                  "data-lazy": "/static/img/ali-reward.jpg",
+                  alt: "支付宝赞助"
+                }
+              }),
+              _vm._v(" "),
+              _c("span", { staticClass: "title" }, [_vm._v("喝杯茶咯~")])
+            ])
+          ]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "mo-dropdown__body dropdown-qrcode" }, [
+      _c("img", {
+        staticClass: "js-lazy g-lazy-img",
+        attrs: {
+          src:
+            "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=",
+          "data-lazy":
+            "https://my.tv.sohu.com/user/a/wvideo/getQRCode.do?text=https://smohan.net/blog/zkqfmq&width=500&height=500"
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h3", { attrs: { id: "comments" } }, [
+      _vm._v("评论"),
+      _c("sup", { attrs: { id: "post-comments__count" } }, [
+        _vm._v(" 「 ... 」")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "comment-form__user" }, [
+      _c(
+        "figure",
+        { staticClass: "comment-form__avatar js-shown-user js-avatar" },
+        [
+          _c("img", {
+            staticClass: "js-shown-avatar",
+            attrs: { src: "//img.smohan.net/avatar/default.gif", alt: "Me" }
+          })
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "comment-form__nick" }, [
+        _c(
+          "a",
+          {
+            staticClass:
+              "text-overflow js-shown-user js-shown-nick gradient-text"
+          },
+          [_vm._v("雁过留名")]
+        )
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "popover popover-user-form",
+          attrs: { "data-placement": "right" }
+        },
+        [
+          _c("div", { staticClass: "form-row is-input" }, [
+            _c("input", {
+              staticClass: "js-input js-input-user js-fd-nick",
+              attrs: {
+                type: "text",
+                spellcheck: "false",
+                placeholder: "起个牛逼点的昵称吧~",
+                maxlength: "50",
+                title: "起个牛逼点的昵称吧~"
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-row is-input" }, [
+            _c("input", {
+              staticClass: "js-input js-input-user js-fd-email",
+              attrs: {
+                type: "email",
+                spellcheck: "false",
+                placeholder: "电子邮箱",
+                maxlength: "50",
+                title: "电子邮箱"
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-row is-input" }, [
+            _c("input", {
+              staticClass: "js-input js-input-user js-fd-url",
+              attrs: {
+                type: "url",
+                spellcheck: "false",
+                placeholder: "博客/Github地址",
+                maxlength: "100",
+                title: "博客/Github地址"
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-row is-btns" }, [
+            _c(
+              "button",
+              {
+                staticClass: "cancel gradient-text js-user-cancel",
+                attrs: { type: "button" }
+              },
+              [_vm._v("取消")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "confirm mo-btn js-user-submit",
+                attrs: { type: "button", disabled: "" }
+              },
+              [_vm._v("确定\n                                    ")]
+            )
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "popover-backdrop js-user-cancel" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "mo-dropdown__body" }, [
+      _c("ul", { staticClass: "emoji-wrap js-emoji-wrap" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "comment-form__submit pull-right" }, [
+      _c(
+        "a",
+        {
+          staticClass: "comment-form__submittip g-link",
+          attrs: { href: "/about/#comment", target: "_blank" }
+        },
+        [_vm._v("关于评论\n                                    »")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn mo-btn js-form-submit",
+          attrs: { type: "button", disabled: "disabled" }
+        },
+        [_vm._v("发布\n                                    ")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { attrs: { id: "post-comments__loading" } }, [
+      _c("div", { staticClass: "comments-loading" }, [
+        _c("div", { staticClass: "comment-item" }, [
+          _c("figure", { staticClass: "comment-item__avatar" }),
+          _vm._v(" "),
+          _c("div", { staticClass: "comment-item__body" }, [
+            _c("div", { staticClass: "comment-item__info" }),
+            _vm._v(" "),
+            _c("div", { staticClass: "comment-item__content" }, [
+              _c("span"),
+              _vm._v(" "),
+              _c("span"),
+              _vm._v(" "),
+              _c("span")
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -18118,6 +18754,7 @@ var routes = [{
   component: _components_More__WEBPACK_IMPORTED_MODULE_6__["default"]
 }, {
   path: '/article/:id',
+  // 文章详情
   name: 'detail',
   component: _components_page_Detail__WEBPACK_IMPORTED_MODULE_7__["default"]
 }, {

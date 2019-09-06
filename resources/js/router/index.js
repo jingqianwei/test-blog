@@ -40,7 +40,7 @@ const routes = [
         component: More,
     },
     {
-        path: '/article/:id',
+        path: '/article/:id', // 文章详情
         name: 'detail',
         component: Detail,
     },
