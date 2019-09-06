@@ -702,6 +702,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Head",
+  data: function data() {
+    return {
+      homepage: window.location.href // 首页地址
+
+    };
+  },
   methods: {
     jumpPage: function jumpPage(path) {
       this.$router.push({
@@ -710,6 +716,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   }
 });
+console.log(window.location.href);
 
 /***/ }),
 
@@ -2884,30 +2891,15 @@ var render = function() {
     _c("div", { staticClass: "mo-container app-head__body" }, [
       _c(
         "a",
-        {
-          staticClass: "app-logo active",
-          on: {
-            click: function($event) {
-              return _vm.jumpPage("index")
-            }
-          }
-        },
+        { staticClass: "app-logo active", attrs: { href: _vm.homepage } },
         [_vm._v("水墨寒的博客")]
       ),
       _vm._v(" "),
       _c("nav", { staticClass: "app-nav" }, [
         _c("ul", { staticClass: "app-nav__main" }, [
-          _c(
-            "li",
-            {
-              on: {
-                click: function($event) {
-                  return _vm.jumpPage("index")
-                }
-              }
-            },
-            [_c("a", [_vm._v("首页")])]
-          ),
+          _c("li", [
+            _c("a", { attrs: { href: _vm.homepage } }, [_vm._v("首页")])
+          ]),
           _vm._v(" "),
           _c(
             "li",
@@ -18733,7 +18725,7 @@ __webpack_require__.r(__webpack_exports__);
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
 var routes = [{
-  path: '/index',
+  path: '',
   name: 'index',
   component: _components_Index__WEBPACK_IMPORTED_MODULE_2__["default"]
 }, {
@@ -18759,7 +18751,7 @@ var routes = [{
   component: _components_page_Detail__WEBPACK_IMPORTED_MODULE_7__["default"]
 }, {
   path: '*',
-  redirect: '/index'
+  redirect: ''
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   routes: routes,
