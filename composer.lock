@@ -3322,16 +3322,16 @@
         },
         {
             "name": "maatwebsite/excel",
-            "version": "3.1.15",
+            "version": "3.1.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maatwebsite/Laravel-Excel.git",
-                "reference": "7d47c7af2ddcf93b4fee4f167e10702e918f69f1"
+                "reference": "bd377ad37b285d9bc25c9adca360e4392041dea6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maatwebsite/Laravel-Excel/zipball/7d47c7af2ddcf93b4fee4f167e10702e918f69f1",
-                "reference": "7d47c7af2ddcf93b4fee4f167e10702e918f69f1",
+                "url": "https://api.github.com/repos/Maatwebsite/Laravel-Excel/zipball/bd377ad37b285d9bc25c9adca360e4392041dea6",
+                "reference": "bd377ad37b285d9bc25c9adca360e4392041dea6",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -3342,15 +3342,15 @@
             },
             "require": {
                 "ext-json": "*",
-                "illuminate/support": "5.5.*|5.6.*|5.7.*|5.8.*",
+                "illuminate/support": "5.5.*|5.6.*|5.7.*|5.8.*|^6.0",
                 "opis/closure": "^3.1",
                 "php": "^7.0",
                 "phpoffice/phpspreadsheet": "^1.6"
             },
             "require-dev": {
                 "mockery/mockery": "^1.1",
-                "orchestra/database": "^3.8",
-                "orchestra/testbench": "^3.8",
+                "orchestra/database": "^4.0",
+                "orchestra/testbench": "^4.0",
                 "phpunit/phpunit": "^8.0",
                 "predis/predis": "^1.1"
             },
@@ -3392,7 +3392,7 @@
                 "php",
                 "phpspreadsheet"
             ],
-            "time": "2019-07-16T08:40:48+00:00"
+            "time": "2019-09-04T19:28:20+00:00"
         },
         {
             "name": "markbaker/complex",
@@ -4711,16 +4711,16 @@
         },
         {
             "name": "rap2hpoutre/laravel-log-viewer",
-            "version": "v1.3.1",
+            "version": "v1.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rap2hpoutre/laravel-log-viewer.git",
-                "reference": "1271590443cc173d0f9316f78ca81a9acf5b630c"
+                "reference": "5957eb05d86058dfbbe9a0782e4dd7cee550a376"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rap2hpoutre/laravel-log-viewer/zipball/1271590443cc173d0f9316f78ca81a9acf5b630c",
-                "reference": "1271590443cc173d0f9316f78ca81a9acf5b630c",
+                "url": "https://api.github.com/repos/rap2hpoutre/laravel-log-viewer/zipball/5957eb05d86058dfbbe9a0782e4dd7cee550a376",
+                "reference": "5957eb05d86058dfbbe9a0782e4dd7cee550a376",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -4730,7 +4730,7 @@
                 ]
             },
             "require": {
-                "illuminate/support": "4.2.*|5.*",
+                "illuminate/support": "4.2.*|5.*|^6.0",
                 "php": ">=5.4.0"
             },
             "require-dev": {
@@ -4772,7 +4772,7 @@
                 "logging",
                 "lumen"
             ],
-            "time": "2019-08-19T13:05:27+00:00"
+            "time": "2019-09-04T14:54:37+00:00"
         },
         {
             "name": "seld/jsonlint",
@@ -7382,16 +7382,16 @@
         },
         {
             "name": "mnabialek/laravel-sql-logger",
-            "version": "v2.2.3",
+            "version": "v2.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mnabialek/laravel-sql-logger.git",
-                "reference": "a94f1c553f12096581d9ac428bb08dfaeab17ba6"
+                "reference": "68d7b828e796fc19f65fab49c6c3245a6353c5ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mnabialek/laravel-sql-logger/zipball/a94f1c553f12096581d9ac428bb08dfaeab17ba6",
-                "reference": "a94f1c553f12096581d9ac428bb08dfaeab17ba6",
+                "url": "https://api.github.com/repos/mnabialek/laravel-sql-logger/zipball/68d7b828e796fc19f65fab49c6c3245a6353c5ef",
+                "reference": "68d7b828e796fc19f65fab49c6c3245a6353c5ef",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -7401,15 +7401,15 @@
                 ]
             },
             "require": {
-                "illuminate/container": "5.*",
-                "illuminate/filesystem": "5.*",
-                "illuminate/support": "5.*",
-                "mnabialek/laravel-version": "^1.0.1",
+                "illuminate/container": "5.*|6.*",
+                "illuminate/filesystem": "5.*|6.*",
+                "illuminate/support": "5.*|6.*",
+                "mnabialek/laravel-version": "^1.0.2",
                 "nesbot/carbon": "~1.0 || ^2.0"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "~2.5",
-                "laravel/framework": "^5.5",
+                "laravel/framework": "^6.0",
                 "mockery/mockery": "^1.0",
                 "php-coveralls/php-coveralls": "^2.0",
                 "phpunit/phpunit": "^6.5"
@@ -7456,7 +7456,7 @@
                 "sql log",
                 "sql logger"
             ],
-            "time": "2019-08-29T19:26:12+00:00"
+            "time": "2019-09-04T17:04:27+00:00"
         },
         {
             "name": "mnabialek/laravel-version",
