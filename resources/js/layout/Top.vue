@@ -5,7 +5,9 @@
             <nav class="app-nav">
                 <ul class="app-nav__main">
                     <li><a :href="homepage">首页</a></li>
-                    <li @click="jumpPage('article')"><a>文章</a></li>
+                    <!-- 两种方式都可以，上面声明式，下面编程式-->
+                    <li><router-link to="article">文章</router-link></li>
+                    <!--<li @click="jumpPage('article')"><a>文章</a></li>-->
                     <li @click="jumpPage('message')"><a>留言</a></li>
                     <li @click="jumpPage('laboratory')"><a>实验室</a></li>
                     <li class="dropdown active"><a class="dropdown-toggle">更多</a>
@@ -30,7 +32,7 @@
             }
         },
         methods: {
-            jumpPage(path){
+            jumpPage(path) {
                 this.$router.push({name: path});
             }
         }

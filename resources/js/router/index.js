@@ -50,11 +50,9 @@ const routes = [
     }
 ];
 
-const router = new VueRouter({
+export default new VueRouter({
     routes: routes,
     base:'vue', // 基础路径
     mode: 'history',
 });
-
-export default router
 
