@@ -9,6 +9,11 @@ export default new Vuex.Store({
     state: {
         count: 100
     },
+    mutations: {
+        increment(state) {
+            state.count++
+        }
+    },
     strict: debug,
     modules: {
 

@@ -121,6 +121,15 @@ __webpack_require__.r(__webpack_exports__);
   // 注册组件
   created: function created() {
     console.log('router:', this.$router, 'route:', this.$route, 'vuex参数为：', this.$store.state.count); // 打印路由
+
+    this.$store.commit('increment');
+    console.info('计算后的结果为', this.$store.state.count);
+  },
+  computed: {// 计算属性
+  },
+  watch: {// 侦听器
+  },
+  methods: {// 函数
   }
 });
 
@@ -19082,22 +19091,24 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./router */ "./resources/js/router/index.js");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./store */ "./resources/js/store/index.js");
-/* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./App.vue */ "./resources/js/App.vue");
-window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./router */ "./resources/js/router/index.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store */ "./resources/js/store/index.js");
+/* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./App.vue */ "./resources/js/App.vue");
+
+
 
  //import elementUI from 'element-ui';
 //import 'element-ui/lib/theme-chalk/index.css';
 //Vue.use(elementUI, {size: 'medium'}); // 将elementUI引入vue中
 
-
-new Vue({
+new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app',
-  router: _router__WEBPACK_IMPORTED_MODULE_0__["default"],
-  store: _store__WEBPACK_IMPORTED_MODULE_1__["default"],
+  router: _router__WEBPACK_IMPORTED_MODULE_1__["default"],
+  store: _store__WEBPACK_IMPORTED_MODULE_2__["default"],
   render: function render(h) {
-    return h(_App_vue__WEBPACK_IMPORTED_MODULE_2__["default"]);
+    return h(_App_vue__WEBPACK_IMPORTED_MODULE_3__["default"]);
   }
 });
 
@@ -19811,6 +19822,11 @@ var debug = "development" !== 'production';
 /* harmony default export */ __webpack_exports__["default"] = (new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   state: {
     count: 100
+  },
+  mutations: {
+    increment: function increment(state) {
+      state.count++;
+    }
   },
   strict: debug,
   modules: {}
