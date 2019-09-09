@@ -123,7 +123,7 @@ __webpack_require__.r(__webpack_exports__);
     console.log('router:', this.$router, 'route:', this.$route, 'vuex参数为：', this.$store.state.count); // 打印路由
 
     this.$store.commit('increment');
-    console.info('计算后的结果为', this.$store.state.count);
+    console.info('计算后的结果为', this.$store.state.count, this.$store.state.detail.item);
   },
   computed: {// 计算属性
   },
@@ -19793,13 +19793,12 @@ var routes = [{
   path: '*',
   redirect: ''
 }];
-var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
+/* harmony default export */ __webpack_exports__["default"] = (new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   routes: routes,
   base: 'vue',
   // 基础路径
   mode: 'history'
-});
-/* harmony default export */ __webpack_exports__["default"] = (router);
+}));
 
 /***/ }),
 
@@ -19815,7 +19814,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _modules_detail__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/detail */ "./resources/js/store/modules/detail.js");
 
+
+ // 就是把仓库拆分处理
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
 var debug = "development" !== 'production';
@@ -19829,8 +19831,56 @@ var debug = "development" !== 'production';
     }
   },
   strict: debug,
-  modules: {}
+  modules: {
+    detail: _modules_detail__WEBPACK_IMPORTED_MODULE_2__["default"]
+  }
 }));
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/detail.js":
+/*!**********************************************!*\
+  !*** ./resources/js/store/modules/detail.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// initial state
+var state = {
+  item: [1, 2, 3],
+  count: 500
+}; // getters
+
+var getters = {
+  cartProducts: function cartProducts(state, getters, rootState) {}
+}; // actions
+
+var actions = {
+  checkout: function checkout(_ref, products) {
+    var commit = _ref.commit,
+        state = _ref.state;
+  }
+}; // mutations
+
+var mutations = {
+  pushProductToCart: function pushProductToCart(state, _ref2) {
+    var id = _ref2.id;
+    state.items.push({
+      id: id,
+      quantity: 1
+    });
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = ({
+  namespaced: true,
+  // 带命名空间
+  state: state,
+  getters: getters,
+  actions: actions,
+  mutations: mutations
+});
 
 /***/ }),
 

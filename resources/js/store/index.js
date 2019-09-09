@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import detail from './modules/detail' // 就是把仓库拆分处理
 
 Vue.use(Vuex);
 
@@ -16,6 +17,6 @@ export default new Vuex.Store({
     },
     strict: debug,
     modules: {
-
+        detail
     }
 })
