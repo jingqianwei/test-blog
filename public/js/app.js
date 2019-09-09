@@ -120,7 +120,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   // 注册组件
   created: function created() {
-    console.log('router:', this.$router, 'route:', this.$route); // 打印路由
+    console.log('router:', this.$router, 'route:', this.$route, 'vuex参数为：', this.$store.state.count); // 打印路由
   }
 });
 
@@ -677,6 +677,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -19808,6 +19809,9 @@ __webpack_require__.r(__webpack_exports__);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
 var debug = "development" !== 'production';
 /* harmony default export */ __webpack_exports__["default"] = (new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
+  state: {
+    count: 100
+  },
   strict: debug,
   modules: {}
 }));
