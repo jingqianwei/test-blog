@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Events\UserRegistered;
 use App\Exports\UsersExport;
 use App\Models\User;
+use App\Repository\UserRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Validator;
@@ -12,6 +13,24 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
+    protected $user;
+
+    public function __construct(UserRepository $user)
+    {
+        $this->user = $user;
+    }
+
+    /**
+     * 获取数据
+     * @param Request $request
+     */
+    public function getData(Request $request)
+    {
+        $id = $request->input('id');
+
+        dd($this->user->find($id));
+    }
+
     /**
      * 注册
      * @param Request $request
@@ -53,6 +72,8 @@ class UserController extends Controller
      * 导出数据
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
+     * @throws \PhpOffice\PhpSpreadsheet\Exception
+     * @throws \PhpOffice\PhpSpreadsheet\Writer\Exception
      */
     public function export(Request $request)
     {

@@ -8,6 +8,10 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Storage;
 
+/**
+ * @method find($id)
+ * @method create($data)
+ */
 class User extends Authenticatable
 {
     use Notifiable, UuidTrait, HashIdHelper;

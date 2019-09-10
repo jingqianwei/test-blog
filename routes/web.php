@@ -423,3 +423,6 @@ Route::get('test/redis', function () {
     ]); // 批量设置键值对值
     dd('设置成功');
 });
+
+// 资源库模式练习
+Route::get('test/repository', 'UserController@getData');
