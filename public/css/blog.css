@@ -61,8 +61,11 @@
   border-bottom-color: #9c9d9b;
   right: 0;
   top: 50%;
+  -webkit-transform: translateY(-80%) rotate(-45deg);
   transform: translateY(-80%) rotate(-45deg);
+  transition: -webkit-transform 0.3s;
   transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
 }
 
 .app .app-head .app-head__body .app-nav > ul > .dropdown > .dropdown-menu {
@@ -102,6 +105,7 @@
 }
 
 .app .app-head .app-head__body .app-nav > ul > .dropdown:hover > a:after {
+  -webkit-transform: translateY(-20%) rotate(-225deg);
   transform: translateY(-20%) rotate(-225deg);
 }
 
@@ -898,6 +902,7 @@
   position: absolute;
   top: 45%;
   left: 55%;
+  -webkit-transform: rotate(-45deg) translate(-50%, -50%);
   transform: rotate(-45deg) translate(-50%, -50%);
 }
 
@@ -913,6 +918,7 @@
 
 .app-back-top.show {
   right: 12px;
+  -webkit-transform: scale(1) rotate(-1turn) translate(0);
   transform: scale(1) rotate(-1turn) translate(0);
 }
 
@@ -2019,64 +2025,78 @@
 
 @-webkit-keyframes iconPreview {
   0% {
+    -webkit-transform: scale(1) rotate(0deg);
     transform: scale(1) rotate(0deg);
   }
 
   50% {
+    -webkit-transform: scale(1.2) rotate(180deg);
     transform: scale(1.2) rotate(180deg);
   }
 
   to {
+    -webkit-transform: scale(1) rotate(1turn);
     transform: scale(1) rotate(1turn);
   }
 }
 
 @keyframes iconPreview {
   0% {
+    -webkit-transform: scale(1) rotate(0deg);
     transform: scale(1) rotate(0deg);
   }
 
   50% {
+    -webkit-transform: scale(1.2) rotate(180deg);
     transform: scale(1.2) rotate(180deg);
   }
 
   to {
+    -webkit-transform: scale(1) rotate(1turn);
     transform: scale(1) rotate(1turn);
   }
 }
 
 @-webkit-keyframes iconDownload {
   0% {
+    -webkit-transform: translateY(0);
     transform: translateY(0);
   }
 
   50% {
+    -webkit-transform: translateY(-5px);
     transform: translateY(-5px);
   }
 
   70% {
+    -webkit-transform: translateY(0);
     transform: translateY(0);
   }
 
   to {
+    -webkit-transform: translateY(2px);
     transform: translateY(2px);
   }
 }
 
 @keyframes iconDownload {
   0% {
+    -webkit-transform: translateY(0);
     transform: translateY(0);
   }
 
   50% {
+    -webkit-transform: translateY(-5px);
     transform: translateY(-5px);
   }
 
   70% {
+    -webkit-transform: translateY(0);
     transform: translateY(0);
   }
 
   to {
+    -webkit-transform: translateY(2px);
     transform: translateY(2px);
   }
 }
