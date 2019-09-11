@@ -8,12 +8,14 @@
 
 namespace App\Utils;
 
+use Illuminate\Http\Response;
+
 /**
  * 接口错误文档
  * Class ApiErr
  * @package App\Utils
  */
-class ApiError
+class ApiError extends Response
 {
     const SUCCESS = [0,'Success'];
     const UNKNOWN_ERR = [1,'未知错误'];
