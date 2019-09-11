@@ -20,6 +20,7 @@ use App\Utils\SignGenerator;
 use App\Utils\SimpleSnowFlake;
 use App\Utils\SnowFlake;
 use App\Utils\Timer;
+use Illuminate\Http\Response;
 
 Route::get('/', function () {
     return view('welcome');
@@ -426,3 +427,8 @@ Route::get('test/redis', function () {
 
 // 资源库模式练习
 Route::get('test/repository', 'UserController@getData');
+
+// 获取框架状态码
+Route::get('test/code', function () {
+    dd(Response::HTTP_OK);
+});
