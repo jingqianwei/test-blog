@@ -9,12 +9,12 @@
 
 <script>
     // 引入组件
-    import top from './layout/Top';
-    import foot from './layout/Foot';
-    import backTop from './layout/BackTop';
+    import Top from './layout/Top';
+    import Foot from './layout/Foot';
+    import BackTop from './layout/BackTop';
     export default {
         name: "App",
-        components: {top, foot, backTop}, // 注册组件
+        components: {Top, Foot, BackTop}, // 注册组件
         created() {
             console.log('router:', this.$router, 'route:', this.$route, 'vuex参数为：', this.$store.state.count); // 打印路由
 
