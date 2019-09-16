@@ -17,6 +17,7 @@ class CommentController extends Controller
     public function index(Request $request)
     {
         $parent_id = $request->input('parent_id', 2);
-        return $this->commentService->getComment($parent_id);
+        // 难理解方法 $this->commentService->getComment($parent_id);
+        return $this->commentService->getCommentBest($parent_id);
     }
 }
