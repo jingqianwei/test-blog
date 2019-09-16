@@ -6,7 +6,7 @@
  * Time: 13:34
  */
 
-namespace App\Services;
+namespace App\DesignPattern;
 
 
 class PorscheCarFactory extends MethodFactory

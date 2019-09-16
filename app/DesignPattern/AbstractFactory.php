@@ -6,7 +6,7 @@
  * Time: 11:32
  */
 
-namespace App\Services;
+namespace App\DesignPattern;
 
 /**
  * 总工厂

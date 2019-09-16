@@ -3,17 +3,17 @@
  * Created by PhpStorm.
  * User: chinwe.jing
  * Date: 2019/2/26
- * Time: 11:33
+ * Time: 10:32
  */
 
-namespace App\Services;
+namespace App\DesignPattern;
 
 /**
- * 低端车接口
- * Interface LowEndCar
+ * 车
+ * Class AudiCar
  * @package App\Services
  */
-interface LowEndCar
+class AudiCar
 {
 
 }

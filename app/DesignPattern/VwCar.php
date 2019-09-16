@@ -6,14 +6,14 @@
  * Time: 10:32
  */
 
-namespace App\Services;
+namespace App\DesignPattern;
 
 /**
  * 车
- * Class AudiCar
+ * Class VwCar
  * @package App\Services
  */
-class AudiCar
+class VwCar
 {
 
 }

@@ -12,6 +12,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // 数据填充
-        $this->call(PostsTableSeeder::class);
+        //$this->call(PostsTableSeeder::class);
+        $this->call(CommentTableSeeder::class);
     }
 }

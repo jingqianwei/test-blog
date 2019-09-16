@@ -6,7 +6,7 @@
  * Time: 13:40
  */
 
-namespace App\Services;
+namespace App\DesignPattern;
 
 /**
  * 高端车接口

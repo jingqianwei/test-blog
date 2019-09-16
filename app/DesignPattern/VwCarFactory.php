@@ -3,23 +3,23 @@
  * Created by PhpStorm.
  * User: chinwe.jing
  * Date: 2019/2/26
- * Time: 11:19
+ * Time: 10:48
  */
 
-namespace App\Services;
+namespace App\DesignPattern;
 
 /**
  * 子工厂
- * Class AudiCarFactory
+ * Class VwCarFactory
  * @package App\Services
  */
-class AudiCarFactory extends MethodFactory
+class VwCarFactory extends MethodFactory
 {
     /**
-     * @return AudiCar
+     * @return VwCar|mixed
      */
     public function produce()
     {
-        return new AudiCar();
+        return new VwCar();
     }
 }

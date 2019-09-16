@@ -6,7 +6,7 @@
  * Time: 10:33
  */
 
-namespace App\Services;
+namespace App\DesignPattern;
 
 /**
  * 参考网址：https://learnku.com/articles/24372

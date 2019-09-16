@@ -6,7 +6,7 @@
  * Time: 13:36
  */
 
-namespace App\Services;
+namespace App\DesignPattern;
 
 /**
  * 大众车的子工厂

@@ -432,3 +432,6 @@ Route::get('test/repository', 'UserController@getData');
 Route::get('test/code', function () {
     dd(Response::HTTP_OK);
 });
+
+// 获取评论内容
+Route::get('test/comment', 'CommentController@index');

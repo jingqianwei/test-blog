@@ -6,14 +6,14 @@
  * Time: 11:33
  */
 
-namespace App\Services;
+namespace App\DesignPattern;
 
 /**
- * 大众低端车
- * Class VwLowEndCar
+ * 低端车接口
+ * Interface LowEndCar
  * @package App\Services
  */
-class VwLowEndCar implements LowEndCar
+interface LowEndCar
 {
 
 }

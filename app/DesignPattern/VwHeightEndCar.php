@@ -6,7 +6,7 @@
  * Time: 13:41
  */
 
-namespace App\Services;
+namespace App\DesignPattern;
 
 /**
  * 大众高端车

@@ -16,9 +16,9 @@ use App\Jobs\ExerciseQueue;
 use App\Jobs\RegisterSendPoint;
 use App\Mail\OrderShipped;
 use App\Models\Order;
-use App\Services\Factory;
-use App\Services\VwCarAbstractFactory;
-use App\Services\VwCarFactory;
+use App\DesignPattern\Factory;
+use App\DesignPattern\VwCarAbstractFactory;
+use App\DesignPattern\VwCarFactory;
 use GuzzleHttp\Client;
 use Lib\QRcode;
 
