@@ -50,36 +50,35 @@ class CommentService
      */
     public function getCommentBest($parent_id = 0)
     {
-        $arrData = Comment::query()->where('parent_id', $parent_id)->latest()->get();
-        if ($arrData->isEmpty()) {
-            return [];
-        }
-
         /**
-         * 方案一，用集合的map()函数处理
-         */
-        $result = $arrData->map(function ($item) {
-            $item->children = $this->getComment($item->id);
-            return $item;
-        });
-
-
-        /**
-         * 方案二，用foreach()处理
+         * 方案一，用foreach()处理
          */
         $result = [];
+        $arrData = Comment::query()->where('parent_id', $parent_id)->latest()->get();
+        if ($arrData->isEmpty()) {
+            return $result;
+        }
+
         foreach ($arrData as $item) {
             $item['children'] = $this->getComment($item->id);
             $result[] = $item;
         }
 
         /**
+         * 方案二，用集合的map()函数处理
+         */
+        $result = Comment::query()->where('parent_id', $parent_id)->latest()->get()->map(function ($item) {
+            $item->children = $this->getComment($item->id);
+            return $item;
+        });
+
+        /**
          * 方案三，用集合的each()函数处理
          */
-//        Comment::query()->where('parent_id', $parent_id)->latest()->get()->each(function ($item) use (&$result) {
-//            $item->children = $this->getComment($item->id);
-//            $result[] = $item;
-//        });
+        Comment::query()->where('parent_id', $parent_id)->latest()->each(function ($item) use (&$result) {
+            $item->children = $this->getComment($item->id);
+            $result[] = $item;
+        });
 
         return $result;
     }
