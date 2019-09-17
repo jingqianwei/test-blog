@@ -52,7 +52,8 @@ const routes = [
 
 export default new VueRouter({
     routes: routes,
-    base:'vue', // 基础路径
+    base: 'vue', // 基础路径
     mode: 'history',
+    saveScrollPosition: true,
 });
 

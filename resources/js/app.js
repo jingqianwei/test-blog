@@ -20,7 +20,7 @@ router.beforeEach((to, from, next) => {
     next()
 });
 
-router.afterEach(transition => {
+router.afterEach((to, from) => {
     // 结束进度条
     NProgress.done()
 });

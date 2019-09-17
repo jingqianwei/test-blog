@@ -20250,7 +20250,7 @@ _router__WEBPACK_IMPORTED_MODULE_1__["default"].beforeEach(function (to, from, n
 
   next();
 });
-_router__WEBPACK_IMPORTED_MODULE_1__["default"].afterEach(function (transition) {
+_router__WEBPACK_IMPORTED_MODULE_1__["default"].afterEach(function (to, from) {
   // 结束进度条
   nprogress__WEBPACK_IMPORTED_MODULE_4___default.a.done();
 });
@@ -20948,7 +20948,8 @@ var routes = [{
   routes: routes,
   base: 'vue',
   // 基础路径
-  mode: 'history'
+  mode: 'history',
+  saveScrollPosition: true
 }));
 
 /***/ }),
