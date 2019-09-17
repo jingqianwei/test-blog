@@ -19,7 +19,7 @@ use App\Models\User;
  */
 class UserRepository
 {
-    protected $user;
+    private $user;
 
     public function __construct(User $user)
     {
