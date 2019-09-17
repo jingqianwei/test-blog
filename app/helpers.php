@@ -172,4 +172,65 @@ if (! function_exists('str_random')) {
     }
 }
 
+if (! function_exists('factorial')) {
+    /**
+     * 阶乘(递归)，但这样当$n很大的时候，递归容易造成栈溢出
+     * @param int $n 要阶乘的值
+     * @return float|int
+     */
+    function factorial($n) {
+        if ($n == 0) {
+            return $n;
+        }
+        
+        return $n * factorial($n - 1);
+    }
+
+    // 调用var_dump(factorial(100));
+}
+
+if (! function_exists('factorial')) {
+    /**
+     * 阶乘(尾递归)，但这样当$n很大的时候，尾递归容易造成栈溢出
+     * @param int $n 要阶乘的值
+     * @param int $acc 类加的值，默认为1
+     * @return float|int
+     */
+    function factorial($n, $acc) {
+        if ($n == 0) {
+            return $acc;
+        }
+
+        return factorial($n - 1, $n * $acc);
+    }
+
+    // 调用var_dump(factorial(100, 1));
+}
+
+if (! function_exists('factorial')) {
+    function factorial($n, $accumulator = 1) {
+        if ($n == 0) {
+            return $accumulator;
+        }
+
+        return function() use($n, $accumulator) {
+            return factorial($n - 1, $accumulator * $n);
+        };
+    }
+
+    function trampoline($callback, $params) {
+        $result = call_user_func_array($callback, $params);
+
+        while (is_callable($result)) {
+            $result = $result();
+        }
+
+        return $result;
+    }
+
+    // 调用var_dump(trampoline('factorial', [100, 1]));
+    // 注意到trampoline()函数没？简单点说就是利用高阶函数消除递归。
+    //想更进一步了解 call_user_func_array，可以参看这篇文章：PHP函数补完：call_user_func()与call_user_func_array()
+}
+
 
