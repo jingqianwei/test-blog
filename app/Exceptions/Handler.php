@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Contracts\Cache\LockTimeoutException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Mail;
 
@@ -74,6 +75,11 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if ($exception instanceof LockTimeoutException) {
+            //abort(201, 'cache::lock争抢锁失败'); 直接抛错，跟throw new LockTimeoutException效果一样，示例在web.php中测试原子锁用法
+            return response()->json(['errCode' => $exception->getCode(), 'errMsg' => 'cache::lock争抢锁失败']);
+        }
+
         if (config('app.debug') === false) {
             // 捕获授权错误
             if ($exception instanceof ApiException) {

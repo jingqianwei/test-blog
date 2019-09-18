@@ -312,6 +312,22 @@ Route::get('test-collect', function () {
     dd($collect);
 });
 
+// 测试原子锁的用法
+Route::get('test-lock', function () {
+    /**
+     * 1. lock中的10指，获取到锁后，锁定10秒，相当于锁的过期时间为10s
+     * 2. block中的5指，有5秒的时间再去获取锁，如果超过5秒没抢到锁，就会直接报错，(极端情况下，这个锁被别人使用了，那就会直接报错)
+     * 3. lock中第一个参数就是k锁的名字
+     */
+    //Cache::put('foo', 222222, 60); 就会造成下面的代码等待锁超时报错
+    $data = Cache::lock('foo', 10)->block(5, function () {
+        // 等待最多5秒后获取锁定...
+        return 11;
+    });
+
+    dd($data);
+});
+
 // 测试缓存的用法
 Route::get('test-re-cache', function () {
     /**
