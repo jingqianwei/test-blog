@@ -75,9 +75,8 @@ class CommentService
         /**
          * 方案三，用集合的each()函数处理
          */
-        Comment::query()->where('parent_id', $parent_id)->latest()->each(function ($item) use (&$result) {
+        $result = Comment::query()->where('parent_id', $parent_id)->latest()->get()->each(function ($item) {
             $item->children = $this->getComment($item->id);
-            $result[] = $item;
         });
 
         return $result;
