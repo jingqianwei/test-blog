@@ -430,6 +430,22 @@ Route::get('test/redis', function () {
     $redis = new \Redis;
     $redis->connect("127.0.0.1", 6379);
     $redis->auth('123456');
+    // 设置初始值
+    $redis->set($key, 100);
+
+    //监视该key
+    $redis->watch($key);
+    //开启事务
+    $redis->multi();
+    //修改值
+    $redis->incr($key);
+
+    //提交事务，如果在此期间有其他请求修改了该key，那么事务会失败
+    if ($redis->exec()) {
+        echo '修改成功';
+    } else {
+        echo '修改失败';
+    }
 
     $redis->hSet($key, 'id', 222); // 直接设置值,不管值是否已存在
     $redis->hSetNx($key, 'id', 1111); // 当hashKey值不存在时才会设置

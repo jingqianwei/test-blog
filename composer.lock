@@ -1754,16 +1754,16 @@
         },
         {
             "name": "easyswoole/utility",
-            "version": "1.1.1",
+            "version": "1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/easy-swoole/utility.git",
-                "reference": "1ea6e097536a3dc89fde79f27aacc1f713d63244"
+                "reference": "585252be9ed0cdfd8badbddb7df60edce794daf0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/easy-swoole/utility/zipball/1ea6e097536a3dc89fde79f27aacc1f713d63244",
-                "reference": "1ea6e097536a3dc89fde79f27aacc1f713d63244",
+                "url": "https://api.github.com/repos/easy-swoole/utility/zipball/585252be9ed0cdfd8badbddb7df60edce794daf0",
+                "reference": "585252be9ed0cdfd8badbddb7df60edce794daf0",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -1773,6 +1773,8 @@
                 ]
             },
             "require": {
+                "ext-json": "*",
+                "ext-openssl": "*",
                 "php": ">=7.1.0"
             },
             "type": "library",
@@ -1792,7 +1794,7 @@
                 }
             ],
             "description": "easyswoole extension tool library",
-            "time": "2019-07-15T07:52:11+00:00"
+            "time": "2019-09-19T03:02:37+00:00"
         },
         {
             "name": "easyswoole/validate",
