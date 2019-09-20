@@ -454,6 +454,8 @@ Route::get('test/redis', function () {
         'sex'  => '女',
         'time' => time(),
     ]); // 批量设置键值对值
+
+    $redis->hMGet($key, ['name', 'sex']);
     dd('设置成功');
 });
 
