@@ -469,3 +469,10 @@ Route::get('test/code', function () {
 
 // 获取评论内容
 Route::get('test/comment', 'CommentController@index');
+
+// yaconf扩展的使用,必须安装扩展才能使用
+// 参考网址：https://www.cnblogs.com/tinywan/p/9528200.html
+Route::get('test/yaconf', function () {
+    $redis = \Yaconf::get('redis.base');
+    dd($redis);
+});
