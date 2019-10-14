@@ -14,3 +14,8 @@
 Broadcast::channel('App.User.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
+
+// 开启一个频道
+Broadcast::channel('news', function ($user, $id) {
+    return true;
+});

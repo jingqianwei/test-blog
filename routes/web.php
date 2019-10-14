@@ -26,6 +26,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// laravel广播练习
+Route::get('/broadcast', function () {
+    return view('broadcast');
+});
+
 // 测试文件复制
 Route::get('test-file', function () {
     $destination = storage_path() . '/php/test.php';
