@@ -2,7 +2,6 @@
     <div class="app">
         <top></top>
         <router-view></router-view>
-        <markdown></markdown>
         <foot></foot>
         <backTop></backTop>
     </div>
@@ -13,11 +12,10 @@
     import Top from './layout/Top';
     import Foot from './layout/Foot';
     import BackTop from './layout/BackTop';
-    import Markdown from './components/Markdown'
 
     export default {
         name: "App",
-        components: {Top, Foot, BackTop, Markdown}, // 注册组件
+        components: {Top, Foot, BackTop}, // 注册组件
         created() {
             console.log('router:', this.$router, 'route:', this.$route, 'vuex参数为：', this.$store.state.count); // 打印路由
 
