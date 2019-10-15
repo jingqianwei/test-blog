@@ -7,6 +7,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+//use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow; sync队列
 
 /**
  * 新建一个广播，增加对 ShouldBroadcast 的实现
@@ -26,16 +27,19 @@ class BroadcastNews implements ShouldBroadcast
      */
     public $broadcastQueue = 'broadcast-news-queue';
 
-    public $message;
+    protected $message;
+    protected $value;
 
     /**
      * Create a new event instance.
      *
      * @param string $message 消息内容
+     * @param int $value 发送消息条件
      */
-    public function __construct($message)
+    public function __construct($message, $value)
     {
         $this->message = $message;
+        $this->value = $value;
     }
 
     /**
@@ -56,5 +60,25 @@ class BroadcastNews implements ShouldBroadcast
     public function broadcastAs()
     {
         return 'broadcast.news';
+    }
+
+    /**
+     * 获取广播数据
+     *
+     * @return array
+     */
+    public function broadcastWith()
+    {
+        return ['news' => $this->message];
+    }
+
+    /**
+     * 确定事件是否要被广播
+     *
+     * @return bool
+     */
+    public function broadcastWhen()
+    {
+        return $this->value > 100;
     }
 }

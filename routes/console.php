@@ -20,6 +20,6 @@ Artisan::command('inspire', function () {
 
 // 自定义发送广播消息
 Artisan::command('big-news', function () {
-    broadcast(new BroadcastNews(date('Y-m-d h:i:s A').": BIG NEWS!"));
+    broadcast(new BroadcastNews(date('Y-m-d h:i:s A').": BIG NEWS!", 10));
     $this->comment("news sent");
 })->describe('Send news');
